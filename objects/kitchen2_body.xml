@@ -1,0 +1,1033 @@
+<mujocoinclude>
+    <body name="kitchen" pos = "0 0 0">
+        <!-- <body name="left_eef_target" pos="0 0 -1" >
+        <geom name="left_eef_target_box" size="0.05 0.05 0.05" type="box" contype="0" conaffinity="0" group="2" rgba="0.898 0.42 0.435 0.5"/>
+        <geom name="left_eef_target_sphere" size="0.01" contype="0" conaffinity="0" group="2" rgba="0.898 0.42 0.435 0.8"/>
+        </body>
+        <body name="right_eef_target" pos="0 0 -1" >
+        <geom name="right_eef_target_box" size="0.05 0.05 0.05" type="box" contype="0" conaffinity="0" group="2" rgba="0.208 0.314 0.439 0.5"/>
+        <geom name="right_eef_target_sphere" size="0.01" contype="0" conaffinity="0" group="2" rgba="0.208 0.314 0.439 0.8"/>
+        </body> -->
+        <body name="wall_room_main" pos="2.75 0.02 1.5" quat="-0.707107 0.707107 0 0">
+        <geom name="wall_room_g0" size="2.79 1.5 0.02" type="box" rgba="0.5 0 0 1" group="3"/>
+        <geom name="wall_room_g0_vis" size="2.79 1.5 0.02" type="box" contype="0" conaffinity="0" group="1" mass="0" material="wall_room_wall_mat"/>
+        <site name="wall_room_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 1" group="3"/>
+        </body>
+        <body name="wall_backing_room_main" pos="2.75 0.14 1.38" quat="-0.707107 0.707107 0 0">
+        <geom name="wall_backing_room_g0" size="2.99 1.62 0.1" type="box" rgba="0.5 0 0 1" group="3"/>
+        <geom name="wall_backing_room_g0_vis" size="2.99 1.62 0.1" type="box" contype="0" conaffinity="0" group="1" mass="0" material="wall_backing_room_wall_mat"/>
+        <site name="wall_backing_room_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 1" group="3"/>
+        </body>
+        <!-- <body name="wall_left_room_main" pos="-0.02 -1.5 1.5" quat="0.5 0.5 -0.5 -0.5">
+        <geom name="wall_left_room_g0" size="1.54 1.5 0.02" type="box" rgba="0.5 0 0 1" group="3"/>
+        <geom name="wall_left_room_g0_vis" size="1.54 1.5 0.02" type="box" contype="0" conaffinity="0" group="1" mass="0" material="wall_left_room_wall_mat"/>
+        <site name="wall_left_room_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 1" group="3"/>
+        </body>
+        <body name="wall_left_backing_room_main" pos="-0.14 -1.5 1.38" quat="0.5 0.5 -0.5 -0.5">
+        <geom name="wall_left_backing_room_g0" size="1.54 1.62 0.1" type="box" rgba="0.5 0 0 1" group="3"/>
+        <geom name="wall_left_backing_room_g0_vis" size="1.54 1.62 0.1" type="box" contype="0" conaffinity="0" group="1" mass="0" material="wall_left_backing_room_wall_mat"/>
+        <site name="wall_left_backing_room_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 1" group="3"/>
+        </body> -->
+        <body name="wall_right_room_main" pos="5.52 -1.5 1.5" quat="0.5 -0.5 -0.5 0.5">
+        <geom name="wall_right_room_g0" size="1.54 1.5 0.02" type="box" rgba="0.5 0 0 1" group="3"/>
+        <geom name="wall_right_room_g0_vis" size="1.54 1.5 0.02" type="box" contype="0" conaffinity="0" group="1" mass="0" material="wall_right_room_wall_mat"/>
+        <site name="wall_right_room_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 1" group="3"/>
+        </body>
+        <body name="wall_right_backing_room_main" pos="5.64 -1.5 1.38" quat="0.5 -0.5 -0.5 0.5">
+        <geom name="wall_right_backing_room_g0" size="1.54 1.62 0.1" type="box" rgba="0.5 0 0 1" group="3"/>
+        <geom name="wall_right_backing_room_g0_vis" size="1.54 1.62 0.1" type="box" contype="0" conaffinity="0" group="1" mass="0" material="wall_right_backing_room_wall_mat"/>
+        <site name="wall_right_backing_room_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 1" group="3"/>
+        </body>
+        <!-- <body name="floor_room_main" pos="2.75 -1.5 0.025" quat="0.707107 0 0 0.707107">
+        <geom name="floor_room_g0" size="1.54 2.79 0.02" type="box" rgba="0.5 0 0 1" group="3"/>
+        <geom name="floor_room_g0_vis" size="1.54 2.79 0.02" type="box" contype="0" conaffinity="0" group="1" mass="0" material="floor_room_wall_mat"/>
+        <site name="floor_room_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 1" group="3"/>
+        </body>
+        <body name="floor_backing_room_main" pos="2.75 -1.5 -0.14" quat="0.707107 0 0 0.707107">
+        <geom name="floor_backing_room_g0" size="1.54 2.79 0.1" type="box" rgba="0.5 0 0 1" group="3"/>
+        <geom name="floor_backing_room_g0_vis" size="1.54 2.79 0.1" type="box" contype="0" conaffinity="0" group="1" mass="0" material="floor_backing_room_wall_mat"/>
+        <site name="floor_backing_room_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 1" group="3"/>
+        </body> -->
+        <body name="outlet_room_main" pos="4.1 0 1.2">
+        <geom name="outlet_room_g0" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="outlet_room_outlet" mesh="outlet_room_outlet_0_vis"/>
+        <site name="outlet_room_default_site" pos="0 0 0" size="0.0003" rgba="1 0 0 0"/>
+        </body>
+        <body name="outlet_2_room_main" pos="2 0 1.2">
+        <geom name="outlet_2_room_g0" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="outlet_2_room_outlet" mesh="outlet_2_room_outlet_0_vis"/>
+        <site name="outlet_2_room_default_site" pos="0 0 0" size="0.0003" rgba="1 0 0 0"/>
+        </body>
+        <body name="light_switch_room_main" pos="2.5 0 1.2" quat="0.707388 0 0 -0.706825">
+        <geom name="light_switch_room_g0" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="light_switch_room_lightswitch" mesh="light_switch_room_light_switch_0_vis"/>
+        <site name="light_switch_room_default_site" pos="0 0 0" size="0.0003" rgba="1 0 0 0"/>
+        </body>
+        <body name="light_switch_2_room_main" pos="2.61 0 1.2" quat="0.707388 0 0 -0.706825">
+        <geom name="light_switch_2_room_g0" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="light_switch_2_room_lightswitch" mesh="light_switch_2_room_light_switch_0_vis"/>
+        <site name="light_switch_2_room_default_site" pos="0 0 0" size="0.0003" rgba="1 0 0 0"/>
+        </body>
+        <body name="sink_main_group_main" pos="1.25 -0.3 0.938836">
+        <geom name="sink_main_group_g0" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="sink_main_group_sink_Mat" mesh="sink_main_group_model_0_vis"/>
+        <geom name="sink_main_group_g1" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="sink_main_group_tap_Mat" mesh="sink_main_group_model_1_vis"/>
+        <geom name="sink_main_group_g2" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="sink_main_group_metal_Mat" mesh="sink_main_group_model_2_vis"/>
+        <geom name="sink_main_group_g3" size="0.395548 0.226027 0.0047089" pos="0 0 -0.240154" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="sink_main_group_bottom" size="0.188356 0.21661 0.00941781" pos="0.202483 0 -0.235445" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="sink_main_group_bottom_left" size="0.188356 0.21661 0.00941781" pos="-0.202483 0 -0.235445" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="sink_main_group_g6" size="0.0197774 0.226027 0.098887" pos="0 0 -0.131849" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="sink_main_group_g7" size="0.395548 0.00941781 0.098887" pos="0 0.226027 -0.131849" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="sink_main_group_g8" size="0.395548 0.00941781 0.098887" pos="0 -0.226027 -0.131849" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="sink_main_group_g9" size="0.00941781 0.226027 0.098887" pos="0.395548 0 -0.131849" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="sink_main_group_g10" size="0.00941781 0.226027 0.098887" pos="-0.395548 0 -0.131849" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="sink_main_group_g11" size="0.47089 0.0197774 0.00659247" pos="0 0.255223 -0.0282534" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="sink_main_group_g12" size="0.47089 0.0197774 0.00659247" pos="0 -0.255223 -0.0282534" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="sink_main_group_g13" size="0.0348459 0.254281 0.00659247" pos="0.437928 0 -0.0282534" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="sink_main_group_g14" size="0.0348459 0.254281 0.00659247" pos="-0.437928 0 -0.0282534" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="sink_main_group_g15" size="0.0207192 0.0668664" pos="0.000941781 0.21143 0.0329623" type="cylinder" rgba="0.5 0 0 0.5" group="3"/>
+        <site name="sink_main_group_default_site" pos="0 0 0" size="0.00188356" rgba="1 0 0 0"/>
+        <body name="sink_main_group_spout">
+            <joint name="sink_main_group_spout_joint" pos="0.000941781 0.21143 0" axis="0 0 1" limited="true" range="-2.36 0.79" armature="2" damping="10"/>
+            <geom name="sink_main_group_g16" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="sink_main_group_tap_Mat" mesh="sink_main_group_spout_0_vis"/>
+            <geom name="sink_main_group_g17" size="0.0207192 0.0414384" pos="0.000941781 0.21143 0.141267" type="cylinder" rgba="0.5 0 0 0.5" group="3"/>
+            <geom name="sink_main_group_g18" size="0.0141267 0.0565068 0.0141267" pos="0.0188356 0.193065 0.230736" quat="0.853461 -0.353776 -0.145908 0.353776" type="box" rgba="0.5 0 0 0.5" group="3"/>
+            <geom name="sink_main_group_spout_top" size="0.0141267 0.0922945 0.0141267" pos="0.115839 0.0960616 0.268408" quat="0.92343 -0.032215 -0.0134062 0.382178" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        </body>
+        <body name="sink_main_group_handle">
+            <joint name="sink_main_group_handle_temp_joint" pos="0.0456764 0.21143 0.0442637" axis="1 0 0" limited="true" range="-0.79 0.79" armature="2" damping="50"/>
+            <joint name="sink_main_group_handle_joint" pos="0.0456764 0.21143 0.0423801" axis="0 1 0" limited="true" range="0 0.52" damping="10"/>
+            <geom name="sink_main_group_g20" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="sink_main_group_tap_Mat" mesh="sink_main_group_handle_0_vis"/>
+            <geom name="sink_main_group_g21" size="0.0188356 0.0131849" pos="0.0588613 0.21143 0.0442637" quat="0.707388 0 0.706825 0" type="cylinder" rgba="0.5 0 0 0.5" group="3"/>
+            <geom name="sink_main_group_handle_main" size="0.0047089 0.00226027 0.0320205" pos="0.0659247 0.211241 0.0941781" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        </body>
+        </body>
+        <body name="counter_main_main_group_main" pos="1.5 -0.325 0.46">
+        <geom name="counter_main_main_group_base_right" size="0.01 0.01 0.01" pos="0 0 10" type="box" density="10" rgba="0 0 0 0"/>
+        <geom name="counter_main_main_group_base_left" size="0.01 0.01 0.01" pos="0 0 10" type="box" density="10" rgba="0 0 0 0"/>
+        <geom name="counter_main_main_group_base_back" size="0.01 0.01 0.01" pos="0 0 10" type="box" density="10" rgba="0 0 0 0"/>
+        <geom name="counter_main_main_group_base_front" size="0.01 0.01 0.01" pos="0 0 10" type="box" density="10" rgba="0 0 0 0"/>
+        <geom name="counter_main_main_group_base_right_visual" size="0.01 0.01 0.01" pos="0 0 10" type="box" contype="0" conaffinity="0" group="1" mass="0" material="counter_main_main_group_counter_base" rgba="0 0 0 0"/>
+        <geom name="counter_main_main_group_base_left_visual" size="0.01 0.01 0.01" pos="0 0 10" type="box" contype="0" conaffinity="0" group="1" mass="0" material="counter_main_main_group_counter_base" rgba="0 0 0 0"/>
+        <geom name="counter_main_main_group_base_back_visual" size="0.01 0.01 0.01" pos="0 0 10" type="box" contype="0" conaffinity="0" group="1" mass="0" material="counter_main_main_group_counter_base" rgba="0 0 0 0"/>
+        <geom name="counter_main_main_group_base_front_visual" size="0.01 0.01 0.01" pos="0 0 10" type="box" contype="0" conaffinity="0" group="1" mass="0" material="counter_main_main_group_counter_base" rgba="0 0 0 0"/>
+        <geom name="counter_main_main_group_top_left_visual" size="0.264555 0.325 0.015" pos="-0.985445 0 0.445" type="box" contype="0" conaffinity="0" group="1" mass="0" material="counter_main_main_group_counter_top"/>
+        <geom name="counter_main_main_group_top_left_0" size="0.25 0.325 0.015" pos="-1 0 0.445" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="counter_main_main_group_top_left_1" size="0.0145548 0.325 0.015" pos="-0.735445 0 0.445" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="counter_main_main_group_top_right_visual" size="0.514555 0.325 0.015" pos="0.735445 0 0.445" type="box" contype="0" conaffinity="0" group="1" mass="0" material="counter_main_main_group_counter_top"/>
+        <geom name="counter_main_main_group_top_right_0" size="0.25 0.325 0.015" pos="0.47089 0 0.445" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="counter_main_main_group_top_right_1" size="0.25 0.325 0.015" pos="0.97089 0 0.445" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="counter_main_main_group_top_right_2" size="0.0145548 0.325 0.015" pos="1.23545 0 0.445" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="counter_main_main_group_top_front_visual" size="0.47089 0.0375 0.015" pos="-0.25 -0.2875 0.445" type="box" contype="0" conaffinity="0" group="1" mass="0" material="counter_main_main_group_counter_top"/>
+        <geom name="counter_main_main_group_top_front_0" size="0.25 0.0375 0.015" pos="-0.47089 -0.2875 0.445" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="counter_main_main_group_top_front_1" size="0.22089 0.0375 0.015" pos="0 -0.2875 0.445" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="counter_main_main_group_top_back_visual" size="0.47089 0.0125 0.015" pos="-0.25 0.3125 0.445" type="box" contype="0" conaffinity="0" group="1" mass="0" material="counter_main_main_group_counter_top"/>
+        <geom name="counter_main_main_group_top_back_0" size="0.25 0.0125 0.015" pos="-0.47089 0.3125 0.445" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="counter_main_main_group_top_back_1" size="0.22089 0.0125 0.015" pos="0 0.3125 0.445" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <site name="counter_main_main_group_ext_p0" pos="-1.25 -0.275 -0.46" size="0.01" rgba="0 0 0 0"/>
+        <site name="counter_main_main_group_ext_px" pos="1.25 -0.275 -0.46" size="0.01" rgba="1 0 0 0"/>
+        <site name="counter_main_main_group_ext_py" pos="-1.25 0.325 -0.46" size="0.01" rgba="0 1 0 0"/>
+        <site name="counter_main_main_group_ext_pz" pos="-1.25 -0.275 0.46" size="0.01" rgba="0 0 1 0"/>
+        <site name="counter_main_main_group_int_p0" pos="0 0 0" size="0.01" rgba="0.5 0.5 0.5 0"/>
+        <site name="counter_main_main_group_int_px" pos="0 0 0" size="0.01" rgba="1 1 0 0"/>
+        <site name="counter_main_main_group_int_py" pos="0 0 0" size="0.01" rgba="0 1 1 0"/>
+        <site name="counter_main_main_group_int_pz" pos="0 0 0" size="0.01" rgba="1 0 1 0"/>
+        <site name="counter_main_main_group_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        </body>
+        <body name="stove_main_group_main" pos="3.14959 -0.354694 0.506939">
+        <geom name="stove_main_group_g0" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="stove_main_group_TX_Stove_Small" mesh="stove_main_group_model_0_vis"/>
+        <geom name="stove_main_group_g1" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="stove_main_group_TX_Stove_Small_Glass" mesh="stove_main_group_model_1_vis"/>
+        <geom name="stove_main_group_g2" size="0.399592 0.300816 0.44898" pos="0 0.0538776 0" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="stove_main_group_g3" size="0.399592 0.0538776 0.0161633" pos="0 -0.296327 0.399592" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="stove_main_group_g4" size="0.399592 0.0296327 0.43102" pos="0 -0.275673 -0.0179592" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="stove_main_group_g5" size="0.368163 0.0269388 0.0134694" pos="0 -0.332245 0.233469" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <site name="stove_main_group_burner_on_front_left" pos="-0.212816 -0.0826122 0.418449" size="0.0673469 0.0044898" type="cylinder" rgba="0.3 0.4 1 0.5"/>
+        <site name="stove_main_group_burner_on_front_right" pos="0.220898 -0.0915918 0.407673" size="0.044898 0.0044898" type="cylinder" rgba="0.3 0.4 1 0.5"/>
+        <site name="stove_main_group_burner_on_rear_left" pos="-0.217306 0.174204 0.413061" size="0.0493878 0.0044898" type="cylinder" rgba="0.3 0.4 1 0.5"/>
+        <site name="stove_main_group_burner_on_rear_right" pos="0.219102 0.173306 0.413061" size="0.0493878 0.0044898" type="cylinder" rgba="0.3 0.4 1 0.5"/>
+        <site name="stove_main_group_burner_front_left_place_site" pos="-0.212816 -0.0826122 0.44898" size="0.0673469 0.000897959" type="cylinder" rgba="0 0 1 0"/>
+        <site name="stove_main_group_burner_front_right_place_site" pos="0.220898 -0.0915918 0.44898" size="0.044898 0.000897959" type="cylinder" rgba="0 0 1 0"/>
+        <site name="stove_main_group_burner_rear_left_place_site" pos="-0.217306 0.174204 0.44898" size="0.0493878 0.000897959" type="cylinder" rgba="0 0 1 0"/>
+        <site name="stove_main_group_burner_rear_right_place_site" pos="0.219102 0.173306 0.44898" size="0.0493878 0.000897959" type="cylinder" rgba="0 0 1 0"/>
+        <site name="stove_main_group_ext_p0" pos="-0.399592 -0.305306 -0.446735" size="0.00897959" rgba="0 0 0 0"/>
+        <site name="stove_main_group_ext_px" pos="0.399592 -0.305306 -0.446735" size="0.00897959" rgba="1 0 0 0"/>
+        <site name="stove_main_group_ext_py" pos="-0.399592 0.354694 -0.446735" size="0.00897959" rgba="0 1 0 0"/>
+        <site name="stove_main_group_ext_pz" pos="-0.399592 -0.305306 0.413061" size="0.00897959" rgba="0 0 1 0"/>
+        <site name="stove_main_group_int_p0" pos="0 0 0" size="0.00897959" rgba="0.5 0.5 0.5 0"/>
+        <site name="stove_main_group_int_px" pos="0 0 0" size="0.00897959" rgba="1 1 0 0"/>
+        <site name="stove_main_group_int_py" pos="0 0 0" size="0.00897959" rgba="0 1 1 0"/>
+        <site name="stove_main_group_int_pz" pos="0 0 0" size="0.00897959" rgba="1 0 1 0"/>
+        <site name="stove_main_group_default_site" pos="0 0 0" size="0.00179592" rgba="1 0 0 0"/>
+        <body name="stove_main_group_knob_rear_right">
+            <joint name="stove_main_group_knob_rear_right_joint" pos="0.246939 -0.305306 0.338531" axis="0 1 0" damping="1"/>
+            <geom name="stove_main_group_g6" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="stove_main_group_TX_Stove_Small" mesh="stove_main_group_knob_rear_right_0_vis"/>
+            <geom name="stove_main_group_knob_rear_right_main" size="0.0107755 0.0121224 0.0251429" pos="0.246939 -0.330898 0.338531" type="box" friction="100 0.001" solref="0.001 5" solimp="0.99 0.999" rgba="0.5 0 0 0.5" group="3"/>
+        </body>
+        <body name="stove_main_group_knob_dummy">
+            <joint name="stove_main_group_knob_dummy_joint" pos="0.16702 -0.305306 0.338531" axis="0 1 0" damping="1"/>
+            <geom name="stove_main_group_g8" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="stove_main_group_TX_Stove_Small" mesh="stove_main_group_knob_dummy_0_vis"/>
+            <geom name="stove_main_group_knob_dummy_main" size="0.0107755 0.0121224 0.0251429" pos="0.16702 -0.330898 0.338531" type="box" friction="100 0.001" solref="0.001 5" solimp="0.99 0.999" rgba="0.5 0 0 0.5" group="3"/>
+        </body>
+        <body name="stove_main_group_knob_front_left">
+            <joint name="stove_main_group_knob_front_left_joint" pos="-0.246939 -0.305306 0.338531" axis="0 1 0" damping="1"/>
+            <geom name="stove_main_group_g10" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="stove_main_group_TX_Stove_Small" mesh="stove_main_group_knob_front_left_0_vis"/>
+            <geom name="stove_main_group_knob_front_left_main" size="0.0107755 0.0121224 0.0251429" pos="-0.246939 -0.330898 0.338531" type="box" friction="100 0.001" solref="0.001 5" solimp="0.99 0.999" rgba="0.5 0 0 0.5" group="3"/>
+        </body>
+        <body name="stove_main_group_knob_front_right">
+            <joint name="stove_main_group_knob_front_right_joint" pos="0.327755 -0.305306 0.338531" axis="0 1 0" damping="1"/>
+            <geom name="stove_main_group_g12" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="stove_main_group_TX_Stove_Small" mesh="stove_main_group_knob_front_right_0_vis"/>
+            <geom name="stove_main_group_knob_front_right_main" size="0.0107755 0.0121224 0.0251429" pos="0.327755 -0.330898 0.338531" type="box" friction="100 0.001" solref="0.001 5" solimp="0.99 0.999" rgba="0.5 0 0 0.5" group="3"/>
+        </body>
+        <body name="stove_main_group_knob_rear_left">
+            <joint name="stove_main_group_knob_rear_left_joint" pos="-0.16702 -0.305306 0.338531" axis="0 1 0" damping="1"/>
+            <geom name="stove_main_group_g14" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="stove_main_group_TX_Stove_Small" mesh="stove_main_group_knob_rear_left_0_vis"/>
+            <geom name="stove_main_group_knob_rear_left_main" size="0.0107755 0.0121224 0.0251429" pos="-0.16702 -0.330898 0.338531" type="box" friction="100 0.001" solref="0.001 5" solimp="0.99 0.999" rgba="0.5 0 0 0.5" group="3"/>
+        </body>
+        </body>
+        <body name="counter_right_main_group_main" pos="3.89918 -0.325 0.46">
+        <geom name="counter_right_main_group_base_right" size="0.01 0.01 0.01" pos="0 0 10" type="box" density="10" rgba="0 0 0 0"/>
+        <geom name="counter_right_main_group_base_left" size="0.01 0.01 0.01" pos="0 0 10" type="box" density="10" rgba="0 0 0 0"/>
+        <geom name="counter_right_main_group_base_back" size="0.01 0.01 0.01" pos="0 0 10" type="box" density="10" rgba="0 0 0 0"/>
+        <geom name="counter_right_main_group_base_front" size="0.01 0.01 0.01" pos="0 0 10" type="box" density="10" rgba="0 0 0 0"/>
+        <geom name="counter_right_main_group_base_right_visual" size="0.01 0.01 0.01" pos="0 0 10" type="box" contype="0" conaffinity="0" group="1" mass="0" material="counter_right_main_group_counter_base" rgba="0 0 0 0"/>
+        <geom name="counter_right_main_group_base_left_visual" size="0.01 0.01 0.01" pos="0 0 10" type="box" contype="0" conaffinity="0" group="1" mass="0" material="counter_right_main_group_counter_base" rgba="0 0 0 0"/>
+        <geom name="counter_right_main_group_base_back_visual" size="0.01 0.01 0.01" pos="0 0 10" type="box" contype="0" conaffinity="0" group="1" mass="0" material="counter_right_main_group_counter_base" rgba="0 0 0 0"/>
+        <geom name="counter_right_main_group_base_front_visual" size="0.01 0.01 0.01" pos="0 0 10" type="box" contype="0" conaffinity="0" group="1" mass="0" material="counter_right_main_group_counter_base" rgba="0 0 0 0"/>
+        <geom name="counter_right_main_group_top_visual" size="0.35 0.325 0.015" pos="0 0 0.445" type="box" contype="0" conaffinity="0" group="1" mass="0" material="counter_right_main_group_counter_top"/>
+        <geom name="counter_right_main_group_top_0" size="0.25 0.325 0.015" pos="-0.1 0 0.445" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="counter_right_main_group_top_1" size="0.1 0.325 0.015" pos="0.25 0 0.445" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <site name="counter_right_main_group_ext_p0" pos="-0.35 -0.275 -0.46" size="0.01" rgba="0 0 0 0"/>
+        <site name="counter_right_main_group_ext_px" pos="0.35 -0.275 -0.46" size="0.01" rgba="1 0 0 0"/>
+        <site name="counter_right_main_group_ext_py" pos="-0.35 0.325 -0.46" size="0.01" rgba="0 1 0 0"/>
+        <site name="counter_right_main_group_ext_pz" pos="-0.35 -0.275 0.46" size="0.01" rgba="0 0 1 0"/>
+        <site name="counter_right_main_group_int_p0" pos="0 0 0" size="0.01" rgba="0.5 0.5 0.5 0"/>
+        <site name="counter_right_main_group_int_px" pos="0 0 0" size="0.01" rgba="1 1 0 0"/>
+        <site name="counter_right_main_group_int_py" pos="0 0 0" size="0.01" rgba="0 1 1 0"/>
+        <site name="counter_right_main_group_int_pz" pos="0 0 0" size="0.01" rgba="1 0 1 0"/>
+        <site name="counter_right_main_group_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        </body>
+        <body name="fridge_main_group_main" pos="4.70293 -0.390974 0.875">
+        <geom name="fridge_main_group_g0" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="fridge_main_group_TX_Fridge_3_1" mesh="fridge_main_group_model_0_vis"/>
+        <geom name="fridge_main_group_g1" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="fridge_main_group_TX_Fridge_3_2" mesh="fridge_main_group_model_1_vis"/>
+        <geom name="fridge_main_group_g2" size="0.433746 0.35525 0.875" pos="0 0.0175 0" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <site name="fridge_main_group_default_site" pos="0 0 0" size="0.0035" rgba="1 0 0 0"/>
+        </body>
+        <body name="fridge_housing_main_group_main" pos="4.70293 -0.344362 0.885">
+        <geom name="fridge_housing_main_group_top" size="0.453746 0.334362 0.01" pos="0 -0.01 0.875" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="fridge_housing_main_group_top_visual" size="0.453746 0.334362 0.01" pos="0 -0.01 0.875" type="box" contype="0" conaffinity="0" group="1" mass="0" material="fridge_housing_main_group_mat"/>
+        <geom name="fridge_housing_main_group_back" size="0.453746 0.01 0.885" pos="0 0.334362 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="fridge_housing_main_group_back_visual" size="0.453746 0.01 0.885" pos="0 0.334362 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="fridge_housing_main_group_mat"/>
+        <geom name="fridge_housing_main_group_left" size="0.01 0.334362 0.875" pos="-0.443746 -0.01 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="fridge_housing_main_group_left_visual" size="0.01 0.334362 0.875" pos="-0.443746 -0.01 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="fridge_housing_main_group_mat"/>
+        <geom name="fridge_housing_main_group_right" size="0.01 0.334362 0.875" pos="0.443746 -0.01 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="fridge_housing_main_group_right_visual" size="0.01 0.334362 0.875" pos="0.443746 -0.01 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="fridge_housing_main_group_mat"/>
+        <site name="fridge_housing_main_group_ext_p0" pos="-0.453746 -0.344362 -0.885" size="0.01" rgba="0 0 0 0"/>
+        <site name="fridge_housing_main_group_ext_px" pos="0.453746 -0.344362 -0.885" size="0.01" rgba="1 0 0 0"/>
+        <site name="fridge_housing_main_group_ext_py" pos="-0.453746 0.344362 -0.885" size="0.01" rgba="0 1 0 0"/>
+        <site name="fridge_housing_main_group_ext_pz" pos="-0.453746 -0.344362 0.885" size="0.01" rgba="0 0 1 0"/>
+        <site name="fridge_housing_main_group_int_p0" pos="-0.433746 -0.384362 -0.885" size="0.01" rgba="0.5 0.5 0.5 0"/>
+        <site name="fridge_housing_main_group_int_px" pos="0.433746 -0.384362 -0.885" size="0.01" rgba="1 1 0 0"/>
+        <site name="fridge_housing_main_group_int_py" pos="-0.433746 0.324362 -0.885" size="0.01" rgba="0 1 1 0"/>
+        <site name="fridge_housing_main_group_int_pz" pos="-0.433746 -0.384362 0.865" size="0.01" rgba="1 0 1 0"/>
+        <site name="fridge_housing_main_group_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        </body>
+        <!-- 1ere etagere haute -->
+        <body name="cab_1_main_group_main" pos="0.5 -0.2 1.85">
+        <geom name="cab_1_main_group_top" size="0.25 0.185 0.015" pos="0 0.015 0.445" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_1_main_group_bottom" size="0.25 0.185 0.015" pos="0 0.015 -0.445" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_1_main_group_back" size="0.22 0.015 0.43" pos="0 0.185 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_1_main_group_right" size="0.015 0.185 0.43" pos="0.235 0.015 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_1_main_group_left" size="0.015 0.185 0.43" pos="-0.235 0.015 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_1_main_group_shelf" size="0.22 0.15 0.015" pos="0 0.035 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_1_main_group_top_visual" size="0.25 0.185 0.015" pos="0 0.015 0.445" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_1_main_group_mat"/>
+        <geom name="cab_1_main_group_bottom_visual" size="0.25 0.185 0.015" pos="0 0.015 -0.445" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_1_main_group_mat"/>
+        <geom name="cab_1_main_group_back_visual" size="0.22 0.015 0.43" pos="0 0.185 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_1_main_group_mat"/>
+        <geom name="cab_1_main_group_right_visual" size="0.015 0.185 0.43" pos="0.235 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_1_main_group_mat"/>
+        <geom name="cab_1_main_group_left_visual" size="0.015 0.185 0.43" pos="-0.235 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_1_main_group_mat"/>
+        <geom name="cab_1_main_group_shelf_visual" size="0.22 0.15 0.015" pos="0 0.035 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_1_main_group_mat"/>
+        <site name="cab_1_main_group_ext_p0" pos="-0.25 -0.2 -0.46" size="0.01" rgba="0 0 0 0"/>
+        <site name="cab_1_main_group_ext_px" pos="0.25 -0.2 -0.46" size="0.01" rgba="1 0 0 0"/>
+        <site name="cab_1_main_group_ext_py" pos="-0.25 0.2 -0.46" size="0.01" rgba="0 1 0 0"/>
+        <site name="cab_1_main_group_ext_pz" pos="-0.25 -0.2 0.46" size="0.01" rgba="0 0 1 0"/>
+        <site name="cab_1_main_group_int_p0" pos="-0.22 -0.17 -0.43" size="0.01" rgba="0.5 0.5 0.5 0"/>
+        <site name="cab_1_main_group_int_px" pos="0.22 -0.17 -0.43" size="0.01" rgba="1 1 0 0"/>
+        <site name="cab_1_main_group_int_py" pos="-0.22 0.17 -0.43" size="0.01" rgba="0 1 1 0"/>
+        <site name="cab_1_main_group_int_pz" pos="-0.22 -0.17 0.43" size="0.01" rgba="1 0 1 0"/>
+        <site name="cab_1_main_group_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        <body name="cab_1_main_group_hingedoor">
+            <joint name="cab_1_main_group_doorhinge" pos="-0.235 -0.2 0" axis="0 0 1" limited="true" range="-3 0" damping="2"/>
+            <site name="cab_1_main_group_door_p1" pos="0 -0.2 0" rgba="1 0 0 0"/>
+            <site name="cab_1_main_group_door_p2" pos="0.05 -0.2 0" rgba="0 1 0 0"/>
+            <site name="cab_1_main_group_door_p3" pos="0 -0.2 0.05" rgba="0 0 1 0"/>
+            <body name="cab_1_main_group_door_main" pos="0 -0.185 0">
+            <geom name="cab_1_main_group_door_door" size="0.2485 0.4585 0.015" quat="0.707105 0.707108 0 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="cab_1_main_group_door_door_visual" size="0.2485 0.4585 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_1_main_group_door_mat"/>
+            <site name="cab_1_main_group_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            <body name="cab_1_main_group_door_handle_main" pos="0.1985 0 -0.2585">
+                <geom name="cab_1_main_group_door_handle_handle" size="0.013 0.12" pos="0 -0.05 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_1_main_group_door_handle_handle_connector_top" size="0.008 0.025" pos="0 -0.025 0.072" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_1_main_group_door_handle_handle_connector_bottom" size="0.008 0.025" pos="0 -0.025 -0.072" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_1_main_group_door_handle_handle_visual" size="0.013 0.12" pos="0 -0.05 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_1_main_group_door_handle_mat"/>
+                <geom name="cab_1_main_group_door_handle_handle_connector_top_visual" size="0.008 0.025" pos="0 -0.025 0.072" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_1_main_group_door_handle_mat"/>
+                <geom name="cab_1_main_group_door_handle_handle_connector_bottom_visual" size="0.008 0.025" pos="0 -0.025 -0.072" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_1_main_group_door_handle_mat"/>
+                <site name="cab_1_main_group_door_handle_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            </body>
+            </body>
+        </body>
+        </body>
+        <!-- 2eme etagere haute G/D -->
+        <body name="cab_2_main_group_main" pos="1.25 -0.2 1.85">
+        <geom name="cab_2_main_group_top" size="0.5 0.185 0.015" pos="0 0.015 0.445" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_2_main_group_bottom" size="0.5 0.185 0.015" pos="0 0.015 -0.445" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_2_main_group_back" size="0.47 0.015 0.43" pos="0 0.185 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_2_main_group_right" size="0.015 0.185 0.43" pos="0.485 0.015 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_2_main_group_left" size="0.015 0.185 0.43" pos="-0.485 0.015 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_2_main_group_shelf" size="0.47 0.15 0.015" pos="0 0.035 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_2_main_group_top_visual" size="0.5 0.185 0.015" pos="0 0.015 0.445" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_2_main_group_mat"/>
+        <geom name="cab_2_main_group_bottom_visual" size="0.5 0.185 0.015" pos="0 0.015 -0.445" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_2_main_group_mat"/>
+        <geom name="cab_2_main_group_back_visual" size="0.47 0.015 0.43" pos="0 0.185 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_2_main_group_mat"/>
+        <geom name="cab_2_main_group_right_visual" size="0.015 0.185 0.43" pos="0.485 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_2_main_group_mat"/>
+        <geom name="cab_2_main_group_left_visual" size="0.015 0.185 0.43" pos="-0.485 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_2_main_group_mat"/>
+        <geom name="cab_2_main_group_shelf_visual" size="0.47 0.15 0.015" pos="0 0.035 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_2_main_group_mat"/>
+        <site name="cab_2_main_group_ext_p0" pos="-0.5 -0.2 -0.46" rgba="0 0 0 0"/>
+        <site name="cab_2_main_group_ext_px" pos="0.5 -0.2 -0.46" rgba="1 0 0 0"/>
+        <site name="cab_2_main_group_ext_py" pos="-0.5 0.2 -0.46" rgba="0 1 0 0"/>
+        <site name="cab_2_main_group_ext_pz" pos="-0.5 -0.2 0.46" rgba="0 0 1 0"/>
+        <site name="cab_2_main_group_int_p0" pos="-0.47 -0.17 -0.43" rgba="0.5 0.5 0.5 0"/>
+        <site name="cab_2_main_group_int_px" pos="0.47 -0.17 -0.43" rgba="1 1 0 0"/>
+        <site name="cab_2_main_group_int_py" pos="-0.47 0.17 -0.43" rgba="0 1 1 0"/>
+        <site name="cab_2_main_group_int_pz" pos="-0.47 -0.17 0.43" rgba="1 0 1 0"/>
+        <site name="cab_2_main_group_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        <body name="cab_2_main_group_hingeleftdoor">
+            <joint name="cab_2_main_group_leftdoorhinge" pos="-0.485 -0.2 0" axis="0 0 1" limited="true" range="-3 0" damping="2"/>
+            <site name="cab_2_main_group_leftdoor_p1" pos="-0.25 -0.2 0" rgba="1 0 0 0"/>
+            <site name="cab_2_main_group_leftdoor_p2" pos="-0.2 -0.2 0" rgba="0 1 0 0"/>
+            <site name="cab_2_main_group_leftdoor_p3" pos="-0.25 -0.2 0.05" rgba="0 0 1 0"/>
+            <body name="cab_2_main_group_left_door_main" pos="-0.25 -0.185 0">
+            <geom name="cab_2_main_group_left_door_door" size="0.2485 0.4585 0.015" quat="0.707105 0.707108 0 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="cab_2_main_group_left_door_door_visual" size="0.2485 0.4585 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_2_main_group_left_door_mat"/>
+            <site name="cab_2_main_group_left_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            <body name="cab_2_main_group_left_door_handle_main" pos="0.1985 0 -0.2585">
+                <geom name="cab_2_main_group_left_door_handle_handle" size="0.013 0.12" pos="0 -0.05 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_2_main_group_left_door_handle_handle_connector_top" size="0.008 0.025" pos="0 -0.025 0.072" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_2_main_group_left_door_handle_handle_connector_bottom" size="0.008 0.025" pos="0 -0.025 -0.072" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_2_main_group_left_door_handle_handle_visual" size="0.013 0.12" pos="0 -0.05 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_2_main_group_left_door_handle_mat"/>
+                <geom name="cab_2_main_group_left_door_handle_handle_connector_top_visual" size="0.008 0.025" pos="0 -0.025 0.072" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_2_main_group_left_door_handle_mat"/>
+                <geom name="cab_2_main_group_left_door_handle_handle_connector_bottom_visual" size="0.008 0.025" pos="0 -0.025 -0.072" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_2_main_group_left_door_handle_mat"/>
+                <site name="cab_2_main_group_left_door_handle_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            </body>
+            </body>
+        </body>
+        <body name="cab_2_main_group_hingerightdoor">
+            <joint name="cab_2_main_group_rightdoorhinge" pos="0.485 -0.2 0" axis="0 0 1" limited="true" range="0 3" damping="2"/>
+            <site name="cab_2_main_group_rightdoor_p1" pos="0.25 -0.2 0" rgba="1 0 0 0"/>
+            <site name="cab_2_main_group_rightdoor_p2" pos="0.2 -0.2 0" rgba="0 1 0 0"/>
+            <site name="cab_2_main_group_rightdoor_p3" pos="0.25 -0.2 0.05" rgba="0 0 1 0"/>
+            <body name="cab_2_main_group_right_door_main" pos="0.25 -0.185 0">
+            <geom name="cab_2_main_group_right_door_door" size="0.2485 0.4585 0.015" quat="0.707105 0.707108 0 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="cab_2_main_group_right_door_door_visual" size="0.2485 0.4585 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_2_main_group_right_door_mat"/>
+            <site name="cab_2_main_group_right_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            <body name="cab_2_main_group_right_door_handle_main" pos="-0.1985 0 -0.2585">
+                <geom name="cab_2_main_group_right_door_handle_handle" size="0.013 0.12" pos="0 -0.05 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_2_main_group_right_door_handle_handle_connector_top" size="0.008 0.025" pos="0 -0.025 0.072" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_2_main_group_right_door_handle_handle_connector_bottom" size="0.008 0.025" pos="0 -0.025 -0.072" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_2_main_group_right_door_handle_handle_visual" size="0.013 0.12" pos="0 -0.05 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_2_main_group_right_door_handle_mat"/>
+                <geom name="cab_2_main_group_right_door_handle_handle_connector_top_visual" size="0.008 0.025" pos="0 -0.025 0.072" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_2_main_group_right_door_handle_mat"/>
+                <geom name="cab_2_main_group_right_door_handle_handle_connector_bottom_visual" size="0.008 0.025" pos="0 -0.025 -0.072" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_2_main_group_right_door_handle_mat"/>
+                <site name="cab_2_main_group_right_door_handle_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            </body>
+            </body>
+        </body>
+        </body>
+        <!-- 3eme etagere haute -->
+        <body name="cab_main_main_group_main" pos="2.25 -0.2 1.85">
+        <geom name="cab_main_main_group_top" size="0.5 0.185 0.015" pos="0 0.015 0.445" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_main_main_group_bottom" size="0.5 0.185 0.015" pos="0 0.015 -0.445" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_main_main_group_back" size="0.47 0.015 0.43" pos="0 0.185 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_main_main_group_right" size="0.015 0.185 0.43" pos="0.485 0.015 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_main_main_group_left" size="0.015 0.185 0.43" pos="-0.485 0.015 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_main_main_group_shelf" size="0.47 0.15 0.015" pos="0 0.035 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_main_main_group_top_visual" size="0.5 0.185 0.015" pos="0 0.015 0.445" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_main_main_group_mat"/>
+        <geom name="cab_main_main_group_bottom_visual" size="0.5 0.185 0.015" pos="0 0.015 -0.445" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_main_main_group_mat"/>
+        <geom name="cab_main_main_group_back_visual" size="0.47 0.015 0.43" pos="0 0.185 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_main_main_group_mat"/>
+        <geom name="cab_main_main_group_right_visual" size="0.015 0.185 0.43" pos="0.485 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_main_main_group_mat"/>
+        <geom name="cab_main_main_group_left_visual" size="0.015 0.185 0.43" pos="-0.485 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_main_main_group_mat"/>
+        <geom name="cab_main_main_group_shelf_visual" size="0.47 0.15 0.015" pos="0 0.035 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_main_main_group_mat"/>
+        <site name="cab_main_main_group_ext_p0" pos="-0.5 -0.2 -0.46" rgba="0 0 0 0"/>
+        <site name="cab_main_main_group_ext_px" pos="0.5 -0.2 -0.46" rgba="1 0 0 0"/>
+        <site name="cab_main_main_group_ext_py" pos="-0.5 0.2 -0.46" rgba="0 1 0 0"/>
+        <site name="cab_main_main_group_ext_pz" pos="-0.5 -0.2 0.46" rgba="0 0 1 0"/>
+        <site name="cab_main_main_group_int_p0" pos="-0.47 -0.17 -0.43" rgba="0.5 0.5 0.5 0"/>
+        <site name="cab_main_main_group_int_px" pos="0.47 -0.17 -0.43" rgba="1 1 0 0"/>
+        <site name="cab_main_main_group_int_py" pos="-0.47 0.17 -0.43" rgba="0 1 1 0"/>
+        <site name="cab_main_main_group_int_pz" pos="-0.47 -0.17 0.43" rgba="1 0 1 0"/>
+        <site name="cab_main_main_group_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        <body name="cab_main_main_group_hingeleftdoor">
+            <joint name="cab_main_main_group_leftdoorhinge" pos="-0.485 -0.2 0" axis="0 0 1" limited="true" range="-3 0" damping="2"/>
+            <site name="cab_main_main_group_leftdoor_p1" pos="-0.25 -0.2 0" rgba="1 0 0 0"/>
+            <site name="cab_main_main_group_leftdoor_p2" pos="-0.2 -0.2 0" rgba="0 1 0 0"/>
+            <site name="cab_main_main_group_leftdoor_p3" pos="-0.25 -0.2 0.05" rgba="0 0 1 0"/>
+            <body name="cab_main_main_group_left_door_main" pos="-0.25 -0.185 0">
+            <geom name="cab_main_main_group_left_door_door" size="0.2485 0.4585 0.015" quat="0.707105 0.707108 0 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="cab_main_main_group_left_door_door_visual" size="0.2485 0.4585 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_main_main_group_left_door_mat"/>
+            <site name="cab_main_main_group_left_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            <body name="cab_main_main_group_left_door_handle_main" pos="0.1985 0 -0.2585">
+                <geom name="cab_main_main_group_left_door_handle_handle" size="0.013 0.12" pos="0 -0.05 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_main_main_group_left_door_handle_handle_connector_top" size="0.008 0.025" pos="0 -0.025 0.072" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_main_main_group_left_door_handle_handle_connector_bottom" size="0.008 0.025" pos="0 -0.025 -0.072" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_main_main_group_left_door_handle_handle_visual" size="0.013 0.12" pos="0 -0.05 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_main_main_group_left_door_handle_mat"/>
+                <geom name="cab_main_main_group_left_door_handle_handle_connector_top_visual" size="0.008 0.025" pos="0 -0.025 0.072" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_main_main_group_left_door_handle_mat"/>
+                <geom name="cab_main_main_group_left_door_handle_handle_connector_bottom_visual" size="0.008 0.025" pos="0 -0.025 -0.072" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_main_main_group_left_door_handle_mat"/>
+                <site name="cab_main_main_group_left_door_handle_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            </body>
+            </body>
+        </body>
+        <!-- 4e etagere haute -->
+        <body name="cab_main_main_group_hingerightdoor">
+            <joint name="cab_main_main_group_rightdoorhinge" pos="0.485 -0.2 0" axis="0 0 1" limited="true" range="0 3" damping="2"/>
+            <site name="cab_main_main_group_rightdoor_p1" pos="0.25 -0.2 0" rgba="1 0 0 0"/>
+            <site name="cab_main_main_group_rightdoor_p2" pos="0.2 -0.2 0" rgba="0 1 0 0"/>
+            <site name="cab_main_main_group_rightdoor_p3" pos="0.25 -0.2 0.05" rgba="0 0 1 0"/>
+            <body name="cab_main_main_group_right_door_main" pos="0.25 -0.185 0">
+            <geom name="cab_main_main_group_right_door_door" size="0.2485 0.4585 0.015" quat="0.707105 0.707108 0 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="cab_main_main_group_right_door_door_visual" size="0.2485 0.4585 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_main_main_group_right_door_mat"/>
+            <site name="cab_main_main_group_right_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            <body name="cab_main_main_group_right_door_handle_main" pos="-0.1985 0 -0.2585">
+                <geom name="cab_main_main_group_right_door_handle_handle" size="0.013 0.12" pos="0 -0.05 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_main_main_group_right_door_handle_handle_connector_top" size="0.008 0.025" pos="0 -0.025 0.072" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_main_main_group_right_door_handle_handle_connector_bottom" size="0.008 0.025" pos="0 -0.025 -0.072" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_main_main_group_right_door_handle_handle_visual" size="0.013 0.12" pos="0 -0.05 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_main_main_group_right_door_handle_mat"/>
+                <geom name="cab_main_main_group_right_door_handle_handle_connector_top_visual" size="0.008 0.025" pos="0 -0.025 0.072" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_main_main_group_right_door_handle_mat"/>
+                <geom name="cab_main_main_group_right_door_handle_handle_connector_bottom_visual" size="0.008 0.025" pos="0 -0.025 -0.072" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_main_main_group_right_door_handle_mat"/>
+                <site name="cab_main_main_group_right_door_handle_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            </body>
+            </body>
+        </body>
+        </body>
+        <body name="microwave_main_group_main" pos="3.14959 -0.239691 1.60421">
+        <geom name="microwave_main_group_g0" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="microwave_main_group_TX_Microwave_3_2" mesh="microwave_main_group_model_0_vis"/>
+        <geom name="microwave_main_group_g1" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="microwave_main_group_TX_Microwave_3_3" mesh="microwave_main_group_model_1_vis"/>
+        <geom name="microwave_main_group_g2" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="microwave_main_group_TX_Microwave_3_1" mesh="microwave_main_group_model_2_vis"/>
+        <geom name="microwave_main_group_g3" size="0.0782706 0.0170103 0.205975" pos="0.296604 -0.190206 0.0238931" type="box" contype="0" conaffinity="0" group="1" rgba="0.4 0.4 0.4 1"/>
+        <geom name="microwave_main_group_g4" size="0.0782706 0.0154639 0.00906291" pos="0.296604 -0.186598 0.238931" type="box" contype="0" conaffinity="0" group="1" rgba="0.4 0.4 0.4 1"/>
+        <geom name="microwave_main_group_g5" size="0.0782706 0.0154639 0.0140063" pos="0.296604 -0.187113 -0.196088" type="box" contype="0" conaffinity="0" group="1" rgba="0.4 0.4 0.4 1"/>
+        <geom name="microwave_main_group_g6" size="0.399592 0.0463918 0.248818" pos="0 0.216495 0" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="microwave_main_group_g7" size="0.399592 0.172165 0.0453145" pos="0 0 -0.204327" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="microwave_main_group_g8" size="0.0205975 0.172165 0.248818" pos="-0.378994 0 0" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="microwave_main_group_g9" size="0.121937 0.172165 0.248818" pos="0.276007 0 0" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="microwave_main_group_g10" size="0.399592 0.172165 0.0238931" pos="0 0 0.224925" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="microwave_main_group_g11" size="0.0898052 0.0190722 0.229868" pos="0.308139 -0.190206 0.0189497" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="microwave_main_group_start_button" size="0.024717 0.011134 0.0205975" pos="0.350158 -0.198454 -0.107107" type="box" rgba="0 0.5 0 0.5"/>
+        <geom name="microwave_main_group_stop_button" size="0.024717 0.011134 0.0205975" pos="0.24717 -0.198454 -0.107107" type="box" rgba="0 0.5 0 0.5"/>
+        <geom name="microwave_main_group_tray" size="0.14733 0.0041195" pos="-0.0988681 -0.0103093 -0.160661" type="cylinder" rgba="0 1 0 0.5"/>
+        <site name="microwave_main_group_ext_p0" pos="-0.399592 -0.210309 -0.214214" size="0.00721088" rgba="0 0 0 0"/>
+        <site name="microwave_main_group_ext_px" pos="0.399592 -0.210309 -0.214214" size="0.00721088" rgba="1 0 0 0"/>
+        <site name="microwave_main_group_ext_py" pos="-0.399592 0.239691 -0.214214" size="0.00721088" rgba="0 1 0 0"/>
+        <site name="microwave_main_group_ext_pz" pos="-0.399592 -0.210309 0.25129" size="0.00721088" rgba="0 0 1 0"/>
+        <site name="microwave_main_group_int_p0" pos="-0.358397 -0.172165 -0.16478" size="0.00721088" rgba="0.5 0.5 0.5 0"/>
+        <site name="microwave_main_group_int_px" pos="0.154069 -0.172165 -0.16478" size="0.00721088" rgba="0 1 1 0"/>
+        <site name="microwave_main_group_int_py" pos="-0.358397 0.170103 -0.16478" size="0.00721088" rgba="1 1 0 0"/>
+        <site name="microwave_main_group_int_pz" pos="-0.358397 -0.172165 0.201032" size="0.00721088" rgba="1 0 1 0"/>
+        <site name="microwave_main_group_default_site" pos="0 0 0" size="0.0016478" rgba="1 0 0 0"/>
+        <body name="microwave_main_group_door">
+            <joint name="microwave_main_group_microjoint" pos="-0.399592 -0.172165 0" axis="0 0 1" limited="true" range="-1.57 0" armature="0.01" damping="2" frictionloss="2"/>
+            <geom name="microwave_main_group_g15" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="microwave_main_group_TX_Microwave_3_2" mesh="microwave_main_group_door_0_vis"/>
+            <geom name="microwave_main_group_g16" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="microwave_main_group_TX_Microwave_3_3" mesh="microwave_main_group_door_1_vis"/>
+            <geom name="microwave_main_group_g17" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="microwave_main_group_TX_Microwave_3_1" mesh="microwave_main_group_door_2_vis"/>
+            <geom name="microwave_main_group_g18" size="0.289931 0.0190722 0.229868" pos="-0.0741511 -0.191237 0.0189497" type="box" rgba="0.5 0 0 0.5" group="3"/>
+            <geom name="microwave_main_group_g19" size="0.0222453 0.0242268 0.0173019" pos="0.168076 -0.233505 0.194441" type="box" rgba="0.5 0 0 0.5" group="3"/>
+            <geom name="microwave_main_group_g20" size="0.0222453 0.0242268 0.0173019" pos="0.168076 -0.233505 -0.131" type="box" rgba="0.5 0 0 0.5" group="3"/>
+            <geom name="microwave_main_group_door_handle" size="0.0181258 0.0927835" pos="0.168076 -0.24433 0.0321321" type="cylinder" rgba="0.5 0 0 0.5" group="3"/>
+            <site name="microwave_main_group_door_p1" pos="-0.0617926 -0.206186 0.00823901" size="0.00360544" rgba="1 0 0 0"/>
+            <site name="microwave_main_group_door_p2" pos="-0.0205975 -0.206186 0.00823901" size="0.00360544" rgba="0 1 0 0"/>
+            <site name="microwave_main_group_door_p3" pos="-0.0617926 -0.206186 0.049434" size="0.00360544" rgba="0 0 1 0"/>
+        </body>
+        </body>
+        <!-- Etagere du microonde -->
+        <body name="cab_micro_main_group_main" pos="3.14959 -0.2 2.08275">
+        <geom name="cab_micro_main_group_top" size="0.399592 0.185 0.015" pos="0 0.015 0.212248" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_micro_main_group_bottom" size="0.399592 0.185 0.015" pos="0 0.015 -0.212248" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_micro_main_group_back" size="0.369592 0.015 0.197248" pos="0 0.185 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_micro_main_group_right" size="0.015 0.185 0.197248" pos="0.384592 0.015 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_micro_main_group_left" size="0.015 0.185 0.197248" pos="-0.384592 0.015 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_micro_main_group_shelf" size="0.369592 0.15 0.015" pos="0 0.035 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_micro_main_group_top_visual" size="0.399592 0.185 0.015" pos="0 0.015 0.212248" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_micro_main_group_mat"/>
+        <geom name="cab_micro_main_group_bottom_visual" size="0.399592 0.185 0.015" pos="0 0.015 -0.212248" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_micro_main_group_mat"/>
+        <geom name="cab_micro_main_group_back_visual" size="0.369592 0.015 0.197248" pos="0 0.185 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_micro_main_group_mat"/>
+        <geom name="cab_micro_main_group_right_visual" size="0.015 0.185 0.197248" pos="0.384592 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_micro_main_group_mat"/>
+        <geom name="cab_micro_main_group_left_visual" size="0.015 0.185 0.197248" pos="-0.384592 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_micro_main_group_mat"/>
+        <geom name="cab_micro_main_group_shelf_visual" size="0.369592 0.15 0.015" pos="0 0.035 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_micro_main_group_mat"/>
+        <site name="cab_micro_main_group_ext_p0" pos="-0.399592 -0.2 -0.227248" rgba="0 0 0 0"/>
+        <site name="cab_micro_main_group_ext_px" pos="0.399592 -0.2 -0.227248" rgba="1 0 0 0"/>
+        <site name="cab_micro_main_group_ext_py" pos="-0.399592 0.2 -0.227248" rgba="0 1 0 0"/>
+        <site name="cab_micro_main_group_ext_pz" pos="-0.399592 -0.2 0.227248" rgba="0 0 1 0"/>
+        <site name="cab_micro_main_group_int_p0" pos="-0.369592 -0.17 -0.197248" rgba="0.5 0.5 0.5 0"/>
+        <site name="cab_micro_main_group_int_px" pos="0.369592 -0.17 -0.197248" rgba="1 1 0 0"/>
+        <site name="cab_micro_main_group_int_py" pos="-0.369592 0.17 -0.197248" rgba="0 1 1 0"/>
+        <site name="cab_micro_main_group_int_pz" pos="-0.369592 -0.17 0.197248" rgba="1 0 1 0"/>
+        <site name="cab_micro_main_group_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        <body name="cab_micro_main_group_hingeleftdoor">
+            <joint name="cab_micro_main_group_leftdoorhinge" pos="-0.384592 -0.2 0" axis="0 0 1" limited="true" range="-3 0" damping="2"/>
+            <site name="cab_micro_main_group_leftdoor_p1" pos="-0.25 -0.2 0" rgba="1 0 0 0"/>
+            <site name="cab_micro_main_group_leftdoor_p2" pos="-0.2 -0.2 0" rgba="0 1 0 0"/>
+            <site name="cab_micro_main_group_leftdoor_p3" pos="-0.25 -0.2 0.05" rgba="0 0 1 0"/>
+            <body name="cab_micro_main_group_left_door_main" pos="-0.199796 -0.185 0">
+            <geom name="cab_micro_main_group_left_door_door" size="0.198296 0.225748 0.015" quat="0.707105 0.707108 0 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="cab_micro_main_group_left_door_door_visual" size="0.198296 0.225748 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_micro_main_group_left_door_mat"/>
+            <site name="cab_micro_main_group_left_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            <body name="cab_micro_main_group_left_door_handle_main" pos="0.148296 0 -0.175748">
+                <geom name="cab_micro_main_group_left_door_handle_handle" size="0.015 0.017" pos="0 -0.017 0" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_micro_main_group_left_door_handle_handle_visual" size="0.015 0.017" pos="0 -0.017 0" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_micro_main_group_left_door_handle_mat"/>
+                <site name="cab_micro_main_group_left_door_handle_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            </body>
+            </body>
+        </body>
+        <body name="cab_micro_main_group_hingerightdoor">
+            <joint name="cab_micro_main_group_rightdoorhinge" pos="0.384592 -0.2 0" axis="0 0 1" limited="true" range="0 3" damping="2"/>
+            <site name="cab_micro_main_group_rightdoor_p1" pos="0.25 -0.2 0" rgba="1 0 0 0"/>
+            <site name="cab_micro_main_group_rightdoor_p2" pos="0.2 -0.2 0" rgba="0 1 0 0"/>
+            <site name="cab_micro_main_group_rightdoor_p3" pos="0.25 -0.2 0.05" rgba="0 0 1 0"/>
+            <body name="cab_micro_main_group_right_door_main" pos="0.199796 -0.185 0">
+            <geom name="cab_micro_main_group_right_door_door" size="0.198296 0.225748 0.015" quat="0.707105 0.707108 0 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="cab_micro_main_group_right_door_door_visual" size="0.198296 0.225748 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_micro_main_group_right_door_mat"/>
+            <site name="cab_micro_main_group_right_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            <body name="cab_micro_main_group_right_door_handle_main" pos="-0.148296 0 -0.175748">
+                <geom name="cab_micro_main_group_right_door_handle_handle" size="0.015 0.017" pos="0 -0.017 0" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_micro_main_group_right_door_handle_handle_visual" size="0.015 0.017" pos="0 -0.017 0" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_micro_main_group_right_door_handle_mat"/>
+                <site name="cab_micro_main_group_right_door_handle_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            </body>
+            </body>
+        </body>
+        </body>
+        <!--  Etageres en bois -->
+        <body name="cab_3_main_group_main" pos="3.89918 -0.2 1.85">
+        <site name="cab_3_main_group_ext_p0" pos="-0.7 -0.4 -0.92" size="0.01" rgba="0 0 0 0"/>
+        <site name="cab_3_main_group_ext_px" pos="0.7 -0.4 -0.92" size="0.01" rgba="1 0 0 0"/>
+        <site name="cab_3_main_group_ext_py" pos="-0.7 0.4 -0.92" size="0.01" rgba="0 1 0 0"/>
+        <site name="cab_3_main_group_ext_pz" pos="-0.7 -0.4 0.92" size="0.01" rgba="0 0 1 0"/>
+        <site name="cab_3_main_group_int_p0" pos="-0.64 -0.34 -0.86" size="0.01" rgba="0.5 0.5 0.5 0"/>
+        <site name="cab_3_main_group_int_px" pos="0.64 -0.34 -0.86" size="0.01" rgba="1 1 0 0"/>
+        <site name="cab_3_main_group_int_py" pos="-0.64 0.34 -0.86" size="0.01" rgba="0 1 1 0"/>
+        <site name="cab_3_main_group_int_pz" pos="-0.64 -0.34 0.86" size="0.01" rgba="1 0 1 0"/>
+        <site name="cab_3_main_group_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        <body name="cab_3_main_group_hingecab"/>
+        <body name="cab_3_main_group_shelf_0_main">
+            <geom name="cab_3_main_group_shelf_0_shelf" size="0.35 0.2 0.015" pos="0 0 -0.445" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="cab_3_main_group_shelf_0_shelf_visual" size="0.35 0.2 0.015" pos="0 0 -0.445" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_3_main_group_shelf_0_mat"/>
+            <site name="cab_3_main_group_shelf_0_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        </body>
+        <body name="cab_3_main_group_shelf_1_main">
+            <geom name="cab_3_main_group_shelf_1_shelf" size="0.35 0.2 0.015" pos="0 0 -0.148333" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="cab_3_main_group_shelf_1_shelf_visual" size="0.35 0.2 0.015" pos="0 0 -0.148333" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_3_main_group_shelf_1_mat"/>
+            <site name="cab_3_main_group_shelf_1_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        </body>
+        <body name="cab_3_main_group_shelf_2_main">
+            <geom name="cab_3_main_group_shelf_2_shelf" size="0.35 0.2 0.015" pos="0 0 0.148333" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="cab_3_main_group_shelf_2_shelf_visual" size="0.35 0.2 0.015" pos="0 0 0.148333" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_3_main_group_shelf_2_mat"/>
+            <site name="cab_3_main_group_shelf_2_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        </body>
+        </body>
+        <!-- Etageres hautes de droite  -->
+        <body name="cab_4_main_group_main" pos="4.70293 -0.344362 2.04">
+        <geom name="cab_4_main_group_top" size="0.453746 0.329362 0.015" pos="0 0.015 0.255" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_4_main_group_bottom" size="0.453746 0.329362 0.015" pos="0 0.015 -0.255" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_4_main_group_back" size="0.423746 0.015 0.24" pos="0 0.329362 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_4_main_group_right" size="0.015 0.329362 0.24" pos="0.438746 0.015 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_4_main_group_left" size="0.015 0.329362 0.24" pos="-0.438746 0.015 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_4_main_group_shelf" size="0.423746 0.294362 0.015" pos="0 0.035 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="cab_4_main_group_top_visual" size="0.453746 0.329362 0.015" pos="0 0.015 0.255" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_4_main_group_mat"/>
+        <geom name="cab_4_main_group_bottom_visual" size="0.453746 0.329362 0.015" pos="0 0.015 -0.255" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_4_main_group_mat"/>
+        <geom name="cab_4_main_group_back_visual" size="0.423746 0.015 0.24" pos="0 0.329362 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_4_main_group_mat"/>
+        <geom name="cab_4_main_group_right_visual" size="0.015 0.329362 0.24" pos="0.438746 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_4_main_group_mat"/>
+        <geom name="cab_4_main_group_left_visual" size="0.015 0.329362 0.24" pos="-0.438746 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_4_main_group_mat"/>
+        <geom name="cab_4_main_group_shelf_visual" size="0.423746 0.294362 0.015" pos="0 0.035 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_4_main_group_mat"/>
+        <site name="cab_4_main_group_ext_p0" pos="-0.453746 -0.344362 -0.27" rgba="0 0 0 0"/>
+        <site name="cab_4_main_group_ext_px" pos="0.453746 -0.344362 -0.27" rgba="1 0 0 0"/>
+        <site name="cab_4_main_group_ext_py" pos="-0.453746 0.344362 -0.27" rgba="0 1 0 0"/>
+        <site name="cab_4_main_group_ext_pz" pos="-0.453746 -0.344362 0.27" rgba="0 0 1 0"/>
+        <site name="cab_4_main_group_int_p0" pos="-0.423746 -0.314362 -0.24" rgba="0.5 0.5 0.5 0"/>
+        <site name="cab_4_main_group_int_px" pos="0.423746 -0.314362 -0.24" rgba="1 1 0 0"/>
+        <site name="cab_4_main_group_int_py" pos="-0.423746 0.314362 -0.24" rgba="0 1 1 0"/>
+        <site name="cab_4_main_group_int_pz" pos="-0.423746 -0.314362 0.24" rgba="1 0 1 0"/>
+        <site name="cab_4_main_group_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        <body name="cab_4_main_group_hingeleftdoor">
+            <joint name="cab_4_main_group_leftdoorhinge" pos="-0.438746 -0.344362 0" axis="0 0 1" limited="true" range="-3 0" damping="2"/>
+            <site name="cab_4_main_group_leftdoor_p1" pos="-0.25 -0.2 0" rgba="1 0 0 0"/>
+            <site name="cab_4_main_group_leftdoor_p2" pos="-0.2 -0.2 0" rgba="0 1 0 0"/>
+            <site name="cab_4_main_group_leftdoor_p3" pos="-0.25 -0.2 0.05" rgba="0 0 1 0"/>
+            <body name="cab_4_main_group_left_door_main" pos="-0.226873 -0.329362 0">
+            <geom name="cab_4_main_group_left_door_door" size="0.225373 0.2685 0.015" quat="0.707105 0.707108 0 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="cab_4_main_group_left_door_door_visual" size="0.225373 0.2685 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_4_main_group_left_door_mat"/>
+            <site name="cab_4_main_group_left_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            <body name="cab_4_main_group_left_door_handle_main" pos="0.175373 0 -0.2185">
+                <geom name="cab_4_main_group_left_door_handle_handle" size="0.015 0.017" pos="0 -0.017 0" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_4_main_group_left_door_handle_handle_visual" size="0.015 0.017" pos="0 -0.017 0" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_4_main_group_left_door_handle_mat"/>
+                <site name="cab_4_main_group_left_door_handle_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            </body>
+            </body>
+        </body>
+        <body name="cab_4_main_group_hingerightdoor">
+            <joint name="cab_4_main_group_rightdoorhinge" pos="0.438746 -0.344362 0" axis="0 0 1" limited="true" range="0 3" damping="2"/>
+            <site name="cab_4_main_group_rightdoor_p1" pos="0.25 -0.2 0" rgba="1 0 0 0"/>
+            <site name="cab_4_main_group_rightdoor_p2" pos="0.2 -0.2 0" rgba="0 1 0 0"/>
+            <site name="cab_4_main_group_rightdoor_p3" pos="0.25 -0.2 0.05" rgba="0 0 1 0"/>
+            <body name="cab_4_main_group_right_door_main" pos="0.226873 -0.329362 0">
+            <geom name="cab_4_main_group_right_door_door" size="0.225373 0.2685 0.015" quat="0.707105 0.707108 0 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="cab_4_main_group_right_door_door_visual" size="0.225373 0.2685 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="cab_4_main_group_right_door_mat"/>
+            <site name="cab_4_main_group_right_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            <body name="cab_4_main_group_right_door_handle_main" pos="-0.175373 0 -0.2185">
+                <geom name="cab_4_main_group_right_door_handle_handle" size="0.015 0.017" pos="0 -0.017 0" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="cab_4_main_group_right_door_handle_handle_visual" size="0.015 0.017" pos="0 -0.017 0" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="cab_4_main_group_right_door_handle_mat"/>
+                <site name="cab_4_main_group_right_door_handle_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            </body>
+            </body>
+        </body>
+        </body>
+        <body name="stack_1_main_group_base_main" pos="0.5 -0.265 0.025">
+        <geom name="stack_1_main_group_base_g0" size="0.25 0.265 0.025" type="box" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_base_g0_vis" size="0.25 0.265 0.025" type="box" contype="0" conaffinity="0" group="1" mass="0" material="box_mat"/>
+        <site name="stack_1_main_group_base_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 1" group="3"/>
+        </body>
+        <!-- Tiroirs de gauche  -->
+        <body name="stack_1_main_group_1_main" pos="0.5 -0.3 0.155">
+        <geom name="stack_1_main_group_1_top" size="0.25 0.285 0.015" pos="0 0.015 0.09" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_1_bottom" size="0.25 0.285 0.015" pos="0 0.015 -0.09" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_1_back" size="0.22 0.015 0.075" pos="0 0.285 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_1_right" size="0.015 0.285 0.075" pos="0.235 0.015 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_1_left" size="0.015 0.285 0.075" pos="-0.235 0.015 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_1_top_visual" size="0.25 0.285 0.015" pos="0 0.015 0.09" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_1_mat"/>
+        <geom name="stack_1_main_group_1_bottom_visual" size="0.25 0.285 0.015" pos="0 0.015 -0.09" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_1_mat"/>
+        <geom name="stack_1_main_group_1_back_visual" size="0.22 0.015 0.075" pos="0 0.285 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_1_mat"/>
+        <geom name="stack_1_main_group_1_right_visual" size="0.015 0.285 0.075" pos="0.235 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_1_mat"/>
+        <geom name="stack_1_main_group_1_left_visual" size="0.015 0.285 0.075" pos="-0.235 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_1_mat"/>
+        <site name="stack_1_main_group_1_ext_p0" pos="-0.25 -0.3 -0.105" rgba="0 0 0 0"/>
+        <site name="stack_1_main_group_1_ext_px" pos="0.25 -0.3 -0.105" rgba="1 0 0 0"/>
+        <site name="stack_1_main_group_1_ext_py" pos="-0.25 0.3 -0.105" rgba="0 1 0 0"/>
+        <site name="stack_1_main_group_1_ext_pz" pos="-0.25 -0.3 0.105" rgba="0 0 1 0"/>
+        <site name="stack_1_main_group_1_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        <body name="stack_1_main_group_1_inner_box">
+            <joint name="stack_1_main_group_1_slidejoint" pos="0 -0.3 0" axis="0 1 0" type="slide" limited="true" range="-0.6 0" damping="10"/>
+            <geom name="stack_1_main_group_1_inner_bottom" size="0.219 0.27 0.015" pos="0 0 -0.059" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_1_inner_back" size="0.189 0.015 0.044" pos="0 0.255 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_1_inner_right" size="0.015 0.27 0.044" pos="0.204 0 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_1_inner_left" size="0.015 0.27 0.044" pos="-0.204 0 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_1_inner_bottom_visual" size="0.219 0.27 0.015" pos="0 0 -0.059" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_1_mat"/>
+            <geom name="stack_1_main_group_1_inner_back_visual" size="0.189 0.015 0.044" pos="0 0.255 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_1_mat"/>
+            <geom name="stack_1_main_group_1_inner_right_visual" size="0.015 0.27 0.044" pos="0.204 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_1_mat"/>
+            <geom name="stack_1_main_group_1_inner_left_visual" size="0.015 0.27 0.044" pos="-0.204 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_1_mat"/>
+            <site name="stack_1_main_group_1_int_p0" pos="-0.189 -0.27 -0.044" rgba="0.5 0.5 0.5 0"/>
+            <site name="stack_1_main_group_1_int_px" pos="0.189 -0.27 -0.044" rgba="1 1 0 0"/>
+            <site name="stack_1_main_group_1_int_py" pos="-0.189 0.24 -0.044" rgba="0 1 1 0"/>
+            <site name="stack_1_main_group_1_int_pz" pos="-0.189 -0.27 0.074" rgba="1 0 1 0"/>
+            <body name="stack_1_main_group_1_door_main" pos="0 -0.285 0">
+            <geom name="stack_1_main_group_1_door_door" size="0.2485 0.1035 0.015" quat="0.707105 0.707108 0 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_1_door_door_visual" size="0.2485 0.1035 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_1_door_mat"/>
+            <site name="stack_1_main_group_1_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            <!-- Tiroir du bas -->
+            <body name="stack_1_main_group_1_door_handle_main">
+                <geom name="stack_1_main_group_1_door_handle_handle" size="0.013 0.0635" pos="0 -0.05 0" quat="0.707105 0 0.707108 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_1_main_group_1_door_handle_handle_connector_top" size="0.008 0.025" pos="0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_1_main_group_1_door_handle_handle_connector_bottom" size="0.008 0.025" pos="-0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_1_main_group_1_door_handle_handle_visual" size="0.013 0.0635" pos="0 -0.05 0" quat="0.707105 0 0.707108 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_1_door_handle_mat"/>
+                <geom name="stack_1_main_group_1_door_handle_handle_connector_top_visual" size="0.008 0.025" pos="0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_1_door_handle_mat"/>
+                <geom name="stack_1_main_group_1_door_handle_handle_connector_bottom_visual" size="0.008 0.025" pos="-0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_1_door_handle_mat"/>
+                <site name="stack_1_main_group_1_door_handle_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            </body>
+            </body>
+        </body>
+        </body>
+        <body name="stack_1_main_group_2_main" pos="0.5 -0.3 0.365">
+        <geom name="stack_1_main_group_2_top" size="0.25 0.285 0.015" pos="0 0.015 0.09" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_2_bottom" size="0.25 0.285 0.015" pos="0 0.015 -0.09" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_2_back" size="0.22 0.015 0.075" pos="0 0.285 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_2_right" size="0.015 0.285 0.075" pos="0.235 0.015 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_2_left" size="0.015 0.285 0.075" pos="-0.235 0.015 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_2_top_visual" size="0.25 0.285 0.015" pos="0 0.015 0.09" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_2_mat"/>
+        <geom name="stack_1_main_group_2_bottom_visual" size="0.25 0.285 0.015" pos="0 0.015 -0.09" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_2_mat"/>
+        <geom name="stack_1_main_group_2_back_visual" size="0.22 0.015 0.075" pos="0 0.285 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_2_mat"/>
+        <geom name="stack_1_main_group_2_right_visual" size="0.015 0.285 0.075" pos="0.235 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_2_mat"/>
+        <geom name="stack_1_main_group_2_left_visual" size="0.015 0.285 0.075" pos="-0.235 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_2_mat"/>
+        <site name="stack_1_main_group_2_ext_p0" pos="-0.25 -0.3 -0.105" rgba="0 0 0 0"/>
+        <site name="stack_1_main_group_2_ext_px" pos="0.25 -0.3 -0.105" rgba="1 0 0 0"/>
+        <site name="stack_1_main_group_2_ext_py" pos="-0.25 0.3 -0.105" rgba="0 1 0 0"/>
+        <site name="stack_1_main_group_2_ext_pz" pos="-0.25 -0.3 0.105" rgba="0 0 1 0"/>
+        <site name="stack_1_main_group_2_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        <body name="stack_1_main_group_2_inner_box">
+            <joint name="stack_1_main_group_2_slidejoint" pos="0 -0.3 0" axis="0 1 0" type="slide" limited="true" range="-0.6 0" damping="10"/>
+            <geom name="stack_1_main_group_2_inner_bottom" size="0.219 0.27 0.015" pos="0 0 -0.059" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_2_inner_back" size="0.189 0.015 0.044" pos="0 0.255 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_2_inner_right" size="0.015 0.27 0.044" pos="0.204 0 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_2_inner_left" size="0.015 0.27 0.044" pos="-0.204 0 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_2_inner_bottom_visual" size="0.219 0.27 0.015" pos="0 0 -0.059" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_2_mat"/>
+            <geom name="stack_1_main_group_2_inner_back_visual" size="0.189 0.015 0.044" pos="0 0.255 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_2_mat"/>
+            <geom name="stack_1_main_group_2_inner_right_visual" size="0.015 0.27 0.044" pos="0.204 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_2_mat"/>
+            <geom name="stack_1_main_group_2_inner_left_visual" size="0.015 0.27 0.044" pos="-0.204 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_2_mat"/>
+            <site name="stack_1_main_group_2_int_p0" pos="-0.189 -0.27 -0.044" rgba="0.5 0.5 0.5 0"/>
+            <site name="stack_1_main_group_2_int_px" pos="0.189 -0.27 -0.044" rgba="1 1 0 0"/>
+            <site name="stack_1_main_group_2_int_py" pos="-0.189 0.24 -0.044" rgba="0 1 1 0"/>
+            <site name="stack_1_main_group_2_int_pz" pos="-0.189 -0.27 0.074" rgba="1 0 1 0"/>
+            <body name="stack_1_main_group_2_door_main" pos="0 -0.285 0">
+            <geom name="stack_1_main_group_2_door_door" size="0.2485 0.1035 0.015" quat="0.707105 0.707108 0 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_2_door_door_visual" size="0.2485 0.1035 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_2_door_mat"/>
+            <site name="stack_1_main_group_2_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            <!-- Tiroir avant dernier -->
+            <body name="stack_1_main_group_2_door_handle_main">
+                <geom name="stack_1_main_group_2_door_handle_handle" size="0.013 0.0635" pos="0 -0.05 0" quat="0.707105 0 0.707108 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_1_main_group_2_door_handle_handle_connector_top" size="0.008 0.025" pos="0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_1_main_group_2_door_handle_handle_connector_bottom" size="0.008 0.025" pos="-0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_1_main_group_2_door_handle_handle_visual" size="0.013 0.0635" pos="0 -0.05 0" quat="0.707105 0 0.707108 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_2_door_handle_mat"/>
+                <geom name="stack_1_main_group_2_door_handle_handle_connector_top_visual" size="0.008 0.025" pos="0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_2_door_handle_mat"/>
+                <geom name="stack_1_main_group_2_door_handle_handle_connector_bottom_visual" size="0.008 0.025" pos="-0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_2_door_handle_mat"/>
+                <site name="stack_1_main_group_2_door_handle_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            </body>
+            </body>
+        </body>
+        </body>
+        <body name="stack_1_main_group_3_main" pos="0.5 -0.3 0.575">
+        <geom name="stack_1_main_group_3_top" size="0.25 0.285 0.015" pos="0 0.015 0.09" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_3_bottom" size="0.25 0.285 0.015" pos="0 0.015 -0.09" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_3_back" size="0.22 0.015 0.075" pos="0 0.285 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_3_right" size="0.015 0.285 0.075" pos="0.235 0.015 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_3_left" size="0.015 0.285 0.075" pos="-0.235 0.015 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_3_top_visual" size="0.25 0.285 0.015" pos="0 0.015 0.09" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_3_mat"/>
+        <geom name="stack_1_main_group_3_bottom_visual" size="0.25 0.285 0.015" pos="0 0.015 -0.09" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_3_mat"/>
+        <geom name="stack_1_main_group_3_back_visual" size="0.22 0.015 0.075" pos="0 0.285 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_3_mat"/>
+        <geom name="stack_1_main_group_3_right_visual" size="0.015 0.285 0.075" pos="0.235 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_3_mat"/>
+        <geom name="stack_1_main_group_3_left_visual" size="0.015 0.285 0.075" pos="-0.235 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_3_mat"/>
+        <site name="stack_1_main_group_3_ext_p0" pos="-0.25 -0.3 -0.105" rgba="0 0 0 0"/>
+        <site name="stack_1_main_group_3_ext_px" pos="0.25 -0.3 -0.105" rgba="1 0 0 0"/>
+        <site name="stack_1_main_group_3_ext_py" pos="-0.25 0.3 -0.105" rgba="0 1 0 0"/>
+        <site name="stack_1_main_group_3_ext_pz" pos="-0.25 -0.3 0.105" rgba="0 0 1 0"/>
+        <site name="stack_1_main_group_3_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        <body name="stack_1_main_group_3_inner_box">
+            <joint name="stack_1_main_group_3_slidejoint" pos="0 -0.3 0" axis="0 1 0" type="slide" limited="true" range="-0.6 0" damping="10"/>
+            <geom name="stack_1_main_group_3_inner_bottom" size="0.219 0.27 0.015" pos="0 0 -0.059" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_3_inner_back" size="0.189 0.015 0.044" pos="0 0.255 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_3_inner_right" size="0.015 0.27 0.044" pos="0.204 0 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_3_inner_left" size="0.015 0.27 0.044" pos="-0.204 0 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_3_inner_bottom_visual" size="0.219 0.27 0.015" pos="0 0 -0.059" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_3_mat"/>
+            <geom name="stack_1_main_group_3_inner_back_visual" size="0.189 0.015 0.044" pos="0 0.255 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_3_mat"/>
+            <geom name="stack_1_main_group_3_inner_right_visual" size="0.015 0.27 0.044" pos="0.204 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_3_mat"/>
+            <geom name="stack_1_main_group_3_inner_left_visual" size="0.015 0.27 0.044" pos="-0.204 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_3_mat"/>
+            <site name="stack_1_main_group_3_int_p0" pos="-0.189 -0.27 -0.044" rgba="0.5 0.5 0.5 0"/>
+            <site name="stack_1_main_group_3_int_px" pos="0.189 -0.27 -0.044" rgba="1 1 0 0"/>
+            <site name="stack_1_main_group_3_int_py" pos="-0.189 0.24 -0.044" rgba="0 1 1 0"/>
+            <site name="stack_1_main_group_3_int_pz" pos="-0.189 -0.27 0.074" rgba="1 0 1 0"/>
+            <body name="stack_1_main_group_3_door_main" pos="0 -0.285 0">
+            <geom name="stack_1_main_group_3_door_door" size="0.2485 0.1035 0.015" quat="0.707105 0.707108 0 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_3_door_door_visual" size="0.2485 0.1035 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_3_door_mat"/>
+            <site name="stack_1_main_group_3_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            <!-- 2e tiroir -->
+            <body name="stack_1_main_group_3_door_handle_main">
+                <geom name="stack_1_main_group_3_door_handle_handle" size="0.013 0.0635" pos="0 -0.05 0" quat="0.707105 0 0.707108 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_1_main_group_3_door_handle_handle_connector_top" size="0.008 0.025" pos="0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_1_main_group_3_door_handle_handle_connector_bottom" size="0.008 0.025" pos="-0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_1_main_group_3_door_handle_handle_visual" size="0.013 0.0635" pos="0 -0.05 0" quat="0.707105 0 0.707108 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_3_door_handle_mat"/>
+                <geom name="stack_1_main_group_3_door_handle_handle_connector_top_visual" size="0.008 0.025" pos="0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_3_door_handle_mat"/>
+                <geom name="stack_1_main_group_3_door_handle_handle_connector_bottom_visual" size="0.008 0.025" pos="-0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_3_door_handle_mat"/>
+                <site name="stack_1_main_group_3_door_handle_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            </body>
+            </body>
+        </body>
+        </body>
+        <body name="stack_1_main_group_4_main" pos="0.5 -0.3 0.785">
+        <geom name="stack_1_main_group_4_top" size="0.25 0.285 0.015" pos="0 0.015 0.09" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_4_bottom" size="0.25 0.285 0.015" pos="0 0.015 -0.09" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_4_back" size="0.22 0.015 0.075" pos="0 0.285 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_4_right" size="0.015 0.285 0.075" pos="0.235 0.015 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_4_left" size="0.015 0.285 0.075" pos="-0.235 0.015 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_1_main_group_4_top_visual" size="0.25 0.285 0.015" pos="0 0.015 0.09" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_4_mat"/>
+        <geom name="stack_1_main_group_4_bottom_visual" size="0.25 0.285 0.015" pos="0 0.015 -0.09" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_4_mat"/>
+        <geom name="stack_1_main_group_4_back_visual" size="0.22 0.015 0.075" pos="0 0.285 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_4_mat"/>
+        <geom name="stack_1_main_group_4_right_visual" size="0.015 0.285 0.075" pos="0.235 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_4_mat"/>
+        <geom name="stack_1_main_group_4_left_visual" size="0.015 0.285 0.075" pos="-0.235 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_4_mat"/>
+        <site name="stack_1_main_group_4_ext_p0" pos="-0.25 -0.3 -0.105" rgba="0 0 0 0"/>
+        <site name="stack_1_main_group_4_ext_px" pos="0.25 -0.3 -0.105" rgba="1 0 0 0"/>
+        <site name="stack_1_main_group_4_ext_py" pos="-0.25 0.3 -0.105" rgba="0 1 0 0"/>
+        <site name="stack_1_main_group_4_ext_pz" pos="-0.25 -0.3 0.105" rgba="0 0 1 0"/>
+        <site name="stack_1_main_group_4_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        <body name="stack_1_main_group_4_inner_box">
+            <joint name="stack_1_main_group_4_slidejoint" pos="0 -0.3 0" axis="0 1 0" type="slide" limited="true" range="-0.6 0" damping="10"/>
+            <geom name="stack_1_main_group_4_inner_bottom" size="0.219 0.27 0.015" pos="0 0 -0.059" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_4_inner_back" size="0.189 0.015 0.044" pos="0 0.255 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_4_inner_right" size="0.015 0.27 0.044" pos="0.204 0 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_4_inner_left" size="0.015 0.27 0.044" pos="-0.204 0 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_4_inner_bottom_visual" size="0.219 0.27 0.015" pos="0 0 -0.059" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_4_mat"/>
+            <geom name="stack_1_main_group_4_inner_back_visual" size="0.189 0.015 0.044" pos="0 0.255 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_4_mat"/>
+            <geom name="stack_1_main_group_4_inner_right_visual" size="0.015 0.27 0.044" pos="0.204 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_4_mat"/>
+            <geom name="stack_1_main_group_4_inner_left_visual" size="0.015 0.27 0.044" pos="-0.204 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_4_mat"/>
+            <site name="stack_1_main_group_4_int_p0" pos="-0.189 -0.27 -0.044" rgba="0.5 0.5 0.5 0"/>
+            <site name="stack_1_main_group_4_int_px" pos="0.189 -0.27 -0.044" rgba="1 1 0 0"/>
+            <site name="stack_1_main_group_4_int_py" pos="-0.189 0.24 -0.044" rgba="0 1 1 0"/>
+            <site name="stack_1_main_group_4_int_pz" pos="-0.189 -0.27 0.074" rgba="1 0 1 0"/>
+            <body name="stack_1_main_group_4_door_main" pos="0 -0.285 0">
+            <geom name="stack_1_main_group_4_door_door" size="0.2485 0.1035 0.015" quat="0.707105 0.707108 0 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_1_main_group_4_door_door_visual" size="0.2485 0.1035 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_4_door_mat"/>
+            <site name="stack_1_main_group_4_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            <!-- 1er tiroir -->
+            <body name="stack_1_main_group_4_door_handle_main">
+                <geom name="stack_1_main_group_4_door_handle_handle" size="0.013 0.0635" pos="0 -0.05 0" quat="0.707105 0 0.707108 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"  friction="1.0 0.05 0.002" margin="0.005" solimp="0.98 0.99 0.001" solref="0.002 1"/>
+                <geom name="stack_1_main_group_4_door_handle_handle_connector_top" size="0.008 0.025" pos="0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_1_main_group_4_door_handle_handle_connector_bottom" size="0.008 0.025" pos="-0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_1_main_group_4_door_handle_handle_visual" size="0.013 0.0635" pos="0 -0.05 0" quat="0.707105 0 0.707108 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_4_door_handle_mat"/>
+                <geom name="stack_1_main_group_4_door_handle_handle_connector_top_visual" size="0.008 0.025" pos="0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_4_door_handle_mat"/>
+                <geom name="stack_1_main_group_4_door_handle_handle_connector_bottom_visual" size="0.008 0.025" pos="-0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_4_door_handle_mat"/>
+                <site name="stack_1_main_group_4_door_handle_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            </body>
+            </body>
+        </body>
+        </body>
+        <!-- Placard  sous l'evier -->
+        <body name="stack_2_main_group_base_main" pos="1.25 -0.265 0.025">
+        <geom name="stack_2_main_group_base_g0" size="0.5 0.265 0.025" type="box" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_2_main_group_base_g0_vis" size="0.5 0.265 0.025" type="box" contype="0" conaffinity="0" group="1" mass="0" material="box_mat"/>
+        <site name="stack_2_main_group_base_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 1" group="3"/>
+        </body>
+        <body name="stack_2_main_group_1_main" pos="1.25 -0.3 0.365">
+        <geom name="stack_2_main_group_1_top" size="0.5 0.285 0.015" pos="0 0.015 0.3" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_2_main_group_1_bottom" size="0.5 0.285 0.015" pos="0 0.015 -0.3" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_2_main_group_1_back" size="0.47 0.015 0.285" pos="0 0.285 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_2_main_group_1_right" size="0.015 0.285 0.285" pos="0.485 0.015 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_2_main_group_1_left" size="0.015 0.285 0.285" pos="-0.485 0.015 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_2_main_group_1_shelf" size="0.47 0.25 0.015" pos="0 0.035 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_2_main_group_1_top_visual" size="0.5 0.285 0.015" pos="0 0.015 0.3" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_2_main_group_1_mat"/>
+        <geom name="stack_2_main_group_1_bottom_visual" size="0.5 0.285 0.015" pos="0 0.015 -0.3" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_2_main_group_1_mat"/>
+        <geom name="stack_2_main_group_1_back_visual" size="0.47 0.015 0.285" pos="0 0.285 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_2_main_group_1_mat"/>
+        <geom name="stack_2_main_group_1_right_visual" size="0.015 0.285 0.285" pos="0.485 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_2_main_group_1_mat"/>
+        <geom name="stack_2_main_group_1_left_visual" size="0.015 0.285 0.285" pos="-0.485 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_2_main_group_1_mat"/>
+        <geom name="stack_2_main_group_1_shelf_visual" size="0.47 0.25 0.015" pos="0 0.035 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_2_main_group_1_mat"/>
+        <site name="stack_2_main_group_1_ext_p0" pos="-0.5 -0.3 -0.315" rgba="0 0 0 0"/>
+        <site name="stack_2_main_group_1_ext_px" pos="0.5 -0.3 -0.315" rgba="1 0 0 0"/>
+        <site name="stack_2_main_group_1_ext_py" pos="-0.5 0.3 -0.315" rgba="0 1 0 0"/>
+        <site name="stack_2_main_group_1_ext_pz" pos="-0.5 -0.3 0.315" rgba="0 0 1 0"/>
+        <site name="stack_2_main_group_1_int_p0" pos="-0.47 -0.27 -0.285" rgba="0.5 0.5 0.5 0"/>
+        <site name="stack_2_main_group_1_int_px" pos="0.47 -0.27 -0.285" rgba="1 1 0 0"/>
+        <site name="stack_2_main_group_1_int_py" pos="-0.47 0.27 -0.285" rgba="0 1 1 0"/>
+        <site name="stack_2_main_group_1_int_pz" pos="-0.47 -0.27 0.285" rgba="1 0 1 0"/>
+        <site name="stack_2_main_group_1_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        <body name="stack_2_main_group_1_hingeleftdoor">
+            <joint name="stack_2_main_group_1_leftdoorhinge" pos="-0.485 -0.3 0" axis="0 0 1" limited="true" range="-3 0" damping="2"/>
+            <site name="stack_2_main_group_1_leftdoor_p1" pos="-0.25 -0.2 0" rgba="1 0 0 0"/>
+            <site name="stack_2_main_group_1_leftdoor_p2" pos="-0.2 -0.2 0" rgba="0 1 0 0"/>
+            <site name="stack_2_main_group_1_leftdoor_p3" pos="-0.25 -0.2 0.05" rgba="0 0 1 0"/>
+            <body name="stack_2_main_group_1_left_door_main" pos="-0.25 -0.285 0">
+            <geom name="stack_2_main_group_1_left_door_door" size="0.2485 0.3135 0.015" quat="0.707105 0.707108 0 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_2_main_group_1_left_door_door_visual" size="0.2485 0.3135 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_2_main_group_1_left_door_mat"/>
+            <site name="stack_2_main_group_1_left_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            <body name="stack_2_main_group_1_left_door_handle_main" pos="0.1985 0 0.1135">
+                <geom name="stack_2_main_group_1_left_door_handle_handle" size="0.013 0.12" pos="0 -0.05 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_2_main_group_1_left_door_handle_handle_connector_top" size="0.008 0.025" pos="0 -0.025 0.072" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_2_main_group_1_left_door_handle_handle_connector_bottom" size="0.008 0.025" pos="0 -0.025 -0.072" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_2_main_group_1_left_door_handle_handle_visual" size="0.013 0.12" pos="0 -0.05 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_2_main_group_1_left_door_handle_mat"/>
+                <geom name="stack_2_main_group_1_left_door_handle_handle_connector_top_visual" size="0.008 0.025" pos="0 -0.025 0.072" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_2_main_group_1_left_door_handle_mat"/>
+                <geom name="stack_2_main_group_1_left_door_handle_handle_connector_bottom_visual" size="0.008 0.025" pos="0 -0.025 -0.072" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_2_main_group_1_left_door_handle_mat"/>
+                <site name="stack_2_main_group_1_left_door_handle_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            </body>
+            </body>
+        </body>
+        <body name="stack_2_main_group_1_hingerightdoor">
+            <joint name="stack_2_main_group_1_rightdoorhinge" pos="0.485 -0.3 0" axis="0 0 1" limited="true" range="0 3" damping="2"/>
+            <site name="stack_2_main_group_1_rightdoor_p1" pos="0.25 -0.2 0" rgba="1 0 0 0"/>
+            <site name="stack_2_main_group_1_rightdoor_p2" pos="0.2 -0.2 0" rgba="0 1 0 0"/>
+            <site name="stack_2_main_group_1_rightdoor_p3" pos="0.25 -0.2 0.05" rgba="0 0 1 0"/>
+            <body name="stack_2_main_group_1_right_door_main" pos="0.25 -0.285 0">
+            <geom name="stack_2_main_group_1_right_door_door" size="0.2485 0.3135 0.015" quat="0.707105 0.707108 0 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_2_main_group_1_right_door_door_visual" size="0.2485 0.3135 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_2_main_group_1_right_door_mat"/>
+            <site name="stack_2_main_group_1_right_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            <body name="stack_2_main_group_1_right_door_handle_main" pos="-0.1985 0 0.1135">
+                <geom name="stack_2_main_group_1_right_door_handle_handle" size="0.013 0.12" pos="0 -0.05 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_2_main_group_1_right_door_handle_handle_connector_top" size="0.008 0.025" pos="0 -0.025 0.072" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_2_main_group_1_right_door_handle_handle_connector_bottom" size="0.008 0.025" pos="0 -0.025 -0.072" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_2_main_group_1_right_door_handle_handle_visual" size="0.013 0.12" pos="0 -0.05 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_2_main_group_1_right_door_handle_mat"/>
+                <geom name="stack_2_main_group_1_right_door_handle_handle_connector_top_visual" size="0.008 0.025" pos="0 -0.025 0.072" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_2_main_group_1_right_door_handle_mat"/>
+                <geom name="stack_2_main_group_1_right_door_handle_handle_connector_bottom_visual" size="0.008 0.025" pos="0 -0.025 -0.072" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_2_main_group_1_right_door_handle_mat"/>
+                <site name="stack_2_main_group_1_right_door_handle_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            </body>
+            </body>
+        </body>
+        </body>
+        <body name="stack_2_main_group_2_main" pos="1.25 -0.3 0.785">
+        <site name="stack_2_main_group_2_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        <body name="stack_2_main_group_2_door_main" pos="0 -0.285 0">
+            <geom name="stack_2_main_group_2_door_door" size="0.4985 0.1035 0.015" quat="0.707105 0.707108 0 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_2_main_group_2_door_door_visual" size="0.4985 0.1035 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_2_main_group_2_door_mat"/>
+            <site name="stack_2_main_group_2_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        </body>
+        </body>
+        <body name="dishwasher_main_group_main" pos="2.075 -0.317418 0.445">
+        <geom name="dishwasher_main_group_g0" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="dishwasher_main_group_TX_Dishwasher_3_2" mesh="dishwasher_main_group_model_0_vis"/>
+        <geom name="dishwasher_main_group_g1" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="dishwasher_main_group_TX_Dishwasher_3_1" mesh="dishwasher_main_group_model_1_vis"/>
+        <geom name="dishwasher_main_group_g2" size="0.325 0.300813 0.445" pos="0 0.0182311 0" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <site name="dishwasher_main_group_default_site" pos="0 0 0" size="0.00177574" rgba="1 0 0 0"/>
+        </body>
+        <!-- Placard entre machine a laver et four  -->
+        <body name="stack_3_main_group_base_main" pos="2.575 -0.265 0.025">
+        <geom name="stack_3_main_group_base_g0" size="0.175 0.265 0.025" type="box" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_3_main_group_base_g0_vis" size="0.175 0.265 0.025" type="box" contype="0" conaffinity="0" group="1" mass="0" material="box_mat"/>
+        <site name="stack_3_main_group_base_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 1" group="3"/>
+        </body>
+        <body name="stack_3_main_group_1_main" pos="2.575 -0.3 0.47">
+        <geom name="stack_3_main_group_1_top" size="0.175 0.285 0.015" pos="0 0.015 0.405" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_3_main_group_1_bottom" size="0.175 0.285 0.015" pos="0 0.015 -0.405" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_3_main_group_1_back" size="0.145 0.015 0.39" pos="0 0.285 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_3_main_group_1_right" size="0.015 0.285 0.39" pos="0.16 0.015 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_3_main_group_1_left" size="0.015 0.285 0.39" pos="-0.16 0.015 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_3_main_group_1_shelf" size="0.145 0.25 0.015" pos="0 0.035 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_3_main_group_1_top_visual" size="0.175 0.285 0.015" pos="0 0.015 0.405" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_3_main_group_1_mat"/>
+        <geom name="stack_3_main_group_1_bottom_visual" size="0.175 0.285 0.015" pos="0 0.015 -0.405" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_3_main_group_1_mat"/>
+        <geom name="stack_3_main_group_1_back_visual" size="0.145 0.015 0.39" pos="0 0.285 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_3_main_group_1_mat"/>
+        <geom name="stack_3_main_group_1_right_visual" size="0.015 0.285 0.39" pos="0.16 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_3_main_group_1_mat"/>
+        <geom name="stack_3_main_group_1_left_visual" size="0.015 0.285 0.39" pos="-0.16 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_3_main_group_1_mat"/>
+        <geom name="stack_3_main_group_1_shelf_visual" size="0.145 0.25 0.015" pos="0 0.035 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_3_main_group_1_mat"/>
+        <site name="stack_3_main_group_1_ext_p0" pos="-0.175 -0.3 -0.42" size="0.01" rgba="0 0 0 0"/>
+        <site name="stack_3_main_group_1_ext_px" pos="0.175 -0.3 -0.42" size="0.01" rgba="1 0 0 0"/>
+        <site name="stack_3_main_group_1_ext_py" pos="-0.175 0.3 -0.42" size="0.01" rgba="0 1 0 0"/>
+        <site name="stack_3_main_group_1_ext_pz" pos="-0.175 -0.3 0.42" size="0.01" rgba="0 0 1 0"/>
+        <site name="stack_3_main_group_1_int_p0" pos="-0.145 -0.27 -0.39" size="0.01" rgba="0.5 0.5 0.5 0"/>
+        <site name="stack_3_main_group_1_int_px" pos="0.145 -0.27 -0.39" size="0.01" rgba="1 1 0 0"/>
+        <site name="stack_3_main_group_1_int_py" pos="-0.145 0.27 -0.39" size="0.01" rgba="0 1 1 0"/>
+        <site name="stack_3_main_group_1_int_pz" pos="-0.145 -0.27 0.39" size="0.01" rgba="1 0 1 0"/>
+        <site name="stack_3_main_group_1_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        <body name="stack_3_main_group_1_hingedoor">
+            <joint name="stack_3_main_group_1_doorhinge" pos="0.16 -0.3 0" axis="0 0 1" limited="true" range="0 3" damping="0.1" armature="0.01" stiffness="0"/>
+            <site name="stack_3_main_group_1_door_p1" pos="0 -0.2 0" rgba="1 0 0 0"/>
+            <site name="stack_3_main_group_1_door_p2" pos="0.05 -0.2 0" rgba="0 1 0 0"/>
+            <site name="stack_3_main_group_1_door_p3" pos="0 -0.2 0.05" rgba="0 0 1 0"/>
+            <body name="stack_3_main_group_1_door_main" pos="0 -0.285 0">
+            <geom name="stack_3_main_group_1_door_door" size="0.1735 0.4185 0.015" quat="0.707105 0.707108 0 0" type="box" density="1" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_3_main_group_1_door_door_visual" size="0.1735 0.4185 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_3_main_group_1_door_mat"/>
+            <site name="stack_3_main_group_1_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            <body name="stack_3_main_group_1_door_handle_main" pos="-0.1235 0 0.2185">
+                <geom name="stack_3_main_group_1_door_handle_handle" size="0.013 0.12" pos="0 -0.05 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3" friction="1.0 0.05 0.002" margin="0.005" solimp="0.98 0.99 0.001" solref="0.002 1"/>
+                <geom name="stack_3_main_group_1_door_handle_handle_connector_top" size="0.008 0.025" pos="0 -0.025 0.072" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_3_main_group_1_door_handle_handle_connector_bottom" size="0.008 0.025" pos="0 -0.025 -0.072" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_3_main_group_1_door_handle_handle_visual" size="0.013 0.12" pos="0 -0.05 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_3_main_group_1_door_handle_mat"/>
+                <geom name="stack_3_main_group_1_door_handle_handle_connector_top_visual" size="0.008 0.025" pos="0 -0.025 0.072" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_3_main_group_1_door_handle_mat"/>
+                <geom name="stack_3_main_group_1_door_handle_handle_connector_bottom_visual" size="0.008 0.025" pos="0 -0.025 -0.072" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_3_main_group_1_door_handle_mat"/>
+                <site name="stack_3_main_group_1_door_handle_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            </body>
+            </body>
+        </body>
+        </body>
+        <body name="stack_4_main_group_base_main" pos="3.89918 -0.265 0.025">
+        <geom name="stack_4_main_group_base_g0" size="0.35 0.265 0.025" type="box" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_4_main_group_base_g0_vis" size="0.35 0.265 0.025" type="box" contype="0" conaffinity="0" group="1" mass="0" material="box_mat"/>
+        <site name="stack_4_main_group_base_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 1" group="3"/>
+        </body>
+        <body name="stack_4_main_group_1_main" pos="3.89918 -0.3 0.365">
+        <geom name="stack_4_main_group_1_top" size="0.35 0.285 0.015" pos="0 0.015 0.3" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_4_main_group_1_bottom" size="0.35 0.285 0.015" pos="0 0.015 -0.3" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_4_main_group_1_back" size="0.32 0.015 0.285" pos="0 0.285 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_4_main_group_1_right" size="0.015 0.285 0.285" pos="0.335 0.015 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_4_main_group_1_left" size="0.015 0.285 0.285" pos="-0.335 0.015 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_4_main_group_1_shelf" size="0.32 0.25 0.015" pos="0 0.035 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_4_main_group_1_top_visual" size="0.35 0.285 0.015" pos="0 0.015 0.3" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_1_mat"/>
+        <geom name="stack_4_main_group_1_bottom_visual" size="0.35 0.285 0.015" pos="0 0.015 -0.3" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_1_mat"/>
+        <geom name="stack_4_main_group_1_back_visual" size="0.32 0.015 0.285" pos="0 0.285 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_1_mat"/>
+        <geom name="stack_4_main_group_1_right_visual" size="0.015 0.285 0.285" pos="0.335 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_1_mat"/>
+        <geom name="stack_4_main_group_1_left_visual" size="0.015 0.285 0.285" pos="-0.335 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_1_mat"/>
+        <geom name="stack_4_main_group_1_shelf_visual" size="0.32 0.25 0.015" pos="0 0.035 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_1_mat"/>
+        <site name="stack_4_main_group_1_ext_p0" pos="-0.35 -0.3 -0.315" size="0.01" rgba="0 0 0 0"/>
+        <site name="stack_4_main_group_1_ext_px" pos="0.35 -0.3 -0.315" size="0.01" rgba="1 0 0 0"/>
+        <site name="stack_4_main_group_1_ext_py" pos="-0.35 0.3 -0.315" size="0.01" rgba="0 1 0 0"/>
+        <site name="stack_4_main_group_1_ext_pz" pos="-0.35 -0.3 0.315" size="0.01" rgba="0 0 1 0"/>
+        <site name="stack_4_main_group_1_int_p0" pos="-0.32 -0.27 -0.285" size="0.01" rgba="0.5 0.5 0.5 0"/>
+        <site name="stack_4_main_group_1_int_px" pos="0.32 -0.27 -0.285" size="0.01" rgba="1 1 0 0"/>
+        <site name="stack_4_main_group_1_int_py" pos="-0.32 0.27 -0.285" size="0.01" rgba="0 1 1 0"/>
+        <site name="stack_4_main_group_1_int_pz" pos="-0.32 -0.27 0.285" size="0.01" rgba="1 0 1 0"/>
+        <site name="stack_4_main_group_1_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        <body name="stack_4_main_group_1_hingedoor">
+            <joint name="stack_4_main_group_1_doorhinge" pos="0.335 -0.3 0" axis="0 0 1" limited="true" range="0 3" damping="2"/>
+            <site name="stack_4_main_group_1_door_p1" pos="0 -0.2 0" rgba="1 0 0 0"/>
+            <site name="stack_4_main_group_1_door_p2" pos="0.05 -0.2 0" rgba="0 1 0 0"/>
+            <site name="stack_4_main_group_1_door_p3" pos="0 -0.2 0.05" rgba="0 0 1 0"/>
+            <body name="stack_4_main_group_1_door_main" pos="0 -0.285 0">
+            <geom name="stack_4_main_group_1_door_door" size="0.3485 0.3135 0.015" quat="0.707105 0.707108 0 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_4_main_group_1_door_door_visual" size="0.3485 0.3135 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_1_door_mat"/>
+            <site name="stack_4_main_group_1_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            <body name="stack_4_main_group_1_door_handle_main" pos="-0.2985 0 0.1135">
+                <geom name="stack_4_main_group_1_door_handle_handle" size="0.013 0.12" pos="0 -0.05 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_4_main_group_1_door_handle_handle_connector_top" size="0.008 0.025" pos="0 -0.025 0.072" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_4_main_group_1_door_handle_handle_connector_bottom" size="0.008 0.025" pos="0 -0.025 -0.072" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_4_main_group_1_door_handle_handle_visual" size="0.013 0.12" pos="0 -0.05 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_1_door_handle_mat"/>
+                <geom name="stack_4_main_group_1_door_handle_handle_connector_top_visual" size="0.008 0.025" pos="0 -0.025 0.072" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_1_door_handle_mat"/>
+                <geom name="stack_4_main_group_1_door_handle_handle_connector_bottom_visual" size="0.008 0.025" pos="0 -0.025 -0.072" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_1_door_handle_mat"/>
+                <site name="stack_4_main_group_1_door_handle_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            </body>
+            </body>
+        </body>
+        </body>
+        <body name="stack_4_main_group_2_main" pos="3.89918 -0.3 0.785">
+        <geom name="stack_4_main_group_2_top" size="0.35 0.285 0.015" pos="0 0.015 0.09" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_4_main_group_2_bottom" size="0.35 0.285 0.015" pos="0 0.015 -0.09" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_4_main_group_2_back" size="0.32 0.015 0.075" pos="0 0.285 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_4_main_group_2_right" size="0.015 0.285 0.075" pos="0.335 0.015 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_4_main_group_2_left" size="0.015 0.285 0.075" pos="-0.335 0.015 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+        <geom name="stack_4_main_group_2_top_visual" size="0.35 0.285 0.015" pos="0 0.015 0.09" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_2_mat"/>
+        <geom name="stack_4_main_group_2_bottom_visual" size="0.35 0.285 0.015" pos="0 0.015 -0.09" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_2_mat"/>
+        <geom name="stack_4_main_group_2_back_visual" size="0.32 0.015 0.075" pos="0 0.285 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_2_mat"/>
+        <geom name="stack_4_main_group_2_right_visual" size="0.015 0.285 0.075" pos="0.335 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_2_mat"/>
+        <geom name="stack_4_main_group_2_left_visual" size="0.015 0.285 0.075" pos="-0.335 0.015 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_2_mat"/>
+        <site name="stack_4_main_group_2_ext_p0" pos="-0.35 -0.3 -0.105" rgba="0 0 0 0"/>
+        <site name="stack_4_main_group_2_ext_px" pos="0.35 -0.3 -0.105" rgba="1 0 0 0"/>
+        <site name="stack_4_main_group_2_ext_py" pos="-0.35 0.3 -0.105" rgba="0 1 0 0"/>
+        <site name="stack_4_main_group_2_ext_pz" pos="-0.35 -0.3 0.105" rgba="0 0 1 0"/>
+        <site name="stack_4_main_group_2_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+        <body name="stack_4_main_group_2_inner_box">
+            <joint name="stack_4_main_group_2_slidejoint" pos="0 -0.3 0" axis="0 1 0" type="slide" limited="true" range="-0.6 0" damping="10"/>
+            <geom name="stack_4_main_group_2_inner_bottom" size="0.319 0.27 0.015" pos="0 0 -0.059" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_4_main_group_2_inner_back" size="0.289 0.015 0.044" pos="0 0.255 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_4_main_group_2_inner_right" size="0.015 0.27 0.044" pos="0.304 0 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_4_main_group_2_inner_left" size="0.015 0.27 0.044" pos="-0.304 0 0" type="box" mass="0.2" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_4_main_group_2_inner_bottom_visual" size="0.319 0.27 0.015" pos="0 0 -0.059" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_2_mat"/>
+            <geom name="stack_4_main_group_2_inner_back_visual" size="0.289 0.015 0.044" pos="0 0.255 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_2_mat"/>
+            <geom name="stack_4_main_group_2_inner_right_visual" size="0.015 0.27 0.044" pos="0.304 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_2_mat"/>
+            <geom name="stack_4_main_group_2_inner_left_visual" size="0.015 0.27 0.044" pos="-0.304 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_2_mat"/>
+            <site name="stack_4_main_group_2_int_p0" pos="-0.289 -0.27 -0.044" rgba="0.5 0.5 0.5 0"/>
+            <site name="stack_4_main_group_2_int_px" pos="0.289 -0.27 -0.044" rgba="1 1 0 0"/>
+            <site name="stack_4_main_group_2_int_py" pos="-0.289 0.24 -0.044" rgba="0 1 1 0"/>
+            <site name="stack_4_main_group_2_int_pz" pos="-0.289 -0.27 0.074" rgba="1 0 1 0"/>
+            <body name="stack_4_main_group_2_door_main" pos="0 -0.285 0">
+            <geom name="stack_4_main_group_2_door_door" size="0.3485 0.1035 0.015" quat="0.707105 0.707108 0 0" type="box" density="10" rgba="0.5 0 0 1" group="3"/>
+            <geom name="stack_4_main_group_2_door_door_visual" size="0.3485 0.1035 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_2_door_mat"/>
+            <site name="stack_4_main_group_2_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            <body name="stack_4_main_group_2_door_handle_main">
+                <geom name="stack_4_main_group_2_door_handle_handle" size="0.013 0.0635" pos="0 -0.05 0" quat="0.707105 0 0.707108 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_4_main_group_2_door_handle_handle_connector_top" size="0.008 0.025" pos="0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_4_main_group_2_door_handle_handle_connector_bottom" size="0.008 0.025" pos="-0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
+                <geom name="stack_4_main_group_2_door_handle_handle_visual" size="0.013 0.0635" pos="0 -0.05 0" quat="0.707105 0 0.707108 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_2_door_handle_mat"/>
+                <geom name="stack_4_main_group_2_door_handle_handle_connector_top_visual" size="0.008 0.025" pos="0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_2_door_handle_mat"/>
+                <geom name="stack_4_main_group_2_door_handle_handle_connector_bottom_visual" size="0.008 0.025" pos="-0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" contype="0" conaffinity="0" group="1" mass="0" material="stack_4_main_group_2_door_handle_mat"/>
+                <site name="stack_4_main_group_2_door_handle_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
+            </body>
+            </body>
+        </body>
+        </body>
+        <body name="coffee_machine_main_group_main" pos="0.6 -0.310715 1.11">
+        <geom name="coffee_machine_main_group_g0" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="coffee_machine_main_group_back" mesh="coffee_machine_main_group_model_0_vis"/>
+        <geom name="coffee_machine_main_group_g1" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="coffee_machine_main_group_White_Plastic" mesh="coffee_machine_main_group_model_1_vis"/>
+        <geom name="coffee_machine_main_group_g2" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="coffee_machine_main_group_logo" mesh="coffee_machine_main_group_model_2_vis"/>
+        <geom name="coffee_machine_main_group_g3" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="coffee_machine_main_group_panel_trims" mesh="coffee_machine_main_group_model_3_vis"/>
+        <geom name="coffee_machine_main_group_g4" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="coffee_machine_main_group_front_panel_display" mesh="coffee_machine_main_group_model_4_vis"/>
+        <geom name="coffee_machine_main_group_g5" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="coffee_machine_main_group_cap_milk_alu" mesh="coffee_machine_main_group_model_5_vis"/>
+        <geom name="coffee_machine_main_group_g6" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="coffee_machine_main_group_top_panel_alu" mesh="coffee_machine_main_group_model_6_vis"/>
+        <geom name="coffee_machine_main_group_g7" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="coffee_machine_main_group_material" mesh="coffee_machine_main_group_model_7_vis"/>
+        <geom name="coffee_machine_main_group_g8" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="coffee_machine_main_group_front_panel_2" mesh="coffee_machine_main_group_model_8_vis"/>
+        <geom name="coffee_machine_main_group_g9" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="coffee_machine_main_group_front_panel" mesh="coffee_machine_main_group_model_9_vis"/>
+        <geom name="coffee_machine_main_group_g10" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="coffee_machine_main_group_glass" mesh="coffee_machine_main_group_model_10_vis"/>
+        <geom name="coffee_machine_main_group_g11" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="coffee_machine_main_group_cap_milk" mesh="coffee_machine_main_group_model_11_vis"/>
+        <geom name="coffee_machine_main_group_g12" type="mesh" contype="0" conaffinity="0" group="1" friction="0.95 0.3 0.1" solref="0.001" solimp="0.998 0.998" density="100" material="coffee_machine_main_group_Black_Plastic" mesh="coffee_machine_main_group_model_12_vis"/>
+        <geom name="coffee_machine_main_group_g13" size="0.136634 0.173987 0.19" pos="0 0.0767146 0" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="coffee_machine_main_group_g14" size="0.136634 0.0205575 0.160449" pos="0 -0.102787 -0.0250701" quat="0.99875 0.0499792 0 0" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="coffee_machine_main_group_g15" size="0.136634 0.0205575 0.0325912" pos="0 -0.101283 0.143902" quat="0.950796 -0.309816 0 0" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="coffee_machine_main_group_start_button" size="0.0122844 0.000501402 0.0225631" pos="0.0749597 -0.117579 0.15719" quat="0.950796 -0.309816 0 0" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="coffee_machine_main_group_g17" size="0.0330926 0.0325912 0.0737062" pos="-0.00200561 -0.150421 0.0325912" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="coffee_machine_main_group_g18" size="0.0330926 0.0526473 0.120337" pos="-0.0927594 -0.191034 -0.0325912" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="coffee_machine_main_group_g19" size="0.010028 0.0381066" pos="-0.0383071 -0.192539 0" quat="0.975897 0 -0.21823 0" type="cylinder" rgba="0.5 0 0 0.5" group="3"/>
+        <geom name="coffee_machine_main_group_g20" size="0.136634 0.0752104 0.0225631" pos="0 -0.175491 -0.165964" type="box" rgba="0.5 0 0 0.5" group="3"/>
+        <site name="coffee_machine_main_group_receptacle_place_site" pos="0.0125351 -0.180505 -0.1429" size="0.010028" rgba="0 0 0 0"/>
+        <site name="coffee_machine_main_group_coffee_liquid_left" pos="-0.0180505 -0.160449 -0.10028" size="0.00300841 0.0651823" type="cylinder" rgba="0.8 0.5 0.25 0"/>
+        <site name="coffee_machine_main_group_coffee_liquid_right" pos="0.0170477 -0.160449 -0.10028" size="0.00300841 0.0651823" type="cylinder" rgba="0.8 0.5 0.25 0"/>
+        <site name="coffee_machine_main_group_ext_p0" pos="-0.136634 -0.250701 -0.19" size="0.00501402" rgba="0 0 0 0"/>
+        <site name="coffee_machine_main_group_ext_px" pos="0.136634 -0.250701 -0.19" size="0.00501402" rgba="1 0 0 0"/>
+        <site name="coffee_machine_main_group_ext_py" pos="-0.136634 0.250701 -0.19" size="0.00501402" rgba="0 1 0 0"/>
+        <site name="coffee_machine_main_group_ext_pz" pos="-0.136634 -0.250701 0.19" size="0.00501402" rgba="0 0 1 0"/>
+        <site name="coffee_machine_main_group_default_site" pos="0 0 0" size="0.0010028" rgba="1 0 0 0"/>
+        </body>
+    </body>
+</mujocoinclude>

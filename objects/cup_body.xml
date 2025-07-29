@@ -1,0 +1,39 @@
+<mujocoinclude>
+    <body name="cup_body">
+        <geom class = "ycb_viz" type="mesh" mesh="cup_normalized_0_vis" conaffinity="0" contype="0" group="1" material="Body3__0"/>
+        <geom class = "ycb_viz" type="mesh" mesh="cup_normalized_1_vis" conaffinity="0" contype="0" group="1" material="Paint_-_Enamel_Glossy_Red"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="cylinder" size="0.043 0.04" pos="0 0 0"/>
+        <!-- <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_22._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_23._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_21._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_20._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_24._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_30._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_18._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_19._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_31._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_25._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_27._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_26._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_9._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_8._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_6._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_7._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_5._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_4._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_0._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_1._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_3._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_2._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_17._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_16._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_28._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_14._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_15._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_29._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_11._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_10._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_12._coll"  rgba="0.8 0.8 0.8 0.0"/>
+        <geom class = "ycb_col" friction="3 1 0.01" type="mesh" mesh="cup_normalized_collision_13._coll"  rgba="0.8 0.8 0.8 0.0"/> -->
+    </body>
+</mujocoinclude>

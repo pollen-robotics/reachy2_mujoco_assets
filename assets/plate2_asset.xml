@@ -1,0 +1,41 @@
+<mujocoinclude>
+    <asset>
+        <mesh file="../assets/meshes/plate_2/visual/model_normalized_0.obj" name="plate_normalized_0_vis" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/visual/model_normalized_1.obj" name="plate_normalized_1_vis" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_22.obj" name="plate_normalized_collision_22._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_23.obj" name="plate_normalized_collision_23._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_21.obj" name="plate_normalized_collision_21._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_20.obj" name="plate_normalized_collision_20._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_24.obj" name="plate_normalized_collision_24._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_30.obj" name="plate_normalized_collision_30._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_18.obj" name="plate_normalized_collision_18._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_19.obj" name="plate_normalized_collision_19._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_31.obj" name="plate_normalized_collision_31._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_25.obj" name="plate_normalized_collision_25._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_27.obj" name="plate_normalized_collision_27._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_26.obj" name="plate_normalized_collision_26._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_9.obj" name="plate_normalized_collision_9._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_8.obj" name="plate_normalized_collision_8._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_6.obj" name="plate_normalized_collision_6._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_7.obj" name="plate_normalized_collision_7._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_5.obj" name="plate_normalized_collision_5._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_4.obj" name="plate_normalized_collision_4._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_0.obj" name="plate_normalized_collision_0._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_1.obj" name="plate_normalized_collision_1._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_3.obj" name="plate_normalized_collision_3._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_2.obj" name="plate_normalized_collision_2._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_17.obj" name="plate_normalized_collision_17._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_16.obj" name="plate_normalized_collision_16._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_28.obj" name="plate_normalized_collision_28._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_14.obj" name="plate_normalized_collision_14._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_15.obj" name="plate_normalized_collision_15._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_29.obj" name="plate_normalized_collision_29._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_11.obj" name="plate_normalized_collision_11._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_10.obj" name="plate_normalized_collision_10._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_12.obj" name="plate_normalized_collision_12._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <mesh file="../assets/meshes/plate_2/collision/model_normalized_collision_13.obj" name="plate_normalized_collision_13._coll" scale="0.175 0.175 0.175" refquat="1.0 0.0 0.0 0.0"/>
+        <texture type="2d" name="plate2_image0" file="meshes/plate_2/visual/image0.png"/>
+        <material name="pasted__phong2" texture="plate2_image0" specular="0.5" shininess="0.359999993"/>
+        <material name="phong1.004" texture="plate2_image0" specular="0.5" shininess="0.359999993"/>
+    </asset>
+</mujocoinclude>

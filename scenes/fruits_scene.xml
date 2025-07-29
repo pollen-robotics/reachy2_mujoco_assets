@@ -1,0 +1,97 @@
+<mujoco model="reachy2_fruits_scene">
+    <compiler angle="radian" />
+
+    <include file="../assets/reachy2_asset.xml"/>
+    <include file="../assets/fruits_assets.xml"/>
+    <include file="../assets/bowl_asset.xml"/>
+    <include file="../assets/plate_asset.xml"/>
+    <include file="../assets/table_asset.xml"/>
+
+    <default>
+        <default class="ycb_col">
+            <geom contype="1" rgba = "1 1 1 1" conaffinity="1" condim ="6" solimp="0.95 0.99 0.001" solref=".002 1" margin = "0.002" friction="0.5 0.1 0.01" group = "3"/>
+        </default>
+        <default class="ycb_viz">
+            <geom contype="0" conaffinity="0" type="mesh"/>
+        </default>
+
+    </default>
+
+    <option gravity="0 0 -9.81" timestep="0.001" iterations="50" integrator="implicitfast">
+        <flag multiccd="enable" contact="enable"/>
+    </option>
+
+    <visual>
+        <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+        <rgba haze="0.15 0.25 0.35 1"/>
+        <global azimuth="160" elevation="-20" offwidth="1280" offheight="720"/>
+    </visual>
+
+    <asset>
+        <!-- Ground -->
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+        <texture type="2d" name="groundplane" builtin="checker" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300"/>
+        <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2"/>
+    </asset>
+
+    <worldbody>
+        <light pos="0 0 3" dir="0 0 -1" directional="false"/>
+        
+        <!-- Sol -->
+        <body name="floor">
+            <geom contype="1" conaffinity="2" friction=".1 0.005 0.0001" name="floor" pos="0 0 0" size="0 0 .25" type="plane" material="groundplane" condim="3" solimp="0 0.95 0.001 0.5 2" solref="0.02 1" margin="0"/>
+        </body>
+
+        <!-- Reachy -->
+        <body name="reachy" pos="0 0 0">
+            <freejoint name="mobile_base" />
+            <include file="../objects/reachy2_body.xml"/>
+        </body>
+
+        <!-- Table -->
+        <body name="table" pos="0.7 0 0" euler="1.57 1.57 0">
+            <geom class = "ycb_viz" name="table_visual"  mesh="wooden_table" material="wooden_table_material"/>
+            <geom class = "ycb_col" name="table_collision" type="box" size="0.45 0.34 0.28" pos="0 0.3 0" margin = "0" friction="1 0.005 0.0005" solref="0.03 1" solimp="0.99 0.99 0.01"/>
+
+        </body>
+
+        <!-- Apples -->
+        <body name="apple1" pos="0.5 -0.12 0.64" >
+            <geom class="ycb_viz" material="apple_mat" mesh="apple"/>
+            <geom class = "ycb_col" type="capsule" fromto="0.0 -0.005 0.035 0.0 -0.005 0.055" size="0.035" mass="0.1" rgba = "1 0 0 1"/>
+            <joint type="free"/>
+        </body>
+
+        <body name="apple2" pos="0.58 -0.07 0.64" >
+            <geom class="ycb_viz" material="apple_mat" mesh="apple"/>
+            <geom class = "ycb_col" type="capsule" fromto="0.0 -0.005 0.035 0.0 -0.005 0.055" size="0.035" mass="0.1" rgba = "1 0 0 1"/>
+            <joint type="free"/>
+        </body>
+
+        <!-- Oranges -->
+        <body name="orange1" pos="0.5 0.15 0.64">
+            <geom class="ycb_viz" material="orange_mat" mesh="orange"/>
+            <geom class = "ycb_col" type="capsule" fromto="-0.007 -0.018 0.035 -0.007 -0.018 0.055" size="0.038" mass="0.1" rgba = "1 0 0 1"/>
+            <joint type="free"/>
+        </body>
+
+        <body name="orange2" pos="0.56 0.07 0.64">
+            <geom class="ycb_viz" material="orange_mat" mesh="orange"/>
+            <geom class = "ycb_col" type="capsule" fromto="-0.007 -0.018 0.035 -0.007 -0.018 0.055" size="0.038" mass="0.1" rgba = "1 0 0 1"/>
+            <joint type="free"/>
+        </body>
+
+        <!-- White Plate -->
+        <body pos="0.6 0.3 0.65" euler="0 0 0">
+			<include file="../objects/plate_body.xml" />
+            <freejoint name="plate"/>
+		</body>
+
+        <!-- Bowl -->
+        <body pos="0.65 -0.25 0.64" euler="0 0 1.57">
+			<include file="../objects/bowl_body.xml" />
+            <freejoint name="bowl"/>
+		</body>
+    </worldbody>
+
+</mujoco>

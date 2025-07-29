@@ -1,0 +1,14 @@
+<mujocoinclude>
+    <asset>
+        <texture type="2d" name="apple_tex" file="../assets/textures/apple_texture.png"/>
+        <material name="apple_mat" texture="apple_tex" specular="0.5" shininess="0.5"/>
+        <mesh file="../assets/meshes/apple/apple.obj" name="apple"/>
+        <mesh file="../assets/meshes/apple/apple_collision.obj" name="apple_collision" />
+
+        <texture type="2d" name="orange_texture" file="../assets/textures/orange_texture.png"/>
+        <material name="orange_mat" texture="orange_texture" specular="0.5" shininess="0.5"/>
+        <mesh file="../assets/meshes/orange/textured.obj" name="orange"/>
+        <mesh file="../assets/meshes/orange/textured_collision_0.obj" name="orange_collision_0"/>
+
+    </asset>
+</mujocoinclude>

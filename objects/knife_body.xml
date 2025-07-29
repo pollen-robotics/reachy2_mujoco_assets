@@ -1,0 +1,34 @@
+<mujocoinclude>    
+    <body name="knife_body">
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_0_vis" conaffinity="0" contype="0" group="1" material="Knife.001"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_22._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_23._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_21._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_20._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_24._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_18._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_19._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_25._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_27._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_26._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_9._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_8._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_6._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_7._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_5._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_4._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_0._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_1._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_3._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_2._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_17._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_16._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_28._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_15._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_11._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_10._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_12._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+        <geom solimp="0.998 0.998 0.001" solref="0.001 1" density="100" friction="0.95 0.3 0.1" type="mesh" mesh="knife_normalized_collision_13._coll" group="0" rgba="0.8 0.8 0.8 0.0"/>
+    </body>
+
+</mujocoinclude>

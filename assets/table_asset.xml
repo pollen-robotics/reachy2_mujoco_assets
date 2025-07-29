@@ -1,0 +1,7 @@
+<mujocoinclude>
+    <asset>
+        <texture type="2d" name="wooden_table_texture" file="../assets/textures/wood0.png"/>
+        <material name="wooden_table_material" texture="wooden_table_texture"/>
+        <mesh name="wooden_table" file="../assets/meshes/wooden_table.obj" scale="0.8 0.8 0.8"/>
+    </asset>
+</mujocoinclude>

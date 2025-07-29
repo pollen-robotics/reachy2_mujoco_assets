@@ -1,0 +1,217 @@
+<mujocoinclude>
+    <asset>
+        <texture type="skybox" builtin="flat" rgb1="1 1 1" rgb2="1 1 1" width="256" height="1536"/>
+        <texture type="2d" name="wall_room_wall" file="../assets/textures/marble.png"/>
+        <texture type="2d" name="wall_backing_room_wall" file="../assets/textures/flat/light_gray.png"/>
+        <texture type="2d" name="wall_left_room_wall" file="../assets/textures/marble.png"/>
+        <texture type="2d" name="wall_left_backing_room_wall" file="../assets/textures/flat/light_gray.png"/>
+        <texture type="2d" name="wall_right_room_wall" file="../assets/textures/marble.png"/>
+        <texture type="2d" name="wall_right_backing_room_wall" file="../assets/textures/flat/light_gray.png"/>
+        <texture type="2d" name="floor_room_wall" file="../assets/textures/light_wood_planks_2.png"/>
+        <texture type="2d" name="floor_backing_room_wall" file="../assets/textures/flat/light_gray.png"/>
+        <texture type="2d" name="outlet_room_tex-outlet" file="../assets/fixtures/accessories/outlets/simple_white/visuals/material_0.png"/>
+        <texture type="2d" name="outlet_room_image0" file="../assets/fixtures/accessories/outlets/simple_white/visuals/image0.png"/>
+        <texture type="2d" name="outlet_2_room_tex-outlet" file="../assets/fixtures/accessories/outlets/simple_white/visuals/material_0.png"/>
+        <texture type="2d" name="outlet_2_room_image0" file="../assets/fixtures/accessories/outlets/simple_white/visuals/image0.png"/>
+        <texture type="2d" name="light_switch_room_tex-light_switch" file="../assets/fixtures/accessories/light_switches/white_wide_switch/visuals/material_0.png"/>
+        <texture type="2d" name="light_switch_room_image0" file="../assets/fixtures/accessories/light_switches/white_wide_switch/visuals/image0.png"/>
+        <texture type="2d" name="light_switch_2_room_tex-light_switch" file="../assets/fixtures/accessories/light_switches/white_wide_switch/visuals/material_0.png"/>
+        <texture type="2d" name="light_switch_2_room_image0" file="../assets/fixtures/accessories/light_switches/white_wide_switch/visuals/image0.png"/>
+        <texture type="2d" name="flat/white_2d" file="../assets/textures/flat/white.png"/>
+        <texture type="cube" name="flat/blue_gray" file="../assets/textures/flat/blue_gray.png"/>
+        <texture type="2d" name="stove_main_group_tex-model" file="../assets/fixtures/stoves/square_gas/visuals/material_0.png"/>
+        <texture type="2d" name="stove_main_group_image0" file="../assets/fixtures/stoves/square_gas/visuals/image0.png"/>
+        <texture type="2d" name="stove_main_group_image4" file="../assets/fixtures/stoves/square_gas/visuals/image4.png"/>
+        <texture type="2d" name="fridge_main_group_tex-model" file="../assets/fixtures/fridges/pack_1/visuals/material_0.png"/>
+        <texture type="2d" name="fridge_main_group_image23" file="../assets/fixtures/fridges/pack_1/visuals/image23.png"/>
+        <texture type="2d" name="fridge_main_group_image0" file="../assets/fixtures/fridges/pack_1/visuals/image0.png"/>
+        <texture type="2d" name="flat/blue_gray_2d" file="../assets/textures/flat/blue_gray.png"/>
+        <texture type="cube" name="flat/dark_gray" file="../assets/textures/flat/dark_gray.png"/>
+        <texture type="2d" name="microwave_main_group_tex-model" file="../assets/fixtures/microwaves/pack_1/visuals/material_0.png"/>
+        <texture type="2d" name="microwave_main_group_image7" file="../assets/fixtures/microwaves/pack_1/visuals/image7.png"/>
+        <texture type="2d" name="microwave_main_group_image2" file="../assets/fixtures/microwaves/pack_1/visuals/image2.png"/>
+        <texture type="2d" name="microwave_main_group_image5" file="../assets/fixtures/microwaves/pack_1/visuals/image5.png"/>
+        <texture type="2d" name="wood/light_wood_parquet_2d" file="../assets/textures/light_wood_parquet.png"/>
+        <texture type="cube" name="box" file="../assets/textures/flat/blue_gray.png"/>
+        <texture type="2d" name="tex_2d" file="../assets/textures/ceramic.png"/>
+        <texture type="2d" name="dishwasher_main_group_tex-model" file="../assets/fixtures/dishwashers/pack_1/visuals/material_0.png"/>
+        <texture type="2d" name="dishwasher_main_group_image9" file="../assets/fixtures/dishwashers/pack_1/visuals/image9.png"/>
+        <texture type="2d" name="dishwasher_main_group_image13" file="../assets/fixtures/dishwashers/pack_1/visuals/image13.png"/>
+        <texture type="2d" name="coffee_machine_main_group_tex-model" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/material_0.png"/>
+        <texture type="2d" name="coffee_machine_main_group_image3" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/image3.png"/>
+        <texture type="2d" name="coffee_machine_main_group_image0" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/image0.png"/>
+        <texture type="2d" name="coffee_machine_main_group_image8" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/image8.png"/>
+        <texture type="2d" name="coffee_machine_main_group_image1" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/image1.png"/>
+        <texture type="2d" name="coffee_machine_main_group_image6" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/image6.png"/>
+        <texture type="2d" name="coffee_machine_main_group_image10" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/image10.png"/>
+        <texture type="2d" name="coffee_machine_main_group_image12" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/image12.png"/>
+        <texture type="2d" name="toaster_main_group_tex-model" file="../assets/fixtures/toasters/vintage/visuals/material_0.png"/>
+        <texture type="2d" name="toaster_main_group_image0" file="../assets/fixtures/toasters/vintage/visuals/image0.png"/>
+        <texture type="2d" name="knife_block_main_group_tex-model" file="../assets/fixtures/accessories/knife_blocks/light_wood_3/visuals/material_0.png"/>
+        <texture type="2d" name="knife_block_main_group_image0" file="../assets/fixtures/accessories/knife_blocks/light_wood_3/visuals/image0.png"/>
+        <texture type="2d" name="paper_towel_main_group_tex-model" file="../assets/fixtures/accessories/paper_towel_holders/holder_2/visuals/material_0.png"/>
+        <texture type="2d" name="paper_towel_main_group_image0" file="../assets/fixtures/accessories/paper_towel_holders/holder_2/visuals/image0.png"/>
+        <texture type="2d" name="paper_towel_main_group_image1" file="../assets/fixtures/accessories/paper_towel_holders/holder_2/visuals/image1.png"/>
+        <material name="wall_room_wall_mat" texture="wall_room_wall" texuniform="true" texrepeat="0.75 0.75" shininess="0.01" reflectance="0.1"/>
+        <material name="wall_backing_room_wall_mat" texture="wall_backing_room_wall" texuniform="true" texrepeat="0.75 0.75" shininess="0.01" reflectance="0.1"/>
+        <material name="wall_left_room_wall_mat" texture="wall_left_room_wall" texuniform="true" texrepeat="0.75 0.75" shininess="0.01" reflectance="0.1"/>
+        <material name="wall_left_backing_room_wall_mat" texture="wall_left_backing_room_wall" texuniform="true" texrepeat="0.75 0.75" shininess="0.01" reflectance="0.1"/>
+        <material name="wall_right_room_wall_mat" texture="wall_right_room_wall" texuniform="true" texrepeat="0.75 0.75" shininess="0.01" reflectance="0.1"/>
+        <material name="wall_right_backing_room_wall_mat" texture="wall_right_backing_room_wall" texuniform="true" texrepeat="0.75 0.75" shininess="0.01" reflectance="0.1"/>
+        <material name="floor_room_wall_mat" texture="floor_room_wall" texuniform="true"/>
+        <material name="floor_backing_room_wall_mat" texture="floor_backing_room_wall" texuniform="true"/>
+        <material name="outlet_room_outlet" texture="outlet_room_tex-outlet" reflectance="0.5"/>
+        <material name="outlet_2_room_outlet" texture="outlet_2_room_tex-outlet" reflectance="0.5"/>
+        <material name="light_switch_room_light_switch" texture="light_switch_room_tex-light_switch" reflectance="0.5"/>
+        <material name="light_switch_room_lightswitch" texture="light_switch_room_image0" shininess="0.25"/>
+        <material name="light_switch_2_room_light_switch" texture="light_switch_2_room_tex-light_switch" reflectance="0.5"/>
+        <material name="light_switch_2_room_lightswitch" texture="light_switch_2_room_image0" shininess="0.25"/>
+        <material name="sink_main_group_metal_Mat" shininess="0.36" rgba="0.8 0.8 0.8 1"/>
+        <material name="sink_main_group_sink_Mat" shininess="0.36" rgba="0.8 0.8 0.8 1"/>
+        <material name="sink_main_group_tap_Mat" shininess="0.36" rgba="0.8 0.8 0.8 1"/>
+        <material name="counter_main_main_group_counter_top" texture="flat/white_2d" texuniform="true" texrepeat="3 3" shininess="0.1" reflectance="0.1"/>
+        <material name="counter_main_main_group_counter_base" texture="flat/blue_gray" shininess="0.1" reflectance="0.1"/>
+        <material name="stove_main_group_model" texture="stove_main_group_tex-model" reflectance="0.5"/>
+        <material name="stove_main_group_TX_Stove_Small" texture="stove_main_group_image0" shininess="0.25"/>
+        <material name="stove_main_group_TX_Stove_Small_Glass" texture="stove_main_group_image4" shininess="0.25"/>
+        <material name="counter_right_main_group_counter_top" texture="flat/white_2d" texuniform="true" texrepeat="3 3" shininess="0.1" reflectance="0.1"/>
+        <material name="counter_right_main_group_counter_base" texture="flat/blue_gray" shininess="0.1" reflectance="0.1"/>
+        <material name="fridge_main_group_model" texture="fridge_main_group_tex-model" reflectance="0.5"/>
+        <material name="fridge_main_group_TX_Fridge_3_1" texture="fridge_main_group_image23" shininess="0.25"/>
+        <material name="fridge_main_group_TX_Fridge_3_2" texture="fridge_main_group_image0" shininess="0.25"/>
+        <material name="fridge_housing_main_group_mat" texture="flat/blue_gray" shininess="0.1"/>
+        <material name="cab_1_main_group_mat" texture="flat/blue_gray" shininess="0.1"/>
+        <material name="cab_1_main_group_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="cab_1_main_group_door_handle_mat" texture="flat/dark_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="cab_2_main_group_mat" texture="flat/blue_gray" shininess="0.1"/>
+        <material name="cab_2_main_group_left_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="cab_2_main_group_left_door_handle_mat" texture="flat/dark_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="cab_2_main_group_right_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="cab_2_main_group_right_door_handle_mat" texture="flat/dark_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="cab_main_main_group_mat" texture="flat/blue_gray" shininess="0.1"/>
+        <material name="cab_main_main_group_left_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="cab_main_main_group_left_door_handle_mat" texture="flat/dark_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="cab_main_main_group_right_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="cab_main_main_group_right_door_handle_mat" texture="flat/dark_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="microwave_main_group_model" texture="microwave_main_group_tex-model" reflectance="0.5"/>
+        <material name="microwave_main_group_TX_Microwave_3_1" texture="microwave_main_group_image7" shininess="0.25"/>
+        <material name="microwave_main_group_TX_Microwave_3_2" texture="microwave_main_group_image2" shininess="0.25"/>
+        <material name="microwave_main_group_TX_Microwave_3_3" texture="microwave_main_group_image5" shininess="0.25"/>
+        <material name="cab_micro_main_group_mat" texture="flat/blue_gray" shininess="0.1"/>
+        <material name="cab_micro_main_group_left_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="cab_micro_main_group_left_door_handle_mat" texture="flat/dark_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="cab_micro_main_group_right_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="cab_micro_main_group_right_door_handle_mat" texture="flat/dark_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="cab_3_main_group_mat" texture="wood/light_wood_parquet_2d" shininess="0.8" reflectance="0.8"/>
+        <material name="cab_3_main_group_shelf_0_mat" texture="wood/light_wood_parquet_2d" texuniform="true" texrepeat="3 3" shininess="0.1" reflectance="0.1"/>
+        <material name="cab_3_main_group_shelf_1_mat" texture="wood/light_wood_parquet_2d" texuniform="true" texrepeat="3 3" shininess="0.1" reflectance="0.1"/>
+        <material name="cab_3_main_group_shelf_2_mat" texture="wood/light_wood_parquet_2d" texuniform="true" texrepeat="3 3" shininess="0.1" reflectance="0.1"/>
+        <material name="cab_4_main_group_mat" texture="flat/blue_gray" shininess="0.1"/>
+        <material name="cab_4_main_group_left_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="cab_4_main_group_left_door_handle_mat" texture="flat/dark_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="cab_4_main_group_right_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="cab_4_main_group_right_door_handle_mat" texture="flat/dark_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="box_mat" texture="box" shininess="0.1"/>
+        <material name="stack_1_main_group_1_mat" texture="flat/blue_gray" shininess="0.1"/>
+        <material name="stack_1_main_group_1_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="stack_1_main_group_1_door_handle_mat" texture="flat/dark_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="stack_1_main_group_2_mat" texture="flat/blue_gray" shininess="0.1"/>
+        <material name="stack_1_main_group_2_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="stack_1_main_group_2_door_handle_mat" texture="flat/dark_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="stack_1_main_group_3_mat" texture="flat/blue_gray" shininess="0.1"/>
+        <material name="stack_1_main_group_3_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="stack_1_main_group_3_door_handle_mat" texture="flat/dark_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="stack_1_main_group_4_mat" texture="flat/blue_gray" shininess="0.1"/>
+        <material name="stack_1_main_group_4_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="stack_1_main_group_4_door_handle_mat" texture="flat/dark_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="stack_2_main_group_1_mat" texture="flat/blue_gray" shininess="0.1"/>
+        <material name="stack_2_main_group_1_left_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="stack_2_main_group_1_left_door_handle_mat" texture="flat/dark_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="stack_2_main_group_1_right_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="stack_2_main_group_1_right_door_handle_mat" texture="flat/dark_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="stack_2_main_group_2_mat" texture="flat/blue_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="stack_2_main_group_2_mat_uniform" texture="tex_2d" texuniform="true" texrepeat="4 4" shininess="0.8" reflectance="0.8"/>
+        <material name="stack_2_main_group_2_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="dishwasher_main_group_model" texture="dishwasher_main_group_tex-model" reflectance="0.5"/>
+        <material name="dishwasher_main_group_TX_Dishwasher_3_1" texture="dishwasher_main_group_image9" shininess="0.25"/>
+        <material name="dishwasher_main_group_TX_Dishwasher_3_2" texture="dishwasher_main_group_image13" shininess="0.25"/>
+        <material name="stack_3_main_group_1_mat" texture="flat/blue_gray" shininess="0.1"/>
+        <material name="stack_3_main_group_1_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="stack_3_main_group_1_door_handle_mat" texture="flat/dark_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="stack_4_main_group_1_mat" texture="flat/blue_gray" shininess="0.1"/>
+        <material name="stack_4_main_group_1_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="stack_4_main_group_1_door_handle_mat" texture="flat/dark_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="stack_4_main_group_2_mat" texture="flat/blue_gray" shininess="0.1"/>
+        <material name="stack_4_main_group_2_door_mat" texture="flat/blue_gray_2d" texuniform="true" texrepeat="4 4" shininess="0.1" reflectance="0.1"/>
+        <material name="stack_4_main_group_2_door_handle_mat" texture="flat/dark_gray" shininess="0.8" reflectance="0.8"/>
+        <material name="coffee_machine_main_group_model" texture="coffee_machine_main_group_tex-model" reflectance="0.5"/>
+        <material name="coffee_machine_main_group_Black_Plastic" shininess="0.7744" rgba="0 0 0 1"/>
+        <material name="coffee_machine_main_group_White_Plastic" shininess="0.7744" rgba="0.552941 0.552941 0.552941 1"/>
+        <material name="coffee_machine_main_group_back" texture="coffee_machine_main_group_image3" shininess="0.7744"/>
+        <material name="coffee_machine_main_group_cap_milk" texture="coffee_machine_main_group_image0" shininess="0.7744"/>
+        <material name="coffee_machine_main_group_cap_milk_alu" texture="coffee_machine_main_group_image8" shininess="0.25"/>
+        <material name="coffee_machine_main_group_front_panel" texture="coffee_machine_main_group_image1" shininess="0.81"/>
+        <material name="coffee_machine_main_group_front_panel_2" texture="coffee_machine_main_group_image6" shininess="0.7744"/>
+        <material name="coffee_machine_main_group_front_panel_display" texture="coffee_machine_main_group_image10" shininess="0.7744"/>
+        <material name="coffee_machine_main_group_glass" shininess="0.81" rgba="0.54902 0.54902 0.54902 1"/>
+        <material name="coffee_machine_main_group_logo" texture="coffee_machine_main_group_image12" shininess="0.25"/>
+        <material name="coffee_machine_main_group_material" shininess="0.81"/>
+        <material name="coffee_machine_main_group_panel_trims" shininess="0.81"/>
+        <material name="coffee_machine_main_group_top_panel_alu" shininess="0.81"/>
+        <material name="toaster_main_group_model" texture="toaster_main_group_tex-model" reflectance="0.5"/>
+        <material name="toaster_main_group_toaster" texture="toaster_main_group_image0" shininess="0.25"/>
+        <material name="knife_block_main_group_model" texture="knife_block_main_group_tex-model" reflectance="0.5"/>
+        <material name="knife_block_main_group_Knife_rack" texture="knife_block_main_group_image0" shininess="0.25"/>
+        <material name="paper_towel_main_group_model" texture="paper_towel_main_group_tex-model" reflectance="0.5"/>
+        <material name="paper_towel_main_group_metal" shininess="0.0553676" rgba="0.35595 0.35595 0.35595 1"/>
+        <material name="paper_towel_main_group_paperSide" texture="paper_towel_main_group_image0" shininess="0"/>
+        <material name="paper_towel_main_group_paperTopAndBottom" texture="paper_towel_main_group_image1" shininess="0"/>
+        <material name="paper_towel_main_group_paperboard" shininess="0" rgba="0.327778 0.266356 0.198069 1"/>
+
+        <mesh name="outlet_room_outlet_0_vis" file="../assets/fixtures/accessories/outlets/simple_white/visuals/outlet_0.obj" scale="0.15 0.15 0.15"/>
+        <mesh name="outlet_2_room_outlet_0_vis" file="../assets/fixtures/accessories/outlets/simple_white/visuals/outlet_0.obj" scale="0.15 0.15 0.15"/>
+        <mesh name="light_switch_room_light_switch_0_vis" file="../assets/fixtures/accessories/light_switches/white_wide_switch/visuals/light_switch_0.obj" scale="0.15 0.15 0.15"/>
+        <mesh name="light_switch_2_room_light_switch_0_vis" file="../assets/fixtures/accessories/light_switches/white_wide_switch/visuals/light_switch_0.obj" scale="0.15 0.15 0.15"/>
+        <mesh name="sink_main_group_model_0_vis" file="../assets/fixtures/sinks/2_bins_stainless/visuals/model_0.obj" scale="0.941781 0.941781 0.941781"/>
+        <mesh name="sink_main_group_model_1_vis" file="../assets/fixtures/sinks/2_bins_stainless/visuals/model_1.obj" scale="0.941781 0.941781 0.941781"/>
+        <mesh name="sink_main_group_model_2_vis" file="../assets/fixtures/sinks/2_bins_stainless/visuals/model_2.obj" scale="0.941781 0.941781 0.941781"/>
+        <mesh name="sink_main_group_spout_0_vis" file="../assets/fixtures/sinks/2_bins_stainless/visuals/spout_0.obj" scale="0.941781 0.941781 0.941781"/>
+        <mesh name="sink_main_group_handle_0_vis" file="../assets/fixtures/sinks/2_bins_stainless/visuals/handle_0.obj" scale="0.941781 0.941781 0.941781"/>
+        <mesh name="stove_main_group_model_0_vis" file="../assets/fixtures/stoves/square_gas/visuals/model_0.obj" scale="0.897959 0.897959 0.897959"/>
+        <mesh name="stove_main_group_model_1_vis" file="../assets/fixtures/stoves/square_gas/visuals/model_1.obj" scale="0.897959 0.897959 0.897959"/>
+        <mesh name="stove_main_group_knob_rear_right_0_vis" file="../assets/fixtures/stoves/square_gas/visuals/knob_rear_right_0.obj" scale="0.897959 0.897959 0.897959"/>
+        <mesh name="stove_main_group_knob_dummy_0_vis" file="../assets/fixtures/stoves/square_gas/visuals/knob_dummy_0.obj" scale="0.897959 0.897959 0.897959"/>
+        <mesh name="stove_main_group_knob_front_left_0_vis" file="../assets/fixtures/stoves/square_gas/visuals/knob_front_left_0.obj" scale="0.897959 0.897959 0.897959"/>
+        <mesh name="stove_main_group_knob_front_right_0_vis" file="../assets/fixtures/stoves/square_gas/visuals/knob_front_right_0.obj" scale="0.897959 0.897959 0.897959"/>
+        <mesh name="stove_main_group_knob_rear_left_0_vis" file="../assets/fixtures/stoves/square_gas/visuals/knob_rear_left_0.obj" scale="0.897959 0.897959 0.897959"/>
+        <mesh name="fridge_main_group_model_0_vis" file="../assets/fixtures/fridges/pack_1/visuals/model_0.obj" scale="1.75 1.75 1.75"/>
+        <mesh name="fridge_main_group_model_1_vis" file="../assets/fixtures/fridges/pack_1/visuals/model_1.obj" scale="1.75 1.75 1.75"/>
+        <mesh name="microwave_main_group_model_0_vis" file="../assets/fixtures/microwaves/pack_1/visuals/model_0.obj" scale="0.823901 0.515464 0.823901"/>
+        <mesh name="microwave_main_group_model_1_vis" file="../assets/fixtures/microwaves/pack_1/visuals/model_1.obj" scale="0.823901 0.515464 0.823901"/>
+        <mesh name="microwave_main_group_model_2_vis" file="../assets/fixtures/microwaves/pack_1/visuals/model_2.obj" scale="0.823901 0.515464 0.823901"/>
+        <mesh name="microwave_main_group_door_0_vis" file="../assets/fixtures/microwaves/pack_1/visuals/door_0.obj" scale="0.823901 0.515464 0.823901"/>
+        <mesh name="microwave_main_group_door_1_vis" file="../assets/fixtures/microwaves/pack_1/visuals/door_1.obj" scale="0.823901 0.515464 0.823901"/>
+        <mesh name="microwave_main_group_door_2_vis" file="../assets/fixtures/microwaves/pack_1/visuals/door_2.obj" scale="0.823901 0.515464 0.823901"/>
+        <mesh name="dishwasher_main_group_model_0_vis" file="../assets/fixtures/dishwashers/pack_1/visuals/model_0.obj" scale="0.887868 0.828685 0.89"/>
+        <mesh name="dishwasher_main_group_model_1_vis" file="../assets/fixtures/dishwashers/pack_1/visuals/model_1.obj" scale="0.887868 0.828685 0.89"/>
+        <mesh name="coffee_machine_main_group_model_0_vis" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/model_0.obj" scale="0.501402 0.501402 0.501402"/>
+        <mesh name="coffee_machine_main_group_model_1_vis" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/model_1.obj" scale="0.501402 0.501402 0.501402"/>
+        <mesh name="coffee_machine_main_group_model_2_vis" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/model_2.obj" scale="0.501402 0.501402 0.501402"/>
+        <mesh name="coffee_machine_main_group_model_3_vis" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/model_3.obj" scale="0.501402 0.501402 0.501402"/>
+        <mesh name="coffee_machine_main_group_model_4_vis" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/model_4.obj" scale="0.501402 0.501402 0.501402"/>
+        <mesh name="coffee_machine_main_group_model_5_vis" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/model_5.obj" scale="0.501402 0.501402 0.501402"/>
+        <mesh name="coffee_machine_main_group_model_6_vis" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/model_6.obj" scale="0.501402 0.501402 0.501402"/>
+        <mesh name="coffee_machine_main_group_model_7_vis" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/model_7.obj" scale="0.501402 0.501402 0.501402"/>
+        <mesh name="coffee_machine_main_group_model_8_vis" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/model_8.obj" scale="0.501402 0.501402 0.501402"/>
+        <mesh name="coffee_machine_main_group_model_9_vis" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/model_9.obj" scale="0.501402 0.501402 0.501402"/>
+        <mesh name="coffee_machine_main_group_model_10_vis" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/model_10.obj" scale="0.501402 0.501402 0.501402"/>
+        <mesh name="coffee_machine_main_group_model_11_vis" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/model_11.obj" scale="0.501402 0.501402 0.501402"/>
+        <mesh name="coffee_machine_main_group_model_12_vis" file="../assets/fixtures/coffee_machines/delonghi_espresso_2/visuals/model_12.obj" scale="0.501402 0.501402 0.501402"/>
+        <mesh name="toaster_main_group_model_0_vis" file="../assets/fixtures/toasters/vintage/visuals/model_0.obj" scale="0.3 0.3 0.3"/>
+        <mesh name="knife_block_main_group_model_0_vis" file="../assets/fixtures/accessories/knife_blocks/light_wood_3/visuals/model_0.obj" scale="0.381892 0.381892 0.381892"/>
+        <mesh name="paper_towel_main_group_model_0_vis" file="../assets/fixtures/accessories/paper_towel_holders/holder_2/visuals/model_0.obj" scale="0.35 0.35 0.35"/>
+        <mesh name="paper_towel_main_group_model_1_vis" file="../assets/fixtures/accessories/paper_towel_holders/holder_2/visuals/model_1.obj" scale="0.35 0.35 0.35"/>
+        <mesh name="paper_towel_main_group_model_2_vis" file="../assets/fixtures/accessories/paper_towel_holders/holder_2/visuals/model_2.obj" scale="0.35 0.35 0.35"/>
+        <mesh name="paper_towel_main_group_model_3_vis" file="../assets/fixtures/accessories/paper_towel_holders/holder_2/visuals/model_3.obj" scale="0.35 0.35 0.35"/>
+    </asset>
+</mujocoinclude>

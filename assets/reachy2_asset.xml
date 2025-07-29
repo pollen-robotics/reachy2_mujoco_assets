@@ -1,0 +1,438 @@
+<mujocoinclude>
+    <!-- <compiler meshdir="assets/meshes" texturedir="assets/textures" /> -->
+    <asset>
+        <mesh name="mobile_base_visual" file="../assets/meshes/reachy2/mobile_base_visual.obj" />
+        <mesh name="torso_visual" file="../assets/meshes/reachy2/torso_visual.obj" />
+        <mesh name="torso_collider" file="../assets/meshes/reachy2/torso_collider.obj" />
+        <mesh name="head_visual" file="../assets/meshes/reachy2/head_visual.obj" />
+        <mesh name="head_collider" file="../assets/meshes/reachy2/head_collider.obj" />
+        <mesh name="head_antenna_visual" file="../assets/meshes/reachy2/head_antenna_visual.obj" />
+        <mesh name="2D_sphere_visual" file="../assets/meshes/reachy2/2D_sphere_visual.obj" />
+        <mesh name="upper_arm_visual" file="../assets/meshes/reachy2/upper_arm_visual.obj" />
+        <mesh name="upper_arm_collider" file="../assets/meshes/reachy2/upper_arm_collider.obj" />
+        <mesh name="forearm_visual" file="../assets/meshes/reachy2/forearm_visual.obj" />
+        <mesh name="forearm_collider" file="../assets/meshes/reachy2/forearm_collider.obj" />
+        <mesh name="pincette_base_collider" file="../assets/meshes/reachy2/pincette_base_collider.obj" />
+        <mesh name="pincette_base_visual" file="../assets/meshes/reachy2/pincette_base_visual.obj" />
+        <mesh name="pincette_proximal_collider" file="../assets/meshes/reachy2/pincette_proximal_collider.obj" />
+        <mesh name="pincette_proximal_visual" file="../assets/meshes/reachy2/pincette_proximal_visual.obj" />
+        <mesh name="pincette_distal_collider" file="../assets/meshes/reachy2/pincette_distal_collider.obj" />
+        <mesh name="pincette_distal" file="../assets/meshes/reachy2/pincette_distal.obj" />
+        <texture builtin="checker" height="10" name="texplane" rgb1="0 0 0" rgb2="0.8 0.8 0.8" type="2d" width="10" />
+        <material name="checkmat" reflectance="0.5" shininess="1" specular="1" texrepeat="6 6" texture="texplane" />
+
+    </asset>
+
+    <!-- <option cone="elliptic" impratio="10"/> -->
+    <default>
+        <!-- Modifications avant mujoco ok-->
+        <!-- <joint damping="10"  frictionloss="0.1" actuatorfrcrange="-10000 10000" armature="0.1"/> 
+        <position kp="6000" kv="250" />
+
+        <default class="gripper">
+        <joint damping="0.5" frictionloss="1.0" actuatorfrcrange="-100 100" armature="0.1"/>
+        <position kp="1000" kv="10" />
+        </default>
+
+        <default class="tripod">
+        <joint damping="1000" frictionloss="50.0" actuatorfrcrange="-2000000 2000000" />
+        <position kp="50000" kv="1" />
+        </default>
+
+        <default class="wheel">
+        <joint  armature="0.1" />
+        </default>
+
+
+        <default class="visual">
+            <geom type="mesh" mass="0" group="2" contype="0" conaffinity="0" />
+        </default>
+        <default class="collider">
+            <geom group="3" type="mesh" condim="6" friction="1 5e-3 5e-4" solref=".01 1" contype="1"
+                conaffinity="1" />
+        </default>
+
+        <default class="gripper_collider">
+        <geom group="3" type="mesh" condim="6" friction="1.0 0.5 0.01" solref=".01 1" contype="1"
+            conaffinity="1" />
+
+        </default>
+
+        <default class="gripper_collider_box">
+        <geom group="3" type="box" friction="5.0 0.5 0.01" condim="6" contype="1" conaffinity="1" solimp="0.95 0.99 0.001" solref="0.002 1" margin="0.002"/>
+        
+
+        </default>
+
+        <default class="wheel_collision">
+        <geom friction="0.3 0.005 0.0001" condim="3" contype="2" conaffinity="0"
+            solimp="0 0.95 0.001 0.5 2" solref="0.02 1" margin="0" />
+        </default> -->
+
+        <!-- This looks good -->
+        <joint damping="10" frictionloss="2.0" actuatorfrcrange="-2000 2000" armature="1.0"/>
+        <position kp="500" kv="10" />
+        
+        <default class="gripper">
+        <joint damping="0.1" frictionloss="1.0" actuatorfrcrange="-20 20" armature="1.0"/>
+        <position kp="200" kv="0" />
+        </default>
+
+        <default class="tripod">
+        <joint damping="1000" frictionloss="50.0" actuatorfrcrange="-2000000 2000000" />
+        <position kp="50000" kv="1" />
+        </default>
+
+        <default class="wheel">
+        <joint  armature="0.1" />
+        </default>
+
+
+        <default class="visual">
+        <geom type="mesh" mass="0" group="2" contype="0" conaffinity="0"/>
+        </default>
+        <default class="collider">
+        <geom group="3" type="mesh" condim="6" friction="1 5e-3 5e-4" solref=".01 1" contype="1"
+            conaffinity="1" />
+        </default>
+
+        <default class="gripper_collider">
+        <geom group="3" type="mesh" condim="6" friction="1.0 0.5 0.01" solref=".01 1" contype="1"
+            conaffinity="1" />
+        </default>
+
+        <default class="gripper_collider_box">
+        <geom group="3" type="box" friction="4.0 1.0 0.01" condim="6" contype="1" conaffinity="1"
+            solimp="0.95 0.99 0.01" solref="0.002 1" margin="0.001"/>
+
+        </default>
+
+        <default class="wheel_collision">
+
+        <geom friction="0.3 0.005 0.0001" condim="3" contype="2" conaffinity="0"
+            solimp="0 0.95 0.001 0.5 2" solref="0.02 1" margin="0" />
+        </default>
+
+
+
+    </default>
+
+    <equality>
+        <joint
+        joint1="r_hand_finger"
+        joint2="r_hand_finger_proximal"
+        polycoef="0.554 -0.4689 0 0 0"
+        solimp="0.95 0.99 0.001"
+        solref="0.005 1"
+        />
+        <joint
+        joint1="r_hand_finger_proximal"
+        joint2="r_hand_finger_distal"
+        polycoef="0 -1 0 0 0"
+        solimp="0.95 0.99 0.001"
+        solref="0.005 1"
+        />
+        <joint
+        joint1="r_hand_finger_proximal"
+        joint2="r_hand_finger_proximal_mimic"
+        polycoef="0 1 0 0 0"
+        solimp="0.95 0.99 0.001"
+        solref="0.005 1"
+        />
+        <joint
+        joint1="r_hand_finger_distal"
+        joint2="r_hand_finger_distal_mimic"
+        polycoef="0 1 0 0 0"
+        solimp="0.95 0.99 0.001"
+        solref="0.005 1"
+        />
+        <joint
+        joint1="l_hand_finger"
+        joint2="l_hand_finger_proximal"
+        polycoef="0.554 -0.4689 0 0 0"
+        solimp="0.95 0.99 0.001"
+        solref="0.005 1"
+        />
+        <joint
+        joint1="l_hand_finger_proximal"
+        joint2="l_hand_finger_distal"
+        polycoef="0 -1 0 0 0"
+        solimp="0.95 0.99 0.001"
+        solref="0.005 1"
+        />
+        <joint
+        joint1="l_hand_finger_proximal"
+        joint2="l_hand_finger_proximal_mimic"
+        polycoef="0 1 0 0 0"
+        solimp="0.95 0.99 0.001"
+        solref="0.005 1"
+        />
+        <joint
+        joint1="l_hand_finger_distal"
+        joint2="l_hand_finger_distal_mimic"
+        polycoef="0 1 0 0 0"
+        solimp="0.95 0.99 0.001"
+        solref="0.005 1"
+        />
+
+        <!-- <joint -->
+        <!--     joint1="left_bar_joint_mimic" -->
+        <!--     joint2="tripod_joint" -->
+        <!--     polycoef="-0.20061291 0.40967047 -0.74428024 0.82037152 0" -->
+        <!--     solimp="0.95 0.99 0.001" -->
+        <!--     solref="0.005 1" -->
+        <!-- /> -->
+
+        <!-- <joint -->
+        <!--     joint1="tripod_joint" -->
+        <!--     joint2="left_bar_prism_joint_mimic" -->
+        <!--     polycoef="0.4814718126556904 -0.9861535348976198 0 0 0" -->
+        <!--     solimp="0.95 0.99 0.001" -->
+        <!--     solref="0.005 1" -->
+        <!-- /> -->
+
+        <!-- <joint -->
+        <!--     joint1="right_bar_joint_mimic" -->
+        <!--     joint2="tripod_joint" -->
+        <!--     polycoef="-0.20061291 0.40967047 -0.74428024 0.82037152 0" -->
+        <!--     solimp="0.95 0.99 0.001" -->
+        <!--     solref="0.005 1" -->
+        <!-- /> -->
+        <!-- <joint -->
+        <!--     joint1="tripod_joint" -->
+        <!--     joint2="right_bar_prism_joint_mimic" -->
+        <!--     polycoef="0.4814718126556904 -0.9861535348976198 0 0 0" -->
+        <!--     solimp="0.95 0.99 0.001" -->
+        <!--     solref="0.005 1" -->
+        <!-- /> -->
+
+        <joint
+        joint1="left_bar_joint_mimic"
+        joint2="tripod_joint"
+        polycoef="0 0.40967047 -0.74428024 0.82037152 0"
+        solimp="0.95 0.99 0.001"
+        solref="0.005 1"
+        />
+
+        <joint
+        joint1="tripod_joint"
+        joint2="left_bar_prism_joint_mimic"
+        polycoef="0 -0.9861535348976198 0 0 0"
+        solimp="0.95 0.99 0.001"
+        solref="0.005 1"
+        />
+
+        <joint
+        joint1="right_bar_joint_mimic"
+        joint2="tripod_joint"
+        polycoef="0 0.40967047 -0.74428024 0.82037152 0"
+        solimp="0.95 0.99 0.001"
+        solref="0.005 1"
+        />
+        <joint
+        joint1="tripod_joint"
+        joint2="right_bar_prism_joint_mimic"
+        polycoef="0 -0.9861535348976198 0 0 0"
+        solimp="0.95 0.99 0.001"
+        solref="0.005 1"
+        />
+
+
+    </equality>
+    <actuator>
+        <position name="tripod_joint" joint="tripod_joint" gear="1" inheritrange="1" class="tripod" />
+
+        <position name="neck_roll" joint="neck_roll" gear="1" inheritrange="1" />
+        <position name="neck_pitch" joint="neck_pitch" gear="1" inheritrange="1" />
+        <position name="neck_yaw" joint="neck_yaw" gear="1" inheritrange="1" />
+
+        <position name="antenna_left" joint="antenna_left" gear="1" inheritrange="1" />
+        <position name="antenna_right" joint="antenna_right" gear="1" inheritrange="1" />
+
+        <position
+        name="l_shoulder_pitch"
+        joint="l_shoulder_pitch"
+        gear="1"
+        inheritrange="1"
+        />
+        <position
+        name="l_shoulder_roll"
+        joint="l_shoulder_roll"
+        gear="1"
+        inheritrange="1"
+        />
+        <position
+        name="l_elbow_yaw"
+        joint="l_elbow_yaw"
+        gear="1"
+        inheritrange="1"
+        />
+        <position
+        name="l_elbow_pitch"
+        joint="l_elbow_pitch"
+        gear="1"
+        inheritrange="1"
+        />
+        <position
+        name="l_wrist_roll"
+        joint="l_wrist_roll"
+        gear="1"
+        inheritrange="1"
+        />
+        <position
+        name="l_wrist_pitch"
+        joint="l_wrist_pitch"
+        gear="1"
+        inheritrange="1"
+        />
+        <position
+        name="l_wrist_yaw"
+        joint="l_wrist_yaw"
+        gear="1"
+        inheritrange="1"
+        />
+        <position
+        name="r_shoulder_pitch"
+        joint="r_shoulder_pitch"
+        gear="1"
+        inheritrange="1"
+        />
+        <position
+        name="r_shoulder_roll"
+        joint="r_shoulder_roll"
+        gear="1"
+        inheritrange="1"
+        />
+        <position
+        name="r_elbow_yaw"
+        joint="r_elbow_yaw"
+        gear="1"
+        inheritrange="1"
+        />
+        <position
+        name="r_elbow_pitch"
+        joint="r_elbow_pitch"
+        gear="1"
+        inheritrange="1"
+        />
+        <position
+        name="r_wrist_roll"
+        joint="r_wrist_roll"
+        gear="1"
+        inheritrange="1"
+        />
+        <position
+        name="r_wrist_pitch"
+        joint="r_wrist_pitch"
+        gear="1"
+        inheritrange="1"
+        />
+        <position
+        name="r_wrist_yaw"
+        joint="r_wrist_yaw"
+        gear="1"
+        inheritrange="1"
+        />
+        <position
+        name="r_hand_finger"
+        joint="r_hand_finger"
+        gear="1"
+        inheritrange="1"
+        class="gripper"
+        />
+        <position
+        name="l_hand_finger"
+        joint="l_hand_finger"
+        gear="1"
+        inheritrange="1"
+        class="gripper"
+        />
+
+        <!-- <velocity -->
+        <!--     name="drivewhl2_joint" -->
+        <!--     joint="drivewhl2_joint" -->
+        <!--     ctrlrange="-5 5" kv="100" -->
+        <!-- /> -->
+        <!-- <velocity -->
+        <!--     name="drivewhl1_joint" -->
+        <!--     joint="drivewhl1_joint" -->
+        <!--     ctrlrange="-5 5" kv="100" -->
+        <!-- /> -->
+        <!-- <velocity -->
+        <!--     name="drivewhl3_joint" -->
+        <!--     joint="drivewhl3_joint" -->
+        <!--     ctrlrange="-5 5" kv="100" -->
+        <!-- /> -->
+
+
+        <!-- <velocity -->
+        <!--     name="drivewhl2_joint" -->
+        <!--     joint="drivewhl2_joint" -->
+        <!--     ctrlrange="-5 5" kv="1000" -->
+        <!-- /> -->
+        <!-- <velocity -->
+        <!--     name="drivewhl1_joint" -->
+        <!--     joint="drivewhl1_joint" -->
+        <!--     ctrlrange="-5 5" kv="1000" -->
+        <!-- /> -->
+        <!-- <velocity -->
+        <!--     name="drivewhl3_joint" -->
+        <!--     joint="drivewhl3_joint" -->
+        <!--     ctrlrange="-5 5" kv="1000" -->
+        <!-- /> -->
+
+        <motor
+        name="drivewhl2_joint"
+        joint="drivewhl2_joint"
+        ctrlrange="-50 50" ctrllimited="true"
+        />
+        <motor
+        name="drivewhl1_joint"
+        joint="drivewhl1_joint"
+        ctrlrange="-50 50" ctrllimited="true"
+        />
+        <motor
+        name="drivewhl3_joint"
+        joint="drivewhl3_joint"
+        ctrlrange="-50 50" ctrllimited="true"
+        />
+
+        <!-- <velocity -->
+        <!--     name="drivewhl2_joint" -->
+        <!--     joint="drivewhl2_joint" -->
+        <!-- /> -->
+        <!-- <velocity -->
+        <!--     name="drivewhl1_joint" -->
+        <!--     joint="drivewhl1_joint" -->
+        <!-- /> -->
+        <!-- <velocity -->
+        <!--     name="drivewhl3_joint" -->
+        <!--     joint="drivewhl3_joint" -->
+        <!-- /> -->
+
+
+    </actuator>
+
+    <contact>
+        <!-- <exclude name="torso_l_shoulder" body1="torso" body2="r_shoulder_base_link"/> -->
+        <!-- <exclude name="torso_l_shoulder1" body1="torso" body2="r_shoulder_dummy_link1"/> -->
+        <!-- <exclude name="torso_l_shoulder2" body1="torso" body2="r_shoulder_dummy_link2"/> -->
+        <!-- <exclude name="torso_l_shoulder3" body1="torso" body2="r_shoulder_first_link"/> -->
+        <!-- <exclude name="torso_l_shoulder4" body1="torso" body2="r_shoulder_ball_link"/> -->
+        <!-- <exclude name="torso_l_shoulder5" body1="torso" body2="r_shoulder_fix_link"/> -->
+        <exclude name="torso_r_shoulder" body1="torso" body2="r_elbow_arm_link" />
+        <exclude name="torso_l_shoulder" body1="torso" body2="l_elbow_arm_link" />
+
+        <exclude name="l_arm_forearm" body1="l_elbow_arm_link" body2="l_elbow_forearm_link" />
+        <exclude name="r_arm_forearm" body1="r_elbow_arm_link" body2="r_elbow_forearm_link" />
+
+        <exclude name="l_forearm_gripper" body1="l_elbow_forearm_link" body2="l_hand_palm_link" />
+        <exclude name="r_forearm_gripper" body1="r_elbow_forearm_link" body2="r_hand_palm_link" />
+
+        <exclude name="back_bar" body1="back_bar_base" body2="back_bar_inner" />
+
+        <!-- <pair name="shell1-ground" geom1="ground" geom2="shell_geom" friction="1 1 0.9 0.0001
+        0.0001" /> -->
+    </contact>
+
+</mujocoinclude>
