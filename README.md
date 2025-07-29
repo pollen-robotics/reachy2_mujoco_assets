@@ -1,0 +1,1 @@
+# reachy2_mujoco_assets
