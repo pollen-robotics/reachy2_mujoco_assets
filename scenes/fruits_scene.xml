@@ -1,4 +1,4 @@
-<mujoco model="reachy2_fruits_scene">
+<mujoco model="reachy2fruits_scene">
     <compiler angle="radian" />
 
     <include file="../assets/reachy2_asset.xml"/>
@@ -56,26 +56,26 @@
         </body>
 
         <!-- Apples -->
-        <body name="apple1" pos="0.5 -0.12 0.64" >
+        <body name="apple1" pos="0.5 -0.12 0.63" >
             <geom class="ycb_viz" material="apple_mat" mesh="apple"/>
             <geom class = "ycb_col" type="capsule" fromto="0.0 -0.005 0.035 0.0 -0.005 0.055" size="0.035" mass="0.1" rgba = "1 0 0 1"/>
             <joint type="free"/>
         </body>
 
-        <body name="apple2" pos="0.58 -0.07 0.64" >
+        <body name="apple2" pos="0.58 -0.07 0.63" >
             <geom class="ycb_viz" material="apple_mat" mesh="apple"/>
             <geom class = "ycb_col" type="capsule" fromto="0.0 -0.005 0.035 0.0 -0.005 0.055" size="0.035" mass="0.1" rgba = "1 0 0 1"/>
             <joint type="free"/>
         </body>
 
         <!-- Oranges -->
-        <body name="orange1" pos="0.5 0.15 0.64">
+        <body name="orange1" pos="0.5 0.15 0.63">
             <geom class="ycb_viz" material="orange_mat" mesh="orange"/>
             <geom class = "ycb_col" type="capsule" fromto="-0.007 -0.018 0.035 -0.007 -0.018 0.055" size="0.038" mass="0.1" rgba = "1 0 0 1"/>
             <joint type="free"/>
         </body>
 
-        <body name="orange2" pos="0.56 0.07 0.64">
+        <body name="orange2" pos="0.56 0.07 0.63">
             <geom class="ycb_viz" material="orange_mat" mesh="orange"/>
             <geom class = "ycb_col" type="capsule" fromto="-0.007 -0.018 0.035 -0.007 -0.018 0.055" size="0.038" mass="0.1" rgba = "1 0 0 1"/>
             <joint type="free"/>
