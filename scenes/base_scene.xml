@@ -1,12 +1,7 @@
-<mujoco model="reachy2 table_scene">
+<mujoco model="reachy2 base_scene">
 	<compiler angle="radian"/>
 
 	<include file="../assets/reachy2_asset.xml" />
-	<include file="../assets/simpleTable_asset.xml"/>
-
-	<default>
-		<geom friction="0.1 0.005 0.0001"/>
-	</default>
 
 	<option impratio="5">
 		<flag multiccd="enable"/>
@@ -26,6 +21,7 @@
 
 	<worldbody>
 		<light pos="0 0 3" dir="0 0 -1" directional="false" />
+
 		<body name="floor">
             <geom contype="1" conaffinity="2" friction=".1 0.005 0.0001" name="floor" pos="0 0 0" size="0 0 .25" type="plane" material="groundplane" condim="3" solimp="0 0.95 0.001 0.5 2" solref="0.02 1" margin="0"/>
 		</body>
@@ -35,14 +31,6 @@
             <include file="../objects/reachy2_body.xml"/>
         </body>
 
-		<body pos="0.7 0 0" name="table" euler="0 0 1.57">
-			<include file="../objects/simpleWoodTable_body.xml" />
-		</body>
-
-		<body name="goal" pos="0.45 -0.4 0.65">
-			<freejoint name="box"/>
-			<geom type="box" size="0.025 0.025 0.025" rgba="1.0 0 0 1" conaffinity="1" contype="1" mass="0.05" friction="1.0 0.5 0.01" priority="1"/>
-		</body>
 	</worldbody>
 	
 </mujoco>
