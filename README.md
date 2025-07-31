@@ -2,6 +2,12 @@
 
 This repository contains scenes and configuration files for the robot **Reachy 2** in [MuJoCo](https://mujoco.org/). These assets are used by Reachy's 2 software stack.
 
+<div align="center">
+
+![demo](media/reachy-mujoco.gif)
+
+</div>
+
 ## Stack installation
 Install the Reachy 2 software stack easily by using the [one liner](https://docs.pollen-robotics.com/developing-with-reachy-2/simulation/simulation-installation/#running-with-mujoco) provided in the documentation.
 
