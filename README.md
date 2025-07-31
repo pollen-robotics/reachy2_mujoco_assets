@@ -15,7 +15,7 @@ Install the Reachy 2 software stack easily by using the [one liner](https://docs
 
 - `base_scene.xml`: the default empty scene
 - `fruits_scene.xml`: a scene for sorting fruits on a table
-- `kitchen_scene.xml`: full kitchen for complex manipulation tasks
+- `kitchen_scene.xml`: full kitchen for complex manipulation tasks *(adapted from [RoboCasa](https://github.com/robocasa/robocasa))*
 - `table_scene.xml`: a simple scene with just one cube to manipulate on a table
 
 ### Visualization
@@ -31,3 +31,10 @@ python viewer.py <scene_file.xml>
 ```bash
 pip install mujoco
 ```
+
+---
+### Credits
+
+The `kitchen_scene.xml` is based on assets from the [RoboCasa](https://github.com/robocasa/robocasa) project.
+
+RoboCasa is an open-source collection of realistic home environments for robotics research, developed by the RoboCasa team.
