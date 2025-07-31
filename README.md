@@ -9,7 +9,7 @@ This repository contains scenes and configuration files for the robot **Reachy 2
 </div>
 
 ## Stack installation
-Install the Reachy 2 software stack easily by using the [one liner](https://docs.pollen-robotics.com/developing-with-reachy-2/simulation/simulation-installation/#running-with-mujoco) provided in the documentation.
+Install the Reachy 2 software stack easily by using the [one liner](https://docs.pollen-robotics.com/developing-with-reachy-2/simulation/simulation-installation) provided in the documentation.
 
 ## Available Scenes
 
