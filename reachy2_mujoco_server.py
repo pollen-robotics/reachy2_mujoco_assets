@@ -31,7 +31,17 @@ JPEG_QUALITY = 70
 
 
 def nd_to_list(a):
-    return a.tolist() if hasattr(a, "tolist") else a
+    """Convert numpy arrays and numpy types to JSON-serializable types."""
+    if hasattr(a, "tolist"):
+        return a.tolist()
+    elif isinstance(a, (np.integer, np.int32, np.int64)):
+        return int(a)
+    elif isinstance(a, (np.floating, np.float32, np.float64)):
+        return float(a)
+    elif isinstance(a, np.ndarray):
+        return a.tolist()
+    else:
+        return a
 
 
 class MujocoServer:
@@ -180,7 +190,8 @@ class MujocoServer:
     async def handle_message(self, msg: str, ws):
         try:
             obj = json.loads(msg)
-        except Exception:
+        except Exception as e:
+            print(f"JSON parse error: {e}")
             try:
                 await ws.send(json.dumps({"type": "error", "reason": "invalid_json"}))
             except:
@@ -193,7 +204,7 @@ class MujocoServer:
                 # Handle joint-level control commands
                 joint_name = obj.get("joint_name")
                 mode = obj.get("mode")  # "position", "velocity", or "effort"
-                value = obj.get("value", 0.0)
+                value = float(obj.get("value", 0.0))  # Ensure it's a float
 
                 if joint_name:
                     self.control_modes[joint_name] = mode
@@ -221,7 +232,7 @@ class MujocoServer:
                 for joint_data in joints:
                     joint_name = joint_data.get("name")
                     mode = joint_data.get("mode")
-                    value = joint_data.get("value", 0.0)
+                    value = float(joint_data.get("value", 0.0))  # Ensure it's a float
 
                     if joint_name:
                         self.control_modes[joint_name] = mode
@@ -237,9 +248,15 @@ class MujocoServer:
             elif t == "reset":
                 st = obj.get("state", {})
                 if "qpos" in st:
-                    self.data.qpos[: len(st["qpos"])] = st["qpos"]
+                    # Convert to list and ensure proper types
+                    qpos_values = st["qpos"]
+                    for i in range(min(len(qpos_values), self.model.nq)):
+                        self.data.qpos[i] = float(qpos_values[i])
                 if "qvel" in st:
-                    self.data.qvel[: len(st["qvel"])] = st["qvel"]
+                    # Convert to list and ensure proper types
+                    qvel_values = st["qvel"]
+                    for i in range(min(len(qvel_values), self.model.nv)):
+                        self.data.qvel[i] = float(qvel_values[i])
                 mujoco.mj_forward(self.model, self.data)
 
                 # Clear control targets
@@ -259,9 +276,13 @@ class MujocoServer:
                         joint_info.append(
                             {
                                 "name": name,
-                                "qpos_adr": self.model.jnt_qposadr[i],
-                                "qvel_adr": self.model.jnt_dofadr[i],
-                                "type": self.model.jnt_type[i],
+                                "qpos_adr": int(
+                                    self.model.jnt_qposadr[i]
+                                ),  # Convert to int
+                                "qvel_adr": int(
+                                    self.model.jnt_dofadr[i]
+                                ),  # Convert to int
+                                "type": int(self.model.jnt_type[i]),  # Convert to int
                             }
                         )
 
@@ -270,20 +291,23 @@ class MujocoServer:
                         {
                             "type": "model_info",
                             "joints": joint_info,
-                            "njnt": self.model.njnt,
-                            "nq": self.model.nq,
-                            "nv": self.model.nv,
-                            "nu": self.model.nu,
+                            "njnt": int(self.model.njnt),  # Convert to int
+                            "nq": int(self.model.nq),  # Convert to int
+                            "nv": int(self.model.nv),  # Convert to int
+                            "nu": int(self.model.nu),  # Convert to int
                         }
                     )
                 )
 
             else:
                 await ws.send(
-                    json.dumps({"type": "error", "reason": "unknown_command"})
+                    json.dumps({"type": "error", "reason": f"unknown_command: {t}"})
                 )
         except Exception as e:
-            print(f"Error handling message from client: {e}")
+            print(f"Error handling message '{t}' from client: {e}")
+            import traceback
+
+            traceback.print_exc()
 
     async def ws_handler(self, ws, path):
         self.clients.add(ws)
