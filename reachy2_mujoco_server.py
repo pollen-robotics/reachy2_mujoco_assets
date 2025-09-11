@@ -22,11 +22,12 @@ import numpy as np
 import websockets
 from PIL import Image
 
-# ---------- CONFIG ----------
-STATE_BROADCAST_HZ = 60.0
-IMAGE_FPS = 15.0
+# ---------- DEFAULT CONFIG ----------
+DEFAULT_STATE_BROADCAST_HZ = 60.0
+DEFAULT_SIM_CONTROL_HZ = 1000.0  # Simulation control loop rate
+DEFAULT_IMAGE_FPS = 15.0
 JPEG_QUALITY = 70
-# ----------------------------
+# -----------------------------------
 
 
 def nd_to_list(a):
@@ -34,7 +35,10 @@ def nd_to_list(a):
 
 
 class MujocoServer:
-    def __init__(self, model_path: str, enable_viewer: bool = True, headless: bool = False):
+    def __init__(self, model_path: str, enable_viewer: bool = True, headless: bool = False, 
+                 state_hz: float = DEFAULT_STATE_BROADCAST_HZ, 
+                 sim_hz: float = DEFAULT_SIM_CONTROL_HZ,
+                 image_fps: float = DEFAULT_IMAGE_FPS):
         self.model = mujoco.MjModel.from_xml_path(model_path)
         self.data = mujoco.MjData(self.model)
         
@@ -64,6 +68,11 @@ class MujocoServer:
         self.clients = set()
         self._stop = False
 
+        # Rate control
+        self.state_hz = state_hz
+        self.sim_hz = sim_hz
+        self.image_fps = image_fps
+
         # Control
         self.control_mode = "torque"
         self.torque_cmd = np.zeros(self.model.nu)
@@ -72,6 +81,12 @@ class MujocoServer:
         # Time sync
         self.start_wall = time.time()
         self.start_sim = self.data.time
+        
+        # Print configuration
+        print(f"Server configuration:")
+        print(f"  - Simulation rate: {self.sim_hz} Hz")
+        print(f"  - State broadcast rate: {self.state_hz} Hz") 
+        print(f"  - Image streaming rate: {self.image_fps} FPS")
 
     def apply_controls(self):
         if self.control_mode == "torque":
@@ -167,8 +182,8 @@ class MujocoServer:
             print(f"Client disconnected (remaining: {len(self.clients)})")
 
     async def state_loop(self):
-        interval = 1.0 / STATE_BROADCAST_HZ
-        img_interval = 1.0 / IMAGE_FPS if IMAGE_FPS > 0 else None
+        interval = 1.0 / self.state_hz
+        img_interval = 1.0 / self.image_fps if self.image_fps > 0 else None
         last_img = 0.0
 
         while not self._stop:
@@ -219,10 +234,20 @@ class MujocoServer:
             await asyncio.sleep(max(0, interval - (time.time() - t0)))
 
     async def sim_loop(self):
+        sim_interval = 1.0 / self.sim_hz
         while not self._stop:
+            t0 = time.time()
             self.apply_controls()
-            self.step_realtime()
-            await asyncio.sleep(0)  # yield to event loop
+            mujoco.mj_step(self.model, self.data)
+            
+            # Update viewer if enabled
+            if self.enable_viewer and self.viewer is not None:
+                self.viewer.sync()
+                
+            # Sleep to maintain simulation rate
+            elapsed = time.time() - t0
+            sleep_time = max(0, sim_interval - elapsed)
+            await asyncio.sleep(sleep_time)
 
     async def run(self, host, port):
         server = await websockets.serve(self.ws_handler, host, port, max_size=None)
@@ -239,14 +264,28 @@ class MujocoServer:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--model", required=True)
-    ap.add_argument("--host", default="127.0.0.1")
-    ap.add_argument("--port", type=int, default=8765)
+    ap.add_argument("--model", required=True, help="Path to MuJoCo model XML file")
+    ap.add_argument("--host", default="127.0.0.1", help="Server host address")
+    ap.add_argument("--port", type=int, default=8765, help="Server port")
     ap.add_argument("--no-viewer", action="store_true", help="Disable the MuJoCo viewer")
     ap.add_argument("--headless", action="store_true", help="Run in headless mode (no viewer, no renderer)")
+    
+    # Rate control arguments
+    ap.add_argument("--state-hz", type=float, default=DEFAULT_STATE_BROADCAST_HZ, 
+                    help=f"State broadcast rate in Hz (default: {DEFAULT_STATE_BROADCAST_HZ})")
+    ap.add_argument("--sim-hz", type=float, default=DEFAULT_SIM_CONTROL_HZ,
+                    help=f"Simulation control rate in Hz (default: {DEFAULT_SIM_CONTROL_HZ})")
+    ap.add_argument("--image-fps", type=float, default=DEFAULT_IMAGE_FPS,
+                    help=f"Image streaming rate in FPS (default: {DEFAULT_IMAGE_FPS})")
+    
     args = ap.parse_args()
 
-    srv = MujocoServer(args.model, enable_viewer=not args.no_viewer, headless=args.headless)
+    srv = MujocoServer(args.model, 
+                      enable_viewer=not args.no_viewer, 
+                      headless=args.headless,
+                      state_hz=args.state_hz,
+                      sim_hz=args.sim_hz,
+                      image_fps=args.image_fps)
     loop = asyncio.get_event_loop()
     try:
         loop.run_until_complete(srv.run(args.host, args.port))
