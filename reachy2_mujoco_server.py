@@ -1,12 +1,12 @@
 """
-MuJoCo WebSocket Server (Real-time + Binary Images)
+MuJoCo WebSocket Server (Real-time + Camera Support)
 
  - Real-time simulation (syncs MuJoCo time to wall-clock).
  - WebSocket JSON API for control and state.
- - Binary JPEG image streaming over WebSocket.
+ - Multi-camera support with single shared renderer (matching C++ approach).
 
 Usage:
-  python mujoco_ws_server.py --model robot.xml --host 0.0.0.0 --port 8765
+  python reachy2_mujoco_server.py --model robot.xml --host 0.0.0.0 --port 8765
 """
 
 import argparse
@@ -14,7 +14,7 @@ import asyncio
 import io
 import json
 import time
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 
 import mujoco
 import mujoco.viewer
@@ -27,6 +27,38 @@ DEFAULT_STATE_BROADCAST_HZ = 60.0
 DEFAULT_SIM_CONTROL_HZ = 1000.0  # Simulation control loop rate
 DEFAULT_IMAGE_FPS = 15.0
 JPEG_QUALITY = 70
+
+# Shared camera resolution (matching your C++ approach)
+SHARED_CAMERA_WIDTH = 320
+SHARED_CAMERA_HEIGHT = 240
+SHARED_CAMERA_FOVY = 45.0
+
+# Camera configuration with topic paths only (all use shared resolution)
+CAMERA_CONFIGS = {
+    "left_camera": {
+        "topic_paths": {
+            "image": "teleop_camera/left_image/image_raw/compressed",
+            "camera_info": "teleop_camera/left_image/image_raw/camera_info",
+        },
+        "has_depth": False,
+    },
+    "right_camera": {
+        "topic_paths": {
+            "image": "teleop_camera/right_image/image_raw/compressed",
+            "camera_info": "teleop_camera/right_image/image_raw/camera_info",
+        },
+        "has_depth": False,
+    },
+    "depth_cam_rgb": {
+        "topic_paths": {
+            "image": "camera/color/image_raw/compressed",
+           "camera_info": "camera/color/image_raw/camera_info", 
+            "depth_image": "camera/depth/image_raw",
+            "depth_camera_info": "camera/depth/camera_info",
+        },
+        "has_depth": True,
+    },
+}
 # -----------------------------------
 
 
@@ -42,6 +74,162 @@ def nd_to_list(a):
         return a.tolist()
     else:
         return a
+
+# Replace the existing CameraRenderer class with this version.
+
+import cv2  # add at top of file if not present
+
+class CameraRenderer:
+    """Handles camera rendering using one renderer per camera (matching the C++ logic)."""
+
+    def __init__(self, model, data):
+        self.model = model
+        self.data = data
+        self.cameras = {}  # camera_name -> dict with renderer, width, height, etc.
+        self.setup_cameras()
+
+    def setup_cameras(self):
+        """Create a renderer per camera at the camera's resolution and record metadata."""
+        # Find available cameras in the model
+        for cam_name in CAMERA_CONFIGS.keys():
+            cam_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_CAMERA, cam_name)
+            if cam_id == -1:
+                print(f"Warning: Camera '{cam_name}' not found in model, skipping")
+                continue
+
+            # Get camera resolution from model.cam_resolution (2 ints per camera)
+            # cam_resolution is an int array: [w0, h0, w1, h1, ...]
+            cam_res_idx = 2 * cam_id
+            try:
+                cam_width = int(self.model.cam_resolution[cam_res_idx])
+                cam_height = int(self.model.cam_resolution[cam_res_idx + 1])
+            except Exception:
+                # fallback to shared resolution if not available
+                cam_width = SHARED_CAMERA_WIDTH
+                cam_height = SHARED_CAMERA_HEIGHT
+
+            # Create a renderer specific to this camera resolution
+            try:
+                renderer = mujoco.Renderer(self.model, cam_width, cam_height)
+                print(f"Created renderer for camera '{cam_name}': {cam_width}x{cam_height}")
+            except Exception as e:
+                print(f"Failed to initialize renderer for camera '{cam_name}': {e}")
+                continue
+
+            self.cameras[cam_name] = {
+                "id": cam_id,
+                "name": cam_name,
+                "renderer": renderer,
+                "width": cam_width,
+                "height": cam_height,
+                "fovy": float(self.model.cam_fovy[cam_id]) if hasattr(self.model, "cam_fovy") else SHARED_CAMERA_FOVY,
+                "has_depth": CAMERA_CONFIGS.get(cam_name, {}).get("has_depth", False),
+                "topic_paths": CAMERA_CONFIGS.get(cam_name, {}).get("topic_paths", {}),
+            }
+
+    def _depth_nonlin_fix_and_flip(self, depth_array, cam_id, width, height):
+        """Apply near/far correction and flip vertically (matching C++)."""
+        # If depth_array shape is (H, W, ?) or (H, W), get single channel
+        if depth_array.ndim == 3:
+            depth = depth_array[:, :, 0]
+        else:
+            depth = depth_array
+
+        near = float(self.model.vis.map.znear * self.model.stat.extent)
+        far = float(self.model.vis.map.zfar * self.model.stat.extent)
+        # Avoid division by zero
+        denom = (1.0 - depth * (1.0 - near / far))
+        # clamp denom to avoid NaNs
+        denom = np.where(denom == 0, 1e-6, denom)
+        corrected = near / denom
+        # Flip vertically (MuJoCo gives bottom-up)
+        corrected_flipped = np.flipud(corrected)
+        return corrected_flipped.astype(np.float32)
+
+    def render_camera(self, camera_name: str) -> Optional[Dict[str, Any]]:
+        """Render a specific camera and return frame data (RGB jpeg bytes, optional depth)."""
+        cam = self.cameras.get(camera_name)
+        if not cam:
+            return None
+
+        renderer = cam["renderer"]
+        width = cam["width"]
+        height = cam["height"]
+        cam_id = cam["id"]
+
+        try:
+            # Update scene with specific camera id/name
+            # The python Renderer expects either camera index or name (works with name on latest bindings)
+            renderer.update_scene(self.data, camera=camera_name)
+
+            # Render RGB (returns HxWx3 numpy array, possibly float)
+            rgb = renderer.render()
+
+            # If it's float in 0..1, convert to 0..255
+            if rgb.dtype == np.float32 or rgb.dtype == np.float64:
+                rgb = np.clip(rgb * 255.0, 0, 255).astype(np.uint8)
+            else:
+                rgb = rgb.astype(np.uint8)
+
+            # MuJoCo often produces images bottom-up: flip vertically
+            if rgb.shape[0] == height:
+                rgb = np.flipud(rgb)
+            else:
+                # if sizes mismatch, try to resize to declared width/height
+                rgb = cv2.resize(rgb, (width, height), interpolation=cv2.INTER_AREA)
+
+            # If RGBA, drop alpha
+            if rgb.ndim == 3 and rgb.shape[2] == 4:
+                rgb = rgb[:, :, :3]
+
+            # Ensure RGB -> BGR for OpenCV imencode
+            bgr = cv2.cvtColor(rgb, cv2.COLOR_RGB2BGR)
+
+            # Encode to JPEG (like C++), quality near 90
+            ok, jpeg_buf = cv2.imencode(".jpg", bgr, [int(cv2.IMWRITE_JPEG_QUALITY), 90])
+            if not ok:
+                print(f"Warning: JPEG encoding failed for camera {camera_name}")
+                return None
+            jpeg_bytes = jpeg_buf.tobytes()
+
+            frame_data = {
+                "name": camera_name,
+                "width": width,
+                "height": height,
+                "fovy": cam["fovy"],
+                "frame_name": f"{camera_name}_optical_frame",
+                "topic_paths": cam["topic_paths"],
+                "rgb_data": jpeg_bytes,
+                "has_depth": cam["has_depth"],
+            }
+
+            # Depth rendering and processing (if requested)
+            if cam["has_depth"]:
+                try:
+                    renderer.enable_depth_rendering()
+                    depth = renderer.render()  # this should return depth single-channel or multi-channel
+                    depth_fixed = self._depth_nonlin_fix_and_flip(depth, cam_id, width, height)
+                    frame_data["depth_data"] = depth_fixed.tobytes()
+                    frame_data["depth_encoding"] = "32FC1"
+                except Exception as e:
+                    print(f"Warning: Failed to render depth for camera '{camera_name}': {e}")
+                    frame_data["has_depth"] = False
+
+            return frame_data
+
+        except Exception as e:
+            print(f"Error rendering camera '{camera_name}': {e}")
+            return None
+
+    def get_available_cameras(self) -> List[str]:
+        return list(self.cameras.keys())
+
+    def cleanup(self):
+        for cam in self.cameras.values():
+            try:
+                cam["renderer"].close()
+            except:
+                pass
 
 
 class MujocoServer:
@@ -64,21 +252,22 @@ class MujocoServer:
         else:
             self.viewer = None
 
-        # Renderer (offscreen)
-        self.img_w = 320
-        self.img_h = 240
+        # Camera system
         self.headless = headless
         if not headless:
             try:
-                self.renderer = mujoco.Renderer(self.model, self.img_w, self.img_h)
-                self.can_render = True
+                self.camera_renderer = CameraRenderer(self.model, self.data)
+                self.can_render_cameras = True
+                print(
+                    f"Camera system initialized with {len(self.camera_renderer.get_available_cameras())} cameras"
+                )
             except Exception as e:
-                print("Renderer unavailable:", e)
-                self.renderer = None
-                self.can_render = False
+                print("Camera system unavailable:", e)
+                self.camera_renderer = None
+                self.can_render_cameras = False
         else:
-            self.renderer = None
-            self.can_render = False
+            self.camera_renderer = None
+            self.can_render_cameras = False
 
         self.clients = set()
         self._stop = False
@@ -111,6 +300,10 @@ class MujocoServer:
         print(f"  - Image streaming rate: {self.image_fps} FPS")
         print(f"  - Number of joints: {self.model.njnt}")
         print(f"  - Number of actuators: {self.model.nu}")
+        if self.can_render_cameras:
+            print(
+                f"  - Available cameras: {', '.join(self.camera_renderer.get_available_cameras())}"
+            )
 
     def apply_controls(self):
         """Apply control commands based on joint names and control modes."""
@@ -176,16 +369,6 @@ class MujocoServer:
             "qfrc_applied": nd_to_list(self.data.qfrc_applied),
             "sensordata": nd_to_list(self.data.sensordata),
         }
-
-    def render_jpeg(self) -> Optional[bytes]:
-        if not self.can_render:
-            return None
-        self.renderer.update_scene(self.data)
-        rgb = self.renderer.render()
-        img = Image.fromarray(rgb)
-        buf = io.BytesIO()
-        img.save(buf, format="JPEG", quality=JPEG_QUALITY)
-        return buf.getvalue()
 
     async def handle_message(self, msg: str, ws):
         try:
@@ -286,17 +469,44 @@ class MujocoServer:
                             }
                         )
 
+                # Add camera information
+                camera_info = []
+                if self.can_render_cameras:
+                    for cam_name in self.camera_renderer.get_available_cameras():
+                        config = CAMERA_CONFIGS.get(cam_name, {})
+                        camera_info.append(
+                            {
+                                "name": cam_name,
+                                "width": SHARED_CAMERA_WIDTH,
+                                "height": SHARED_CAMERA_HEIGHT,
+                                "fovy": SHARED_CAMERA_FOVY,
+                                "has_depth": config.get("has_depth", False),
+                                "topic_paths": config.get("topic_paths", {}),
+                            }
+                        )
+
                 await ws.send(
                     json.dumps(
                         {
                             "type": "model_info",
                             "joints": joint_info,
+                            "cameras": camera_info,
                             "njnt": int(self.model.njnt),  # Convert to int
                             "nq": int(self.model.nq),  # Convert to int
                             "nv": int(self.model.nv),  # Convert to int
                             "nu": int(self.model.nu),  # Convert to int
                         }
                     )
+                )
+
+            elif t == "get_available_cameras":
+                # Return list of available cameras
+                cameras = []
+                if self.can_render_cameras:
+                    cameras = self.camera_renderer.get_available_cameras()
+
+                await ws.send(
+                    json.dumps({"type": "available_cameras", "cameras": cameras})
                 )
 
             else:
@@ -309,7 +519,7 @@ class MujocoServer:
 
             traceback.print_exc()
 
-    async def ws_handler(self, ws, path):
+    async def ws_handler(self, ws):
         self.clients.add(ws)
         print(f"Client connected (total: {len(self.clients)})")
         try:
@@ -320,6 +530,7 @@ class MujocoServer:
         finally:
             self.clients.discard(ws)
             print(f"Client disconnected (remaining: {len(self.clients)})")
+
 
     async def state_loop(self):
         interval = 1.0 / self.state_hz
@@ -344,34 +555,65 @@ class MujocoServer:
             for client in disconnected_clients:
                 self.clients.discard(client)
 
+            # Handle camera rendering and streaming
             if img_interval and (time.time() - last_img >= img_interval):
-                jpeg = self.render_jpeg()
-                if jpeg:
-                    header = json.dumps(
-                        {
-                            "type": "image_jpeg",
-                            "width": self.img_w,
-                            "height": self.img_h,
-                            "size": len(jpeg),
-                        }
-                    )
-                    disconnected_clients = set()
-                    for client in self.clients.copy():
-                        try:
-                            # send header as text, then image as binary
-                            await client.send(header)
-                            await client.send(jpeg)  # binary frame
-                        except Exception as e:
-                            print(f"Client disconnected during image send: {e}")
-                            disconnected_clients.add(client)
-
-                    # Remove disconnected clients
-                    for client in disconnected_clients:
-                        self.clients.discard(client)
-
+                await self.stream_camera_frames()
                 last_img = time.time()
 
             await asyncio.sleep(max(0, interval - (time.time() - t0)))
+
+    async def stream_camera_frames(self):
+        """Stream frames from all available cameras."""
+        if not self.can_render_cameras:
+            return
+
+        disconnected_clients = set()
+
+        # Render and stream each camera
+        for camera_name in self.camera_renderer.get_available_cameras():
+            frame_data = self.camera_renderer.render_camera(camera_name)
+            if not frame_data:
+                continue
+
+            # Create camera frame header
+            header = {
+                "type": "camera_frame",
+                "camera_name": frame_data["name"],
+                "width": frame_data["width"],
+                "height": frame_data["height"],
+                "fovy": frame_data["fovy"],
+                "frame_name": frame_data["frame_name"],
+                "topic_paths": frame_data["topic_paths"],
+                "has_depth": frame_data["has_depth"],
+                "rgb_size": len(frame_data["rgb_data"]),
+            }
+
+            if frame_data["has_depth"]:
+                header["depth_size"] = len(frame_data["depth_data"])
+                header["depth_encoding"] = frame_data["depth_encoding"]
+
+            header_json = json.dumps(header)
+
+            # Send to all clients
+            for client in self.clients.copy():
+                try:
+                    # Send header as text
+                    await client.send(header_json)
+
+                    # Send RGB data as binary
+                    await client.send(frame_data["rgb_data"])
+
+                    # Send depth data as binary if available
+                    if frame_data["has_depth"]:
+                        await client.send(frame_data["depth_data"])
+
+                except Exception as e:
+                    print(f"Client disconnected during camera frame send: {e}")
+                    disconnected_clients.add(client)
+
+        # Remove disconnected clients
+        for client in disconnected_clients:
+            self.clients.discard(client)
 
     async def sim_loop(self):
         sim_interval = 1.0 / self.sim_hz
@@ -400,6 +642,11 @@ class MujocoServer:
         self._stop = True
         for t in tasks:
             t.cancel()
+
+    def cleanup(self):
+        """Cleanup resources."""
+        if self.camera_renderer:
+            self.camera_renderer.cleanup()
 
 
 def main():
@@ -452,6 +699,7 @@ def main():
     except KeyboardInterrupt:
         print("Stopping...")
     finally:
+        srv.cleanup()
         loop.stop()
 
 
