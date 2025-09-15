@@ -3,7 +3,7 @@ MuJoCo WebSocket Server (Real-time + Camera Support)
 
  - Real-time simulation (syncs MuJoCo time to wall-clock).
  - WebSocket JSON API for control and state.
- - Multi-camera support with single shared renderer (matching C++ approach).
+ - Multi-camera support with RGB and depth rendering.
 
 Usage:
   python reachy2_mujoco_server.py --model robot.xml --host 0.0.0.0 --port 8765
@@ -21,6 +21,7 @@ import mujoco.viewer
 import numpy as np
 import websockets
 from PIL import Image
+import cv2
 
 # ---------- DEFAULT CONFIG ----------
 DEFAULT_STATE_BROADCAST_HZ = 60.0
@@ -75,12 +76,9 @@ def nd_to_list(a):
     else:
         return a
 
-# Replace the existing CameraRenderer class with this version.
-
-import cv2  # add at top of file if not present
 
 class CameraRenderer:
-    """Handles camera rendering using one renderer per camera (matching the C++ logic)."""
+    """Handles camera rendering using shared renderer approach."""
 
     def __init__(self, model, data):
         self.model = model
@@ -89,7 +87,7 @@ class CameraRenderer:
         self.setup_cameras()
 
     def setup_cameras(self):
-        """Create a renderer per camera at the camera's resolution and record metadata."""
+        """Create a renderer per camera and record metadata."""
         # Find available cameras in the model
         for cam_name in CAMERA_CONFIGS.keys():
             cam_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_CAMERA, cam_name)
@@ -108,18 +106,10 @@ class CameraRenderer:
                 cam_width = SHARED_CAMERA_WIDTH
                 cam_height = SHARED_CAMERA_HEIGHT
 
-            # Create TWO renderers for cameras with depth (one for RGB, one for depth)
-            # This prevents state contamination between RGB and depth rendering
+            # Create a single renderer for this camera
             try:
-                rgb_renderer = mujoco.Renderer(self.model, cam_width, cam_height)
-                depth_renderer = None
-                
-                if CAMERA_CONFIGS.get(cam_name, {}).get("has_depth", False):
-                    depth_renderer = mujoco.Renderer(self.model, cam_width, cam_height)
-                    depth_renderer.enable_depth_rendering()
-                    print(f"Created RGB+Depth renderers for camera '{cam_name}': {cam_width}x{cam_height}")
-                else:
-                    print(f"Created RGB renderer for camera '{cam_name}': {cam_width}x{cam_height}")
+                renderer = mujoco.Renderer(self.model, cam_width, cam_height)
+                print(f"Created renderer for camera '{cam_name}': {cam_width}x{cam_height}")
                     
             except Exception as e:
                 print(f"Failed to initialize renderer for camera '{cam_name}': {e}")
@@ -128,33 +118,13 @@ class CameraRenderer:
             self.cameras[cam_name] = {
                 "id": cam_id,
                 "name": cam_name,
-                "rgb_renderer": rgb_renderer,
-                "depth_renderer": depth_renderer,
+                "renderer": renderer,
                 "width": cam_width,
                 "height": cam_height,
                 "fovy": float(self.model.cam_fovy[cam_id]) if hasattr(self.model, "cam_fovy") else SHARED_CAMERA_FOVY,
                 "has_depth": CAMERA_CONFIGS.get(cam_name, {}).get("has_depth", False),
                 "topic_paths": CAMERA_CONFIGS.get(cam_name, {}).get("topic_paths", {}),
             }
-
-    def _depth_nonlin_fix_and_flip(self, depth_array, cam_id, width, height):
-        """Apply near/far correction and flip vertically (matching C++)."""
-        # If depth_array shape is (H, W, ?) or (H, W), get single channel
-        if depth_array.ndim == 3:
-            depth = depth_array[:, :, 0]
-        else:
-            depth = depth_array
-
-        near = float(self.model.vis.map.znear * self.model.stat.extent)
-        far = float(self.model.vis.map.zfar * self.model.stat.extent)
-        # Avoid division by zero
-        denom = (1.0 - depth * (1.0 - near / far))
-        # clamp denom to avoid NaNs
-        denom = np.where(denom == 0, 1e-6, denom)
-        corrected = near / denom
-        # Flip vertically (MuJoCo gives bottom-up)
-        corrected_flipped = np.flipud(corrected)
-        return corrected_flipped.astype(np.float32)
 
     def render_camera(self, camera_name: str) -> Optional[Dict[str, Any]]:
         """Render a specific camera and return frame data (RGB jpeg bytes, optional depth)."""
@@ -165,12 +135,12 @@ class CameraRenderer:
         width = cam["width"]
         height = cam["height"]
         cam_id = cam["id"]
+        renderer = cam["renderer"]
 
         try:
-            # First, always render RGB using the RGB renderer
-            rgb_renderer = cam["rgb_renderer"]
-            rgb_renderer.update_scene(self.data, camera=camera_name)
-            rgb = rgb_renderer.render()
+            # First render RGB
+            renderer.update_scene(self.data, camera=camera_name)
+            rgb = renderer.render()
 
             # Process RGB image
             if rgb.dtype == np.float32 or rgb.dtype == np.float64:
@@ -210,17 +180,32 @@ class CameraRenderer:
                 "has_depth": cam["has_depth"],
             }
 
-            # Depth rendering using separate depth renderer (if available)
-            if cam["has_depth"] and cam["depth_renderer"]:
+            # Depth rendering - simple approach that was working
+            if cam["has_depth"]:
                 try:
-                    depth_renderer = cam["depth_renderer"]
-                    depth_renderer.update_scene(self.data, camera=camera_name)
-                    depth = depth_renderer.render()
+                    # Enable depth, re-render, then disable 
+                    renderer.enable_depth_rendering()
+                    renderer.update_scene(self.data, camera=camera_name)
+                    depth_raw = renderer.render()
+                    renderer.disable_depth_rendering()
                     
-                    # Process depth
-                    depth_fixed = self._depth_nonlin_fix_and_flip(depth, cam_id, width, height)
-                    frame_data["depth_data"] = depth_fixed.tobytes()
+                    # Handle depth buffer dimensions (fix the dimension swap that solved the mosaic)
+                    if depth_raw.ndim == 3:
+                        depth_2d = depth_raw[:, :, 0]
+                    else:
+                        depth_2d = depth_raw
+                    
+                    # Fix dimension order if needed (this was the key fix)
+                    if depth_2d.shape != (height, width):
+                        depth_2d = cv2.resize(depth_2d, (width, height), interpolation=cv2.INTER_NEAREST)
+                    
+                    # Simple conversion - no complex scaling that broke it
+                    depth_clean = np.ascontiguousarray(depth_2d, dtype=np.float32)
+                    depth_bytes = depth_clean.tobytes()
+                    
+                    frame_data["depth_data"] = depth_bytes
                     frame_data["depth_encoding"] = "32FC1"
+                    
                 except Exception as e:
                     print(f"Warning: Failed to render depth for camera '{camera_name}': {e}")
                     frame_data["has_depth"] = False
@@ -237,12 +222,12 @@ class CameraRenderer:
     def cleanup(self):
         for cam in self.cameras.values():
             try:
-                if cam["rgb_renderer"]:
-                    cam["rgb_renderer"].close()
-                if cam["depth_renderer"]:
-                    cam["depth_renderer"].close()
+                if cam["renderer"]:
+                    cam["renderer"].close()
             except:
                 pass
+
+
 class MujocoServer:
     def __init__(
         self,
@@ -484,13 +469,15 @@ class MujocoServer:
                 camera_info = []
                 if self.can_render_cameras:
                     for cam_name in self.camera_renderer.get_available_cameras():
+                        cam_data = self.camera_renderer.cameras[cam_name]
                         config = CAMERA_CONFIGS.get(cam_name, {})
                         camera_info.append(
                             {
                                 "name": cam_name,
-                                "width": SHARED_CAMERA_WIDTH,
-                                "height": SHARED_CAMERA_HEIGHT,
-                                "fovy": SHARED_CAMERA_FOVY,
+                                "width": cam_data["width"],
+                                "height": cam_data["height"],
+                                "fovy": cam_data["fovy"],
+                                "frame_name": f"{cam_name}_optical_frame",
                                 "has_depth": config.get("has_depth", False),
                                 "topic_paths": config.get("topic_paths", {}),
                             }
@@ -542,7 +529,6 @@ class MujocoServer:
             self.clients.discard(ws)
             print(f"Client disconnected (remaining: {len(self.clients)})")
 
-
     async def state_loop(self):
         interval = 1.0 / self.state_hz
         img_interval = 1.0 / self.image_fps if self.image_fps > 0 else None
@@ -586,7 +572,7 @@ class MujocoServer:
             if not frame_data:
                 continue
 
-            # Create camera frame header
+            # Create camera frame header (exactly matching C++ expectations)
             header = {
                 "type": "camera_frame",
                 "camera_name": frame_data["name"],
@@ -599,23 +585,23 @@ class MujocoServer:
                 "rgb_size": len(frame_data["rgb_data"]),
             }
 
-            if frame_data["has_depth"]:
+            if frame_data["has_depth"] and "depth_data" in frame_data:
                 header["depth_size"] = len(frame_data["depth_data"])
                 header["depth_encoding"] = frame_data["depth_encoding"]
 
             header_json = json.dumps(header)
 
-            # Send to all clients
+            # Send to all clients (matching C++ client expectations exactly)
             for client in self.clients.copy():
                 try:
-                    # Send header as text
+                    # Send header as text message
                     await client.send(header_json)
 
-                    # Send RGB data as binary
+                    # Send RGB data as binary message
                     await client.send(frame_data["rgb_data"])
 
-                    # Send depth data as binary if available
-                    if frame_data["has_depth"]:
+                    # Send depth data as binary message if available
+                    if frame_data["has_depth"] and "depth_data" in frame_data:
                         await client.send(frame_data["depth_data"])
 
                 except Exception as e:
