@@ -108,10 +108,19 @@ class CameraRenderer:
                 cam_width = SHARED_CAMERA_WIDTH
                 cam_height = SHARED_CAMERA_HEIGHT
 
-            # Create a renderer specific to this camera resolution
+            # Create TWO renderers for cameras with depth (one for RGB, one for depth)
+            # This prevents state contamination between RGB and depth rendering
             try:
-                renderer = mujoco.Renderer(self.model, cam_width, cam_height)
-                print(f"Created renderer for camera '{cam_name}': {cam_width}x{cam_height}")
+                rgb_renderer = mujoco.Renderer(self.model, cam_width, cam_height)
+                depth_renderer = None
+                
+                if CAMERA_CONFIGS.get(cam_name, {}).get("has_depth", False):
+                    depth_renderer = mujoco.Renderer(self.model, cam_width, cam_height)
+                    depth_renderer.enable_depth_rendering()
+                    print(f"Created RGB+Depth renderers for camera '{cam_name}': {cam_width}x{cam_height}")
+                else:
+                    print(f"Created RGB renderer for camera '{cam_name}': {cam_width}x{cam_height}")
+                    
             except Exception as e:
                 print(f"Failed to initialize renderer for camera '{cam_name}': {e}")
                 continue
@@ -119,7 +128,8 @@ class CameraRenderer:
             self.cameras[cam_name] = {
                 "id": cam_id,
                 "name": cam_name,
-                "renderer": renderer,
+                "rgb_renderer": rgb_renderer,
+                "depth_renderer": depth_renderer,
                 "width": cam_width,
                 "height": cam_height,
                 "fovy": float(self.model.cam_fovy[cam_id]) if hasattr(self.model, "cam_fovy") else SHARED_CAMERA_FOVY,
@@ -152,20 +162,17 @@ class CameraRenderer:
         if not cam:
             return None
 
-        renderer = cam["renderer"]
         width = cam["width"]
         height = cam["height"]
         cam_id = cam["id"]
 
         try:
-            # Update scene with specific camera id/name
-            # The python Renderer expects either camera index or name (works with name on latest bindings)
-            renderer.update_scene(self.data, camera=camera_name)
+            # First, always render RGB using the RGB renderer
+            rgb_renderer = cam["rgb_renderer"]
+            rgb_renderer.update_scene(self.data, camera=camera_name)
+            rgb = rgb_renderer.render()
 
-            # Render RGB (returns HxWx3 numpy array, possibly float)
-            rgb = renderer.render()
-
-            # If it's float in 0..1, convert to 0..255
+            # Process RGB image
             if rgb.dtype == np.float32 or rgb.dtype == np.float64:
                 rgb = np.clip(rgb * 255.0, 0, 255).astype(np.uint8)
             else:
@@ -203,11 +210,14 @@ class CameraRenderer:
                 "has_depth": cam["has_depth"],
             }
 
-            # Depth rendering and processing (if requested)
-            if cam["has_depth"]:
+            # Depth rendering using separate depth renderer (if available)
+            if cam["has_depth"] and cam["depth_renderer"]:
                 try:
-                    renderer.enable_depth_rendering()
-                    depth = renderer.render()  # this should return depth single-channel or multi-channel
+                    depth_renderer = cam["depth_renderer"]
+                    depth_renderer.update_scene(self.data, camera=camera_name)
+                    depth = depth_renderer.render()
+                    
+                    # Process depth
                     depth_fixed = self._depth_nonlin_fix_and_flip(depth, cam_id, width, height)
                     frame_data["depth_data"] = depth_fixed.tobytes()
                     frame_data["depth_encoding"] = "32FC1"
@@ -227,11 +237,12 @@ class CameraRenderer:
     def cleanup(self):
         for cam in self.cameras.values():
             try:
-                cam["renderer"].close()
+                if cam["rgb_renderer"]:
+                    cam["rgb_renderer"].close()
+                if cam["depth_renderer"]:
+                    cam["depth_renderer"].close()
             except:
                 pass
-
-
 class MujocoServer:
     def __init__(
         self,
