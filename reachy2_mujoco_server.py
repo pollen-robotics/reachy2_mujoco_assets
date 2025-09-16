@@ -109,7 +109,6 @@ class CameraRenderer:
             # Create a single renderer for this camera
             try:
                 renderer = mujoco.Renderer(self.model, cam_width, cam_height)
-                print(f"Created renderer for camera '{cam_name}': {cam_width}x{cam_height}")
                     
             except Exception as e:
                 print(f"Failed to initialize renderer for camera '{cam_name}': {e}")
