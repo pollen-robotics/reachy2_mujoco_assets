@@ -14,6 +14,8 @@ import asyncio
 import io
 import json
 import time
+import signal
+import sys
 from typing import Any, Dict, List, Optional
 
 import mujoco
@@ -290,6 +292,10 @@ class MujocoServer:
         # Time sync
         self.start_wall = time.time()
         self.start_sim = self.data.time
+
+        # Store server and tasks for cleanup
+        self.server = None
+        self.tasks = []
 
         # Print configuration
         print(f"Server configuration:")
@@ -664,26 +670,64 @@ class MujocoServer:
                     total_steps = 0
                     total_elapsed = 0.0
 
+    async def shutdown(self):
+        """Graceful shutdown procedure."""
+        print("Shutting down server...")
+        self._stop = True
+        
+        # Close server to stop accepting new connections
+        if self.server:
+            self.server.close()
+            await self.server.wait_closed()
+        
+        # Cancel all running tasks
+        for task in self.tasks:
+            if not task.done():
+                task.cancel()
+        
+        # Wait for tasks to complete cancellation
+        if self.tasks:
+            await asyncio.gather(*self.tasks, return_exceptions=True)
+        
+        # Cleanup resources
+        self.cleanup()
+        print("Server shutdown complete.")
 
     async def run(self, host, port):
-        server = await websockets.serve(self.ws_handler, host, port, max_size=None)
+        self.server = await websockets.serve(self.ws_handler, host, port, max_size=None)
         print(f"Server running on ws://{host}:{port}")
-        tasks = [
+        
+        self.tasks = [
             asyncio.create_task(self.sim_loop()),
             asyncio.create_task(self.state_loop()),
         ]
-        await server.wait_closed()
-        self._stop = True
-        for t in tasks:
-            t.cancel()
+        
+        try:
+            await self.server.wait_closed()
+        except asyncio.CancelledError:
+            pass
 
     def cleanup(self):
         """Cleanup resources."""
         if self.camera_renderer:
             self.camera_renderer.cleanup()
+        
+        if self.viewer is not None:
+            try:
+                self.viewer.close()
+            except:
+                pass
 
 
-def main():
+def signal_handler(server_instance):
+    """Signal handler for graceful shutdown."""
+    def handler(signum, frame):
+        print(f"\nReceived signal {signum}, initiating shutdown...")
+        asyncio.create_task(server_instance.shutdown())
+    return handler
+
+
+async def main_async():
     ap = argparse.ArgumentParser()
     ap.add_argument("--model", required=True, help="Path to MuJoCo model XML file")
     ap.add_argument("--host", default="127.0.0.1", help="Server host address")
@@ -733,14 +777,30 @@ def main():
         image_fps=args.image_fps,
         stat_mode=args.stats,
     )
-    loop = asyncio.get_event_loop()
+
+    # Set up signal handlers for graceful shutdown
+    signal.signal(signal.SIGINT, signal_handler(srv))
+    signal.signal(signal.SIGTERM, signal_handler(srv))
+
     try:
-        loop.run_until_complete(srv.run(args.host, args.port))
+        await srv.run(args.host, args.port)
     except KeyboardInterrupt:
-        print("Stopping...")
+        pass  # Handled by signal handler
+    except Exception as e:
+        print(f"Server error: {e}")
     finally:
-        srv.cleanup()
-        loop.stop()
+        await srv.shutdown()
+
+
+def main():
+    try:
+        asyncio.run(main_async())
+    except KeyboardInterrupt:
+        print("Interrupted by user")
+    except Exception as e:
+        print(f"Fatal error: {e}")
+    finally:
+        print("Exiting...")
 
 
 if __name__ == "__main__":
