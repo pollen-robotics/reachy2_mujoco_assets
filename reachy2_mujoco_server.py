@@ -29,6 +29,7 @@ import cv2
 DEFAULT_STATE_BROADCAST_HZ = 100.0
 DEFAULT_SIM_CONTROL_HZ = 500.0  # Simulation control loop rate
 DEFAULT_IMAGE_FPS = 2.0
+DEFAULT_TRACKED_BODIES_HZ = 1.0  # Tracked body broadcast rate
 JPEG_QUALITY = 70
 
 # Shared camera resolution (matching your C++ approach)
@@ -229,6 +230,103 @@ class CameraRenderer:
                 pass
 
 
+class TrackedBodyPublisher:
+    """Handles tracking and publishing of specific body poses from MuJoCo model."""
+    
+    def __init__(self, model, data):
+        self.model = model
+        self.data = data
+        self.tracked_bodies = {}  # body_name -> body_id
+        self.setup_tracked_bodies()
+    
+    def setup_tracked_bodies(self):
+        """Find and setup tracked bodies from model's custom text field."""
+        tracked_body_names = set()
+        found_tracked_list = False
+        
+        # Look for custom text field with tracked bodies list
+        for i in range(self.model.ntext):
+            text_name_start = self.model.name_textadr[i]
+            text_name_end = text_name_start
+            while text_name_end < len(self.model.names) and self.model.names[text_name_end] != 0:
+                text_name_end += 1
+            
+            text_name = self.model.names[text_name_start:text_name_end].decode('utf-8')
+            
+            if text_name == "tracked_bodies":
+                text_data_start = self.model.text_adr[i]
+                text_data_end = text_data_start
+                while text_data_end < len(self.model.text_data) and self.model.text_data[text_data_end] != 0:
+                    text_data_end += 1
+                
+                body_list_str = self.model.text_data[text_data_start:text_data_end].decode('utf-8')
+                
+                # Parse comma-separated list
+                for body_name in body_list_str.split(','):
+                    body_name = body_name.strip()
+                    if body_name:
+                        tracked_body_names.add(body_name)
+                
+                found_tracked_list = True
+                print(f"Found tracked_bodies list with {len(tracked_body_names)} bodies")
+                break
+        
+        if not found_tracked_list:
+            print("No 'tracked_bodies' custom text found - no bodies will be tracked")
+            print("Add <custom><text name=\"tracked_bodies\" data=\"body1,body2,body3\"/></custom> to your XML to track specific bodies")
+            return
+        
+        # Find and add only the bodies specified in the tracked list
+        for body_name in tracked_body_names:
+            body_id = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_BODY, body_name)
+            if body_id != -1 and body_id != 0:  # Skip world body at index 0
+                self.tracked_bodies[body_name] = body_id
+                print(f"Tracking body {body_id}: '{body_name}'")
+            else:
+                print(f"Warning: Requested body '{body_name}' not found in MuJoCo model")
+        
+        print(f"Body tracker initialized for {len(self.tracked_bodies)} tracked bodies")
+    
+    def get_tracked_bodies_state(self, sim_time: float) -> Dict[str, Any]:
+        """Get current state of all tracked bodies."""
+        if not self.tracked_bodies:
+            return {"type": "tracked_bodies", "time": sim_time, "bodies": []}
+        
+        bodies_data = []
+        
+        for body_name, body_id in self.tracked_bodies.items():
+
+
+            # Position (xpos is nbody x 3 array)
+            position = [
+                float(self.data.xpos[body_id][0]),
+                float(self.data.xpos[body_id][1]),
+                float(self.data.xpos[body_id][2])
+            ]
+            
+            # Orientation (xquat is nbody x 4 array, stored as w,x,y,z)
+            orientation = [
+                float(self.data.xquat[body_id][0]),  # w
+                float(self.data.xquat[body_id][1]),  # x
+                float(self.data.xquat[body_id][2]),  # y
+                float(self.data.xquat[body_id][3])   # z
+            ]
+            
+            bodies_data.append({
+                "name": body_name,
+                "body_id": body_id,
+                "position": position,
+                "orientation": orientation,
+                "frame_id": body_name
+            })
+        
+        return {
+            "type": "tracked_bodies",
+            "time": sim_time,
+            "bodies": bodies_data
+        }
+
+
 class MujocoServer:
     def __init__(
         self,
@@ -238,6 +336,7 @@ class MujocoServer:
         state_hz: float = DEFAULT_STATE_BROADCAST_HZ,
         sim_hz: float = DEFAULT_SIM_CONTROL_HZ,
         image_fps: float = DEFAULT_IMAGE_FPS,
+        tracked_bodies_hz: float = DEFAULT_TRACKED_BODIES_HZ,
         stat_mode: bool = False,
     ):
         self.model = mujoco.MjModel.from_xml_path(model_path)
@@ -269,6 +368,15 @@ class MujocoServer:
             self.camera_renderer = None
             self.can_render_cameras = False
 
+        # Tracked body system
+        try:
+            self.body_tracker = TrackedBodyPublisher(self.model, self.data)
+            self.can_track_bodies = len(self.body_tracker.tracked_bodies) > 0
+        except Exception as e:
+            print(f"Body tracker unavailable: {e}")
+            self.body_tracker = None
+            self.can_track_bodies = False
+
         self.clients = set()
         self._stop = False
 
@@ -276,6 +384,7 @@ class MujocoServer:
         self.state_hz = state_hz
         self.sim_hz = sim_hz
         self.image_fps = image_fps
+        self.tracked_bodies_hz = tracked_bodies_hz
 
         # Control arrays
         self.position_targets = {}  # joint_name -> position
@@ -302,11 +411,16 @@ class MujocoServer:
         print(f"  - Simulation rate: {self.sim_hz} Hz")
         print(f"  - State broadcast rate: {self.state_hz} Hz")
         print(f"  - Image streaming rate: {self.image_fps} FPS")
+        print(f"  - Tracked bodies rate: {self.tracked_bodies_hz} Hz")
         print(f"  - Number of joints: {self.model.njnt}")
         print(f"  - Number of actuators: {self.model.nu}")
         if self.can_render_cameras:
             print(
                 f"  - Available cameras: {', '.join(self.camera_renderer.get_available_cameras())}"
+            )
+        if self.can_track_bodies:
+            print(
+                f"  - Tracked bodies: {', '.join(self.body_tracker.tracked_bodies.keys())}"
             )
 
     def apply_controls(self):
@@ -540,7 +654,10 @@ class MujocoServer:
     async def state_loop(self):
         interval = 1.0 / self.state_hz
         img_interval = 1.0 / self.image_fps if self.image_fps > 0 else None
+        tracked_bodies_interval = 1.0 / self.tracked_bodies_hz if self.tracked_bodies_hz > 0 else None
+        
         last_img = 0.0
+        last_tracked_bodies = 0.0
 
         total_steps = 0
         total_elapsed = 0.0
@@ -573,6 +690,28 @@ class MujocoServer:
                     total_render += 1
 
                 last_img = time.time()
+            # Handle tracked body updates
+            try:
+                if tracked_bodies_interval and self.can_track_bodies and (time.time() - last_tracked_bodies >= tracked_bodies_interval):
+                    tracked_data = self.body_tracker.get_tracked_bodies_state(self.data.time)
+                    if tracked_data:
+                        tracked_payload = json.dumps(tracked_data)
+                        # Send tracked body data to all clients
+                        disconnected_clients = set()
+                        for client in self.clients.copy():
+                            try:
+                                await client.send(tracked_payload)
+                            except Exception as e:
+                                print(f"Client disconnected during tracked body send: {e}")
+                                disconnected_clients.add(client)
+                        
+                        # Remove disconnected clients
+                        for client in disconnected_clients:
+                            self.clients.discard(client)
+                    
+                    last_tracked_bodies = time.time()
+            except Exception as e:
+                print(f"Error during tracked body update: {e}")
 
             await asyncio.sleep(max(0, interval - (time.time() - t0)))
 
@@ -717,6 +856,9 @@ class MujocoServer:
                 self.viewer.close()
             except:
                 pass
+        
+        # Body tracker doesn't need explicit cleanup, but clear references
+        self.body_tracker = None
 
 
 def signal_handler(server_instance):
@@ -761,6 +903,12 @@ async def main_async():
         help=f"Image streaming rate in FPS (default: {DEFAULT_IMAGE_FPS})",
     )
     ap.add_argument(
+        "--tracked-bodies-hz",
+        type=float,
+        default=DEFAULT_TRACKED_BODIES_HZ,
+        help=f"Tracked bodies broadcast rate in Hz (default: {DEFAULT_TRACKED_BODIES_HZ})",
+    )
+    ap.add_argument(
         "--stats",
         action="store_true",
         help="Print simulation loop frequency every 5 seconds",
@@ -775,6 +923,7 @@ async def main_async():
         state_hz=args.state_hz,
         sim_hz=args.sim_hz,
         image_fps=args.image_fps,
+        tracked_bodies_hz=args.tracked_bodies_hz,
         stat_mode=args.stats,
     )
 
