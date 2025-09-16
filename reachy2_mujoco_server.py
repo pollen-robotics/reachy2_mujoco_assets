@@ -24,9 +24,9 @@ from PIL import Image
 import cv2
 
 # ---------- DEFAULT CONFIG ----------
-DEFAULT_STATE_BROADCAST_HZ = 60.0
-DEFAULT_SIM_CONTROL_HZ = 1000.0  # Simulation control loop rate
-DEFAULT_IMAGE_FPS = 15.0
+DEFAULT_STATE_BROADCAST_HZ = 100.0
+DEFAULT_SIM_CONTROL_HZ = 500.0  # Simulation control loop rate
+DEFAULT_IMAGE_FPS = 2.0
 JPEG_QUALITY = 70
 
 # Shared camera resolution (matching your C++ approach)
@@ -236,9 +236,12 @@ class MujocoServer:
         state_hz: float = DEFAULT_STATE_BROADCAST_HZ,
         sim_hz: float = DEFAULT_SIM_CONTROL_HZ,
         image_fps: float = DEFAULT_IMAGE_FPS,
+        stat_mode: bool = False,
     ):
         self.model = mujoco.MjModel.from_xml_path(model_path)
         self.data = mujoco.MjData(self.model)
+        self.stat_mode = stat_mode 
+
 
         # Viewer
         self.enable_viewer = enable_viewer and not headless
@@ -533,6 +536,12 @@ class MujocoServer:
         img_interval = 1.0 / self.image_fps if self.image_fps > 0 else None
         last_img = 0.0
 
+        total_steps = 0
+        total_elapsed = 0.0
+
+        total_render_elapsed = 0.0
+        total_render = 0
+
         while not self._stop:
             t0 = time.time()
             state = self.get_state()
@@ -554,9 +563,27 @@ class MujocoServer:
             # Handle camera rendering and streaming
             if img_interval and (time.time() - last_img >= img_interval):
                 await self.stream_camera_frames()
+                if self.stat_mode:
+                    total_render += 1
+
                 last_img = time.time()
 
             await asyncio.sleep(max(0, interval - (time.time() - t0)))
+
+            if self.stat_mode:
+                elapsed = time.time() - t0
+                total_steps += 1
+                total_elapsed += elapsed
+                if total_elapsed >= 5.0:
+                    print(f"State loop frequency: {total_steps / total_elapsed:.1f} Hz")
+                    print(
+                            f"Camera render+stream  frequency: {total_render / total_elapsed:.1f} Hz"
+                        )
+                    # print camera freq
+
+                    total_steps = 0
+                    total_elapsed = 0.0
+                    total_render = 0
 
     async def stream_camera_frames(self):
         """Stream frames from all available cameras."""
@@ -613,6 +640,8 @@ class MujocoServer:
 
     async def sim_loop(self):
         sim_interval = 1.0 / self.sim_hz
+        total_steps = 0
+        total_elapsed = 0.0
         while not self._stop:
             t0 = time.time()
             self.apply_controls()
@@ -626,6 +655,15 @@ class MujocoServer:
             elapsed = time.time() - t0
             sleep_time = max(0, sim_interval - elapsed)
             await asyncio.sleep(sleep_time)
+
+            if self.stat_mode:
+                total_steps += 1
+                total_elapsed += time.time() - t0
+                if total_elapsed >= 5.0:
+                    print(f"Sim loop frequency: {total_steps / total_elapsed:.1f} Hz")
+                    total_steps = 0
+                    total_elapsed = 0.0
+
 
     async def run(self, host, port):
         server = await websockets.serve(self.ws_handler, host, port, max_size=None)
@@ -678,6 +716,11 @@ def main():
         default=DEFAULT_IMAGE_FPS,
         help=f"Image streaming rate in FPS (default: {DEFAULT_IMAGE_FPS})",
     )
+    ap.add_argument(
+        "--stats",
+        action="store_true",
+        help="Print simulation loop frequency every 5 seconds",
+    )
 
     args = ap.parse_args()
 
@@ -688,6 +731,7 @@ def main():
         state_hz=args.state_hz,
         sim_hz=args.sim_hz,
         image_fps=args.image_fps,
+        stat_mode=args.stats,
     )
     loop = asyncio.get_event_loop()
     try:
