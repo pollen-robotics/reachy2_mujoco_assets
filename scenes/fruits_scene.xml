@@ -7,6 +7,10 @@
     <include file="../assets/plate_asset.xml"/>
     <include file="../assets/table_asset.xml"/>
 
+    <custom>
+        <text name="tracked_bodies" data="torso, apple1, apple2, orange1, orange2" />
+    </custom>
+
     <default>
         <default class="ycb_col">
             <geom contype="1" rgba = "1 1 1 1" conaffinity="1" condim ="6" solimp="0.95 0.99 0.001" solref=".002 1" margin = "0.002" friction="0.5 0.1 0.01" group = "3"/>

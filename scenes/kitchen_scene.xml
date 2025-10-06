@@ -1,6 +1,10 @@
 <mujoco model="reachy2 kitchen_scene">
     <compiler angle="radian"/>
 
+    <custom>
+        <text name="tracked_bodies" data="torso, fork, knife, cup, plate, drawer_handle_1" />
+    </custom>
+
     <include file="../assets/reachy2_asset.xml"/>
     <include file="../assets/kitchen_asset.xml"/>
     <include file="../assets/table_asset.xml"/>
