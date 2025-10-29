@@ -1,6 +1,10 @@
 <mujoco model="reachy2 table_scene">
 	<compiler angle="radian"/>
 
+	<custom>
+        <text name="tracked_bodies" data="torso, cube" />
+    </custom>
+
 	<include file="../assets/reachy2_asset.xml" />
 	<include file="../assets/simpleTable_asset.xml"/>
 
@@ -39,7 +43,7 @@
 			<include file="../objects/simpleWoodTable_body.xml" />
 		</body>
 
-		<body name="goal" pos="0.45 -0.4 0.65">
+		<body name="cube" pos="0.45 -0.4 0.65">
 			<freejoint name="box"/>
 			<geom type="box" size="0.025 0.025 0.025" rgba="1.0 0 0 1" conaffinity="1" contype="1" mass="0.05" friction="1.0 0.5 0.01" priority="1"/>
 		</body>

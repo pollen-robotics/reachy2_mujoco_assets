@@ -32,6 +32,22 @@ python viewer.py <scene_file.xml>
 pip install mujoco
 ```
 
+### Tracked objects
+
+It is possible to obtain the real-time pose of objects in the Mujoco scene via the Client SDK. 
+
+To do this, you must add this parameter to the scene's XML file:
+
+```xml
+    <custom>
+        <text name="tracked_bodies" data="body_name1, body_name2, body_name3" />
+    </custom>
+```
+
+In the data, you can note down the body name of the objects you want to track, as many as you like.
+In the available scenes, this setting is already there, but you can change the tracked objects as you see fit. 
+
+
 ---
 ### Credits
 

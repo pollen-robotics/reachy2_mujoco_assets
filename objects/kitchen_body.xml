@@ -742,7 +742,7 @@
             <geom name="stack_1_main_group_4_door_door_visual" size="0.2485 0.1035 0.015" quat="0.707105 0.707108 0 0" type="box" contype="0" conaffinity="0" group="1" mass="0" material="stack_1_main_group_4_door_mat"/>
             <site name="stack_1_main_group_4_door_default_site" pos="0 0 0" size="0.002" rgba="1 0 0 0"/>
             <!-- 1er tiroir -->
-            <body name="stack_1_main_group_4_door_handle_main">
+            <body name="drawer_handle_1">
                 <geom name="stack_1_main_group_4_door_handle_handle" size="0.013 0.0635" pos="0 -0.05 0" quat="0.707105 0 0.707108 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"  friction="1.0 0.05 0.002" margin="0.005" solimp="0.98 0.99 0.001" solref="0.002 1"/>
                 <geom name="stack_1_main_group_4_door_handle_handle_connector_top" size="0.008 0.025" pos="0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
                 <geom name="stack_1_main_group_4_door_handle_handle_connector_bottom" size="0.008 0.025" pos="-0.0381 -0.025 0" quat="0.707107 0.707107 0 0" type="cylinder" density="10" rgba="0.5 0 0 1" group="3"/>
