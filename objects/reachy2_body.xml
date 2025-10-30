@@ -463,7 +463,7 @@
                         <body name="r_shoulder_ball_link">
                         <inertial pos="0 0 0" quat="0.820473 0.339851 -0.17592 0.424708" mass="0.001"
                             diaginertia="1.02e-06 9.9e-07 9.9e-07" />
-                        <joint name="r_shoulder_roll" pos="0 0 0" axis="1 0 0" range="-3.14159 0"
+                        <joint name="r_shoulder_roll" pos="0 0 0" axis="1 0 0" range="-3.14159 0.51"
                             actuatorfrcrange="-50 50" />
                         <body name="r_shoulder_fix_link" quat="0.707107 0.707107 0 0">
                             <inertial pos="0 0 0" quat="0.820473 0.339851 -0.17592 0.424708"
@@ -765,7 +765,7 @@
                         <body name="l_shoulder_ball_link">
                         <inertial pos="0 0 0" quat="0.820473 0.339851 -0.17592 0.424708" mass="0.001"
                             diaginertia="1.02e-06 9.9e-07 9.9e-07" />
-                        <joint name="l_shoulder_roll" pos="0 0 0" axis="1 0 0" range="0 3.14159"
+                        <joint name="l_shoulder_roll" pos="0 0 0" axis="1 0 0" range="-0.51 3.14159"
                             actuatorfrcrange="-50 50" />
                         <body name="l_shoulder_fix_link" quat="0.707107 0.707107 0 0">
                             <inertial pos="0 0 0" quat="0.820473 0.339851 -0.17592 0.424708"

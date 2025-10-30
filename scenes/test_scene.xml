@@ -1,0 +1,105 @@
+<mujoco model="reachy2 table_scene">
+	<compiler angle="radian"/>
+
+    <custom>
+        <text name="tracked_bodies" data="torso, r_arm_tip, l_arm_tip, red_cube, green_cube" />
+    </custom>
+
+	<include file="../assets/reachy2_asset.xml" />
+	<include file="../assets/simpleTable_asset.xml"/>
+    <include file="../assets/fruits_assets.xml"/>
+    <include file="../assets/table_asset.xml"/>
+
+	<default>
+		<default class="ycb_col">
+            <geom contype="1" rgba = "1 1 1 1" conaffinity="1" condim ="6" solimp="0.95 0.99 0.001" solref=".002 1" margin = "0.002" friction="0.5 0.1 0.01" group = "3"/>
+        </default>
+        <default class="ycb_viz">
+            <geom contype="0" conaffinity="0" type="mesh"/>
+        </default>
+	</default>
+
+	<option gravity="0 0 -9.81" timestep="0.001" iterations="50" integrator="implicitfast">
+        <flag multiccd="enable" contact="enable"/>
+    </option>
+
+	<visual>
+		<headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0" />
+		<rgba haze="0.15 0.25 0.35 1" />
+		<global azimuth="150" elevation="-20" />
+	</visual>
+
+	<asset>
+		<texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072" />
+		<texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300" />
+		<material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0.2" />
+	</asset>
+
+	<worldbody>
+		<light pos="0 0 3" dir="0 0 -1" directional="false" />
+		<body name="floor">
+            <geom contype="1" conaffinity="2" friction=".01 0.001 0.0001" name="floor" pos="0 0 0" size="0 0 .25" type="plane" material="groundplane" condim="3" solimp="0 0.5 0.001 0.5 2" solref="0.03 1" margin="0"/>
+		</body>
+		
+
+		<!-- Reachy -->
+        <body name="reachy" pos="0 0 0">
+            <freejoint name="mobile_base" />
+            <include file="../objects/reachy2_body.xml"/>
+        </body>
+
+		<!-- Table 1 -->
+        <body name="table1" pos="0.7 0 0" euler="1.57 1.57 0">
+            <geom class = "ycb_viz" name="table_visual1"  mesh="wooden_table" material="wooden_table_material"/>
+            <geom class = "ycb_col" name="table_collision1" type="box" size="0.45 0.34 0.28" pos="0 0.3 0" margin = "0" friction="1 0.005 0.0005" solref="0.03 1" solimp="0.99 0.99 0.01"/>
+        </body>
+
+        <!-- Red Cube -->
+        <body name="red_cube" pos="0.5 0.2 0.66">
+            <geom class = "ycb_col" type="box" size="0.025 0.025 0.025" rgba = "1 0 0 1" mass="0.1" group="1"/>
+            <joint type="free"/>
+        </body>
+
+        <!-- Red Ball -->
+        <body name="red_ball" pos="0.8 0 0.66">
+            <geom class = "ycb_col" type="sphere" size="0.03" rgba = "1 0 0 1" mass="0.1" group="1"/>
+            <joint type="free"/>
+        </body>
+
+        
+		<!-- Orange -->
+        <body name="orange" pos="0.7 -0.2 0.63">
+            <geom class="ycb_viz" material="orange_mat" mesh="orange"/>
+            <geom class = "ycb_col" type="capsule" fromto="-0.007 -0.018 0.035 -0.007 -0.018 0.055" size="0.038" mass="0.1" rgba = "1 0 0 1"/>
+            <joint type="free"/>
+        </body> 
+
+        <!-- Apple -->
+        <body name="apple" pos="0.5 -0.12 0.63" >
+            <geom class="ycb_viz" material="apple_mat" mesh="apple"/>
+            <geom class = "ycb_col" type="capsule" fromto="0.0 -0.005 0.035 0.0 -0.005 0.055" size="0.035" mass="0.1" rgba = "1 0 0 1"/>
+            <joint type="free"/>
+        </body>
+
+        <!-- Table 2-->
+        <body name="table2" pos="0 0.75 0" euler="1.57 0 0">
+            <geom class = "ycb_viz" name="table_visual2"  mesh="wooden_table" material="wooden_table_material"/>
+            <geom class = "ycb_col" name="table_collision2" type="box" size="0.45 0.34 0.28" pos="0 0.3 0" margin = "0" friction="1 0.005 0.0005" solref="0.03 1" solimp="0.99 0.99 0.01"/>
+        </body>
+
+        <!-- Green Cube -->
+        <body name="green_cube" pos="-0.15 0.6 0.66">
+            <geom class = "ycb_viz" type="box" size="0.02 0.02 0.02" rgba = "0 1 0 1" group="1"/>
+        </body>
+
+
+        <!-- Obstacle -->
+
+        <!-- <body name="box_obstacle" pos="0.5 0 0.15" >
+            <geom class = "ycb_col" type="box" size="0.15 0.15 0.15" rgba = "1 1 1 1" group="1"/>
+        </body> -->
+
+
+	</worldbody>
+	
+</mujoco>
