@@ -1,7 +1,11 @@
 <mujoco model="reachy2 base_scene">
 	<compiler angle="radian"/>
 
-	<include file="../assets/reachy2_asset.xml" />
+	<custom>
+        <text name="tracked_bodies" data="torso"/>
+    </custom>
+
+	<include file="../assets/reachy2_asset.xml"/>
 
 	<option impratio="5">
 		<flag multiccd="enable"/>
